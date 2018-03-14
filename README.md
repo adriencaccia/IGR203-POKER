@@ -2,3 +2,4 @@
 
 Project for IGR203 by:
 * Cacciaguerra Adrien
+* Edwards Philippe
