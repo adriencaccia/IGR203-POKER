@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  height: 100%;
 }
 
 .App-logo {
@@ -21,21 +22,23 @@
 .App-intro {
   font-size: large;
 }
+.map__reactleaflet {
+  flex: 1 0;
+}
+.map {
+  height: 100%;
+   flex: 1 0;
+   display: flex;
+   position: relative;
+}
+#root {
+  height:100%;
+}
+html,body {
+  height:100%;
+}
 
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
-}
-
-.google-map {
-  height: 600px;
-  width: 100%;
-}
-
-#text {
-  /*width: 104px;*/
-  font-weight: bold;
-  font-family: Helvetica;
-  font-size: 30px;
-  color: #FF6767;
 }
