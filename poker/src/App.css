@@ -31,3 +31,11 @@
   height: 600px;
   width: 100%;
 }
+
+#text {
+  /*width: 104px;*/
+  font-weight: bold;
+  font-family: Helvetica;
+  font-size: 30px;
+  color: #FF6767;
+}
