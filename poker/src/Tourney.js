@@ -6,7 +6,7 @@ export default class Tourney extends Component {
 		return (
 			<Marker position={[this.props.position[0],this.props.position[1]]} 
 					icon={this.props.icon} >
-			  <Popup>
+			  <Popup autoPan={false}>
 			    <span>
 			      {this.props.name} <br /> {this.props.startTime} {this.props.day}
 			    </span>

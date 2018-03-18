@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { Map, Marker, Popup, TileLayer, GeoJSON } from 'react-leaflet';
+import { Map, TileLayer } from 'react-leaflet';
 import L from 'leaflet';
 import Tourney from './Tourney'
 
@@ -37,13 +37,13 @@ export default class ReactLeafletMap extends PureComponent {
         <Map center={mapConfig.center} zoom={mapConfig.zoom} 
             className="map__reactleaflet" onPopupopen={this.handlePopupopen}>
           <TileLayer
-            url="http://192.168.1.5:8080/styles/positron/{z}/{x}/{y}.png"
-            // url="http://localhost:8080/styles/positron/{z}/{x}/{y}.png"
+            // when connected to wi-fi, put your computer's ip
+            // url="http://192.168.1.5:8080/styles/osm-bright/{z}/{x}/{y}.png"
+            url="http://localhost:8080/styles/osm-bright/{z}/{x}/{y}.png"
           />
           {
-            [...tourneys].map(
-              tourney => <Tourney icon={myIcon} {...tourney} />
-            )
+            [...tourneys].map((tourney,i) => <Tourney key={i}
+                                                icon={myIcon} {...tourney}/>)
           }
         </Map>
       </div>
