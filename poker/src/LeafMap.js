@@ -1,29 +1,29 @@
 import React, { PureComponent } from 'react';
-import { Map, TileLayer } from 'react-leaflet';
+import { Map, TileLayer, ZoomControl } from 'react-leaflet';
 import L from 'leaflet';
-import Tourney from './Tourney'
+import Tourney from './Tourney';
 
 const mapConfig = {
   center: [48.8260373, 2.34595850],
   zoom: 15.2
 };
 
-const iconSize = 100;
+const iconSize = 70;
 
 var myIcon = L.icon({
-  iconUrl: require('./chip.svg'),
+  iconUrl: require('./chip2s.svg'),
   iconSize: [iconSize, iconSize],
   iconAnchor: [iconSize/2, iconSize/2],
-  popupAnchor: [0, -iconSize/2+iconSize/7]
+  popupAnchor: [0, -iconSize/2+iconSize/8]
 });
 
-const tourneys = [
-  {position:[48.8257,2.3461], name:"L'Excuse", startTime:"19h30", day:"Mardi"},
-  {position:[48.827256,2.348669], name:"Le Soyouz", startTime:"20h", day:"Lundi"}
-];
+class ReactLeafletMap extends PureComponent{
+  constructor(props) {
+    super(props);
+    this.props = props;
+  }
 
-export default class ReactLeafletMap extends PureComponent {
-  handlePopupopen (e){
+  handlePopupopen(e) {
     var popupLatLng = e.popup.getLatLng();
     var mapBounds = this.getBounds();
     var offset = (mapBounds.getNorth()-mapBounds.getSouth())*0.4;
@@ -31,22 +31,29 @@ export default class ReactLeafletMap extends PureComponent {
     this.setView(latlng, this.getZoom());
   }
 
+  handleZoom(e) {
+    console.log(e, this.getBounds());
+    // TODO: use zoom/pixel relation for distance
+  }
+
   render() {
     return (
-      <div className="map">
-        <Map center={mapConfig.center} zoom={mapConfig.zoom} 
-            className="map__reactleaflet" onPopupopen={this.handlePopupopen}>
-          <TileLayer
-            // when connected to wi-fi, put your computer's ip
-            // url="http://192.168.1.5:8080/styles/osm-bright/{z}/{x}/{y}.png"
-            url="http://localhost:8080/styles/osm-bright/{z}/{x}/{y}.png"
-          />
-          {
-            [...tourneys].map((tourney,i) => <Tourney key={i}
-                                                icon={myIcon} {...tourney}/>)
-          }
-        </Map>
-      </div>
+      <Map center={mapConfig.center} zoom={mapConfig.zoom} zoomControl={false}
+          className="map__reactleaflet" onPopupopen={this.handlePopupopen}
+          onZoom={this.handleZoom}>
+        <ZoomControl position="topright"/>
+        <TileLayer
+          // when connected to wi-fi, put your computer's ip
+          url="http://137.194.8.91:8080/styles/osm-bright/{z}/{x}/{y}.png"
+          // url="http://localhost:8080/styles/osm-bright/{z}/{x}/{y}.png"
+        />
+        {
+          [...this.props.tourneys].map((tourney,i) => <Tourney key={i}
+                                              icon={myIcon} {...tourney}/>)
+        }
+      </Map>
     );
   }
 }
+
+export default ReactLeafletMap;
