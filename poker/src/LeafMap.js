@@ -18,9 +18,18 @@ var myIcon = L.icon({
 });
 
 class ReactLeafletMap extends PureComponent{
-  constructor(props) {
-    super(props);
-    this.props = props;
+  constructor(props){
+    super();
+    this.handleZoom = this.handleZoom.bind(this);
+    var arr = [];
+    for (var i=0; i<props.tourneys.length; i++){
+      arr.push(1);
+    }
+    this.state = {
+      tourneys: props.tourneys,
+      stacks: [],
+      tourDisplayed: arr,
+    };
   }
 
   handlePopupopen(e) {
@@ -32,8 +41,43 @@ class ReactLeafletMap extends PureComponent{
   }
 
   handleZoom(e) {
-    console.log(e, this.getBounds());
-    // TODO: use zoom/pixel relation for distance
+    var tourneys = this.props.tourneys;
+    // console.log(tourneys[2]);
+    if (tourneys.length == 1) return;
+    var map = e.target;
+
+    function distanceBetween(t1, t2) {
+      var l1 = L.latLng(tourneys[t1].position[0], tourneys[t1].position[1]);
+      var l2 = L.latLng(tourneys[t2].position[0], tourneys[t2].position[1]);
+      return l1.distanceTo(l2);
+    }
+
+    var centerPoint = map.containerPointToLatLng([0, 0]);
+    var otherPoint = map.containerPointToLatLng([iconSize, iconSize]);
+    var distance = centerPoint.distanceTo(otherPoint);
+
+    for (var i=0; i<tourneys.length-1; i++){
+      var distTourneys = distanceBetween(i,i+1);
+      console.log(i,i+1,distance/1.2>distTourneys);
+      //TODO implement this thing
+      if (distance/1.2 > distTourneys){
+        this.state.tourDisplayed[i] = 0;
+        this.state.tourDisplayed[i+1] = 0;
+        console.log(this.state.tourDisplayed);
+        this.forceUpdate();
+      }
+      else {
+        this.state.tourDisplayed[i] = 1;
+        this.state.tourDisplayed[i+1] = 1;
+        console.log(this.state.tourDisplayed);
+        this.forceUpdate();
+      }
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.state.tourneys = nextProps.tourneys;
+    this.forceUpdate();
   }
 
   render() {
@@ -48,7 +92,7 @@ class ReactLeafletMap extends PureComponent{
           // url="http://localhost:8080/styles/osm-bright/{z}/{x}/{y}.png"
         />
         {
-          [...this.props.tourneys].map((tourney,i) => <Tourney key={i}
+          [...this.state.tourneys].map((tourney,i) => <Tourney key={i}
                                               icon={myIcon} {...tourney}/>)
         }
       </Map>
