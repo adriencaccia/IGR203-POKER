@@ -1,0 +1,203 @@
+{
+  "bars":
+  [ 
+    {
+    	"position":[48.8257,2.3461],
+    	"name":"L'Excuse",
+    	"address":"219 rue de Tolbiac",
+    	"zipCode":"75013",
+    	"startTime":"19h30",
+    	"day":"Mardi",
+    	"tel":"01-45-89-68-57"
+    },
+    {
+    	"position":[48.827256,2.348669],
+    	"name":"Soyouz",
+    	"address":"11 rue de l'Espérance",
+    	"zipCode":"75013",
+    	"startTime":"20h30",
+    	"day":"Lundi",
+    	"tel":"01-45-88-67-51"
+    },
+    {
+    	"position":[48.826122,2.343895],
+    	"name":"La Porcherie",
+      "address":"233 rue de Tolbiac",
+      "zipCode":"75013",
+    	"startTime":"23h",
+    	"day":"Jeudi",
+      "tel":"01-47-55-84-13"
+    },
+    {
+    	"position":[48.861128,2.351242],
+    	"name":"Bistrot du Centre",
+    	"address":"131 rue Saint Martin",
+    	"zipCode":"75004",
+    	"startTime":"20h",
+    	"day":"Mardi",
+    	"tel":"01-40-19-96-47"
+    },
+    {
+    	"position":[48.844149,2.349452],
+    	"name":"IPN",
+    	"address":"23 rue Mouffetard",
+    	"zipCode":"75005",
+    	"startTime":"20h",
+    	"day":"Mercredi",
+    	"tel":"01-47-07-61-02"
+    },
+    {
+    	"position":[48.853431,2.373453],
+    	"name":"Street Art",
+    	"address":"37 rue de Lappe",
+    	"zipCode":"75011",
+    	"startTime":"20h",
+    	"day":"Lundi",
+    	"tel":"06-22-23-75-00"
+    },
+    {
+    	"position":[48.84784,2.374744],
+    	"name":"Le Viaduc",
+    	"address":"43 avenue Daumesnil",
+    	"zipCode":"75012",
+    	"startTime":"19h30",
+    	"day":"Dimanche",
+    	"tel":"01-44-74-70-70"
+    },
+    {
+    	"position":[48.860965,2.380398],
+    	"name":"La Zinguerie",
+    	"address":"95 avenue du Chemin Vert",
+    	"zipCode":"75011",
+    	"startTime":"15h30",
+    	"day":"Dimanche",
+    	"tel":"09-72-50-00-43"
+    },
+    {
+    	"position":[48.83913,2.339432],
+    	"name":"La Terrasse Saint Jacques",
+    	"address":"86 boulevard du Port Royale",
+    	"zipCode":"75005",
+    	"startTime":"19h",
+    	"day":"Lundi",
+    	"tel":"01-43-54-23-73"
+    },
+    {
+    	"position":[48.866187,2.379075],
+    	"name":"La Maizon",
+    	"address":"123 rue Oberkampf",
+    	"zipCode":"75011",
+    	"startTime":"19h30",
+    	"day":"Mercredi",
+    	"tel":"06-22-78-00-70"
+    },
+    {
+      "position":[48.879252,2.354627],
+      "name":"Hide Out La Station",
+      "address":"8 boulevard de Denain",
+      "zipCode":"75010",
+      "startTime":"18h30",
+      "day":"Samedi",
+      "tel":"01-48-78-06-98"
+    },
+    {
+      "position":[48.876909,2.337055],
+      "name":"Cross of Saint George",
+      "address":"35 rue Saint Georges",
+      "zipCode":"75009",
+      "startTime":"16h30",
+      "day":"Dimanche",
+      "tel":"01-53-16-19-19"
+    },
+    {
+      "position":[48.879496,2.356329],
+      "name":"Le Champ Libre",
+      "address":"15 rue de Dunkerque",
+      "zipCode":"75010",
+      "startTime":"20h",
+      "day":"Lundi",
+      "tel":"01-42-85-12-93"
+    },
+    {
+      "position":[48.845198,2.382737],
+      "name":"Le 12eme Domaine",
+      "address":"3 rue Crozatier",
+      "zipCode":"75012",
+      "startTime":"17h30",
+      "day":"Samedi",
+      "tel":"07-85-30-50-62"
+    },
+    {
+      "position":[48.874649,2.325715],
+      "name":"Kenavo Bar",
+      "address":"7 rue de l'Isly",
+      "zipCode":"75008",
+      "startTime":"19h",
+      "day":"Lundi",
+      "tel":"09-51-17-68-76"
+    },
+    {
+      "position":[48.830425,2.347493],
+      "name":"La Havane Cafe",
+      "address":"70 boulevard Auguste Blanqui",
+      "zipCode":"75013",
+      "startTime":"19h30",
+      "day":"Mercredi",
+      "tel":"01-43-37-48-64"
+    },
+    {
+      "position":[48.843662,2.314714],
+      "name":"L'Atelier 150",
+      "address":"150 rue de Vaugirard",
+      "zipCode":"75015",
+      "startTime":"19h30",
+      "day":"Lundi",
+      "tel":"01-47-34-48-23"
+    },
+    {
+      "position":[48.88885,2.356151],
+      "name":"La Fine Epicerie de la Goutte d'Or",
+      "address":"60 rue Stephenson",
+      "zipCode":"75018",
+      "startTime":"19h30",
+      "day":"Mercredi",
+      "tel":"06-98-32-35-86"
+    },
+    {
+      "position":[48.887882,2.325276],
+      "name":"Bar by O'Sisters",
+      "address":"68 avenue de Clichy",
+      "zipCode":"75017",
+      "startTime":"20h",
+      "day":"Mardi",
+      "tel":"06-74-52-55-64"
+    },
+    {
+      "position":[48.845054,2.405998],
+      "name":"Le Bel Air",
+      "address":"54 avenue du Docteur Arnorld Netter",
+      "zipCode":"75012",
+      "startTime":"19h",
+      "day":"Jeudi",
+      "tel":"01-43-43-05-60"
+    },
+    {
+      "position":[48.893908,2.345299],
+      "name":"Tralali Tralala",
+      "address":"80 rue du Mont-Cenis",
+      "zipCode":"75018",
+      "startTime":"18h",
+      "day":"Dimanche",
+      "tel":"01-83-56-71-75"
+    },
+    {
+      "position":[48.895639,2.387655],
+      "name":"Le Comptoir Vill'Up",
+      "address":"30 avenue Corentin Cariou",
+      "zipCode":"75019",
+      "startTime":"19h30",
+      "day":"Lundi",
+      "tel":"01-42-81-13-66"
+    }
+  ]
+}

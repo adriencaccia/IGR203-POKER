@@ -6,11 +6,7 @@ import ReactLeafletMap from './LeafMap';
 import DaySelection from './DaySelection';
 import '../node_modules/react-leaflet-markercluster/dist/styles.min.css';
 
-const tourneys = [
-  {position:[48.8257,2.3461], name:"L'Excuse", startTime:"19h30", day:"Mardi"},
-  {position:[48.827256,2.348669], name:"Le Soyouz", startTime:"20h", day:"Lundi"},
-  {position:[48.826122,2.343895], name:"La Porcherie", startTime:"23h", day:"Mercredi"}
-];
+const tourneys = require('./bars.json').bars;
 
 const week = [
   "Lundi",

@@ -4,6 +4,9 @@ import MarkerClusterGroup from 'react-leaflet-markercluster';
 import L from 'leaflet';
 import Tourney from './Tourney';
 
+const TILES_URL = "http://localhost:8080/styles/osm-bright/{z}/{x}/{y}.png";
+// const TILES_URL = "http://10.60.2.82:8080/styles/osm-bright/{z}/{x}/{y}.png";
+
 const mapConfig = {
   center: [48.8260373, 2.34595850],
   zoom: 15.2
@@ -29,23 +32,26 @@ const createClusterCustomIcon = function (cluster) {
 
 class ReactLeafletMap extends PureComponent{
   handlePopupopen(e) {
+    var fromZoom = this.getZoom();
+    var toZoom = 17;
+    var scale = this.getZoomScale(toZoom, fromZoom);
+    if (scale < 1){
+      scale = 1;
+      toZoom = fromZoom;
+    }
     var popupLatLng = e.popup.getLatLng();
     var mapBounds = this.getBounds();
     var offset = (mapBounds.getNorth()-mapBounds.getSouth())*0.4;
-    var latlng = L.latLng(popupLatLng.lat+offset, popupLatLng.lng);
-    this.setView(latlng, this.getZoom());
+    var latlng = L.latLng(popupLatLng.lat+offset/scale, popupLatLng.lng);
+    this.setView(latlng, toZoom);
   }
 
   render() {
     return (
       <Map center={mapConfig.center} zoom={mapConfig.zoom} zoomControl={false}
           className="map__reactleaflet markercluster-map" onPopupopen={this.handlePopupopen}>
-        <ZoomControl position="topright"/>
-        <TileLayer
-          // when connected to wi-fi, put your computer's ip
-          // url="http://137.194.8.91:8080/styles/osm-bright/{z}/{x}/{y}.png"
-          url="http://localhost:8080/styles/osm-bright/{z}/{x}/{y}.png"
-        />
+        <ZoomControl position="topright" />
+        <TileLayer url={TILES_URL} />
         <MarkerClusterGroup iconCreateFunction={createClusterCustomIcon}
           showCoverageOnHover={false}>
           {
