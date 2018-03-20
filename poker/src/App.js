@@ -4,6 +4,7 @@ import '../node_modules/leaflet/dist/leaflet.css';
 import '../node_modules/semantic-ui-css/semantic.min.css';
 import ReactLeafletMap from './LeafMap';
 import DaySelection from './DaySelection';
+import '../node_modules/react-leaflet-markercluster/dist/styles.min.css';
 
 const tourneys = [
   {position:[48.8257,2.3461], name:"L'Excuse", startTime:"19h30", day:"Mardi"},
