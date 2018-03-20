@@ -19,7 +19,7 @@ const renderLabel = label => ({
 class DaySelection extends Component {
   constructor(){
     super();
-    this.state = {value: ""};
+    this.state = {value: []};
     this.clear = this.clear.bind(this);
   }
 

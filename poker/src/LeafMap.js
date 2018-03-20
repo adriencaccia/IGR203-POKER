@@ -3,6 +3,7 @@ import { Map, TileLayer, ZoomControl } from 'react-leaflet';
 import MarkerClusterGroup from 'react-leaflet-markercluster';
 import L from 'leaflet';
 import Tourney from './Tourney';
+import TourneyModal from './TourneyModal';
 
 const TILES_URL = "http://localhost:8080/styles/osm-bright/{z}/{x}/{y}.png";
 // const TILES_URL = "http://10.60.2.82:8080/styles/osm-bright/{z}/{x}/{y}.png";
@@ -55,7 +56,7 @@ class ReactLeafletMap extends PureComponent{
         <MarkerClusterGroup iconCreateFunction={createClusterCustomIcon}
           showCoverageOnHover={false}>
           {
-            [...this.props.tourneys].map((tourney,i) => <Tourney key={i}
+            [...this.props.tourneys].map((tourney,i) => <TourneyModal key={i}
                                                 icon={myIcon} {...tourney}/>)
           }
         </MarkerClusterGroup>
