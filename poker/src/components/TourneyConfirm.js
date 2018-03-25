@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Icon, Button, Header, Image, Confirm, Card } from 'semantic-ui-react';
+import { Image, Card } from 'semantic-ui-react';
 import { Marker, Popup } from 'react-leaflet';
 import RegistrationButton from './RegistrationButton';
 
@@ -17,12 +17,13 @@ class TourneyConfirm extends Component {
         <Popup autoPan={false} closeButton={false}>
           <Card>
             <Card.Content>
-              <Image floated='right' size='mini' src={require('./chip2_stacks.svg')}/>
+              <Image floated='right' size='mini' src={require('../icons/chip2_stacks.svg')}/>
               <Card.Header>
                 {this.props.name}
               </Card.Header>
               <Card.Meta>
-                {this.props.address}, {this.props.zipCode}
+                {this.props.address}, {this.props.zipCode}<br/>
+                {this.props.tel}
               </Card.Meta>
               <Card.Description>
                 {this.props.day} à {this.props.startTime}.<br/>

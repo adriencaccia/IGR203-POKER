@@ -2,12 +2,12 @@ import React, { PureComponent } from 'react';
 import { Map, TileLayer, ZoomControl } from 'react-leaflet';
 import MarkerClusterGroup from 'react-leaflet-markercluster';
 import L from 'leaflet';
-import Tourney from './Tourney';
-import TourneyModal from './TourneyModal';
+// import Tourney from './Tourney';
+// import TourneyModal from './TourneyModal';
 import TourneyConfirm from './TourneyConfirm';
 
 const TILES_URL = "http://localhost:8080/styles/osm-bright/{z}/{x}/{y}.png";
-// const TILES_URL = "http://192.168.0.22:8080/styles/osm-bright/{z}/{x}/{y}.png";
+// const TILES_URL = "http://192.168.1.58:8080/styles/osm-bright/{z}/{x}/{y}.png";
 
 const mapConfig = {
   center: [48.8260373, 2.34595850],
@@ -17,7 +17,7 @@ const mapConfig = {
 const iconSize = 45;
 
 var myIcon = L.icon({
-  iconUrl: require('./chip2s.svg'),
+  iconUrl: require('../icons/chip2s.svg'),
   iconSize: [iconSize, iconSize],
   iconAnchor: [iconSize/2, iconSize/2],
   popupAnchor: [0, -iconSize/2+iconSize/8]
@@ -25,7 +25,7 @@ var myIcon = L.icon({
 
 const createClusterCustomIcon = function (cluster) {
   return L.divIcon({
-    html: `<img src=${require('./chip2_stacks.svg')} width=${iconSize*1.1}
+    html: `<img src=${require('../icons/chip2_stacks.svg')} width=${iconSize*1.1}
             width=${iconSize*1.1}/>`,
     className: 'marker-cluster-custom',
     iconAnchor: [iconSize/2, iconSize/2],

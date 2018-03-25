@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import MapComponent from './components/MapComponent';
 import registerServiceWorker from './registerServiceWorker';
 
-ReactDOM.render(<App />,document.getElementById('root'));
+ReactDOM.render(<MapComponent />,document.getElementById('root'));
 
 registerServiceWorker();

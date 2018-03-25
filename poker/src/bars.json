@@ -198,6 +198,15 @@
       "startTime":"19h30",
       "day":"Lundi",
       "tel":"01-42-81-13-66"
+    },
+    {
+      "position":[48.88315,2.371013],
+      "name":"Le Jaurès",
+      "address":"1 avenue Jean Jaurès",
+      "zipCode":"75019",
+      "startTime":"19h30",
+      "day":"Samedi",
+      "tel":"01-40-18-52-34"
     }
   ]
 }

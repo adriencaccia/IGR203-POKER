@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import './App.css';
-import '../node_modules/leaflet/dist/leaflet.css';
-import '../node_modules/semantic-ui-css/semantic.min.css';
+import './MapComponent.css';
+import '../../node_modules/leaflet/dist/leaflet.css';
+import '../../node_modules/semantic-ui-css/semantic.min.css';
 import ReactLeafletMap from './LeafMap';
 import DaySelection from './DaySelection';
-import '../node_modules/react-leaflet-markercluster/dist/styles.min.css';
+import '../../node_modules/react-leaflet-markercluster/dist/styles.min.css';
 
-const tourneys = require('./bars.json').bars;
+const tourneys = require('../bars.json').bars;
 
 const week = [
   "Lundi",
@@ -18,7 +18,7 @@ const week = [
   "Dimanche",
 ];
 
-class App extends Component {
+class MapComponent extends Component {
 	constructor(){
     super();
     this.state = {
@@ -55,7 +55,7 @@ class App extends Component {
 
   render() {
 		return (
-		  <div className="App">
+		  <div className="map-component">
 				<div className="map-view">
 				  <DaySelection updateMap={this.updateMap}/>
 				  <div className="map">
@@ -67,4 +67,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default MapComponent;
