@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Icon, Button, Header, Image, Modal } from 'semantic-ui-react';
+import { Icon, Button, Header, Image, Modal, Card } from 'semantic-ui-react';
 import { Marker, Popup } from 'react-leaflet';
 
 
@@ -25,10 +25,30 @@ class TourneyModal extends Component {
       <div>
         <Marker position={[this.props.position[0],this.props.position[1]]} 
             icon={this.props.icon} >
-          <Popup autoPan={false}>
-            <Button icon onClick={this.show('blurring')}>
-              <Icon name='life ring' size='big' color='red'/>
-            </Button>
+          <Popup autoPan={false} closeButton={false}>
+            <Card>
+              <Card.Content>
+                <Image floated='right' size='mini' src={require('./chip2_stacks.svg')}/>
+                <Card.Header>
+                  {this.props.name}
+                </Card.Header>
+                <Card.Meta>
+                  {this.props.address}, {this.props.zipCode}
+                </Card.Meta>
+                <Card.Description>
+                  {this.props.day} à {this.props.startTime}.<br/>
+                  {/* connect to API */}
+                  Il reste <strong>2 places</strong> sur 18.
+                </Card.Description>
+              </Card.Content>
+              <Card.Content extra>
+                <div className='ui two buttons'>
+                  <Button basic color='green' onClick={this.show('blurring')}>
+                    S'inscrire
+                  </Button>
+                </div>
+              </Card.Content>
+            </Card>
           </Popup>
         </Marker>
         <Modal dimmer={dimmer} open={open} onClose={this.close}
@@ -43,9 +63,10 @@ class TourneyModal extends Component {
           </Modal.Content>
           <Modal.Actions>
             <Button color='black' onClick={this.close}>
-              Nope
+              Non
             </Button>
-            <Button positive icon='checkmark' labelPosition='right' content="Yep, that's me" onClick={this.close} />
+            <Button positive icon='checkmark' labelPosition='right' 
+              content="S'inscrire" onClick={this.close} />
           </Modal.Actions>
         </Modal>
       </div>

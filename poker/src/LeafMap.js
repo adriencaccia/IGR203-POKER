@@ -4,16 +4,17 @@ import MarkerClusterGroup from 'react-leaflet-markercluster';
 import L from 'leaflet';
 import Tourney from './Tourney';
 import TourneyModal from './TourneyModal';
+import TourneyConfirm from './TourneyConfirm';
 
 const TILES_URL = "http://localhost:8080/styles/osm-bright/{z}/{x}/{y}.png";
-// const TILES_URL = "http://10.60.2.82:8080/styles/osm-bright/{z}/{x}/{y}.png";
+// const TILES_URL = "http://192.168.0.22:8080/styles/osm-bright/{z}/{x}/{y}.png";
 
 const mapConfig = {
   center: [48.8260373, 2.34595850],
   zoom: 15.2
 };
 
-const iconSize = 70;
+const iconSize = 45;
 
 var myIcon = L.icon({
   iconUrl: require('./chip2s.svg'),
@@ -50,13 +51,14 @@ class ReactLeafletMap extends PureComponent{
   render() {
     return (
       <Map center={mapConfig.center} zoom={mapConfig.zoom} zoomControl={false}
-          className="map__reactleaflet markercluster-map" onPopupopen={this.handlePopupopen}>
+          className="map__reactleaflet markercluster-map"
+          onPopupopen={this.handlePopupopen} >
         <ZoomControl position="topright" />
         <TileLayer url={TILES_URL} />
         <MarkerClusterGroup iconCreateFunction={createClusterCustomIcon}
           showCoverageOnHover={false}>
           {
-            [...this.props.tourneys].map((tourney,i) => <TourneyModal key={i}
+            [...this.props.tourneys].map((tourney,i) => <TourneyConfirm key={i}
                                                 icon={myIcon} {...tourney}/>)
           }
         </MarkerClusterGroup>
