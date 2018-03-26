@@ -2,3 +2,29 @@
   position: fixed;
   z-index: 10;
 }
+
+.pusher {
+	height: 100%;
+	width: 100%;
+}
+
+.container-app {
+	height: 100%;
+	width: 100%;
+	margin: 0;
+}
+
+.navbar {
+	height: 100%;
+	width: 100%;
+	margin: 0;
+}
+
+.navbar-button {
+	position: fixed;
+	left: 3%;
+	top: 2%;
+	z-index: 10;
+	color: black;
+}
+

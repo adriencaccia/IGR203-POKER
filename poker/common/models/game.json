@@ -41,6 +41,14 @@
     "maxPlayers": {
       "type": "number",
       "required": true
+    },
+    "position": {
+      "type": "array",
+      "required": true
+    },
+    "zipCode": {
+      "type": "string",
+      "required": true
     }
   },
   "validations": [],

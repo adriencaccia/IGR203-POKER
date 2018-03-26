@@ -1,15 +1,13 @@
 import React from 'react';
 import './App.css';
-import Main from './components/Main'
-import Sidenav from './components/Sidenav'
+// import Main from './components/Main';
+// import Sidenav from './components/Sidenav';
+import NavBarMain from './components/NavBarMain';
 
 const App = () => (
-  <div>
-  	<Sidenav />
-  	<div className="container">
-    	<Main />
-    </div>
-  </div>
-)
+	<div className="container-app">
+		<NavBarMain />
+	</div>
+);
 
 export default App;
