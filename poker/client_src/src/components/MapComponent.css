@@ -1,0 +1,54 @@
+.map-component {
+  text-align: center;
+  height: 100%;
+}
+
+.map__reactleaflet {
+  flex: 1 0;
+}
+
+.map {
+  height: 100%;
+  width: 100%;
+  flex: 1 0;
+  display: flex;
+  position: fixed;
+  top: 0;
+  right: 0;
+}
+
+#root {
+  height:100%;
+}
+html,body {
+  height:100%;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.map-view {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+}
+
+.day-select {
+  position: fixed;
+  z-index: 10;
+  top: 8%;
+  left: 3%;
+  max-width: 70%;
+}
+
+.ui.red.label {
+  background-color: #E6453A!important;
+  border-color: #4F3333!important;
+}
+
+/*.day-select-clear {
+  background: #C71809!important;
+  float: left;
+}*/

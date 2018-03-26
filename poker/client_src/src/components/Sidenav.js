@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 class Sidenav extends Component{
 	render(){
 		return(
-			<div>				
+			<div className="sidenav-div">				
 			    <a data-target="main-menu" className="btn-flat sidenav-trigger show-on-large"><i className="fa fa-bars"></i></a>
 			    <ul className="sidenav" id="main-menu">
 			    	<li><div className="brand-logo center">Menu</div></li>

@@ -6,11 +6,12 @@ import GameDetails from './GameDetails';
 import AddGame from './AddGame';
 import Timer from './Timer';
 import Profile from './Profile';
+import MapComponent from './MapComponent';
 
 const Main = () => (
 	<main>
 		<Switch>
-			<Route exact path='/' component={Games} />
+			<Route exact path='/' component={MapComponent} />
 			<Route exact path='/faq' component={About} />
 			<Route exact path='/timer' component={Timer} />
 			<Route exact path='/profile' component={Profile} />
