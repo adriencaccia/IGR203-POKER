@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Dropdown, Button } from 'semantic-ui-react';
+import { Dropdown } from 'semantic-ui-react';
 
 const options = [
   { key: 1, text: 'Lundi', value: 'Lundi' },
@@ -19,7 +19,7 @@ const renderLabel = label => ({
 class DaySelection extends Component {
   constructor(){
     super();
-    this.state = {value: ""};
+    this.state = {value: []};
     this.clear = this.clear.bind(this);
   }
 
