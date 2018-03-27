@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import './MapComponent.css';
 import '../../node_modules/leaflet/dist/leaflet.css';
 import '../../node_modules/semantic-ui-css/semantic.min.css';
@@ -23,11 +24,24 @@ class MapComponent extends Component {
     super();
     this.state = {
       tourneys: tourneys,
+      games: [],
       height: 0,
       width: 0
     };
     this.updateMap = this.updateMap.bind(this);
     this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
+  }
+
+  componentWillMount(){
+    this.getGames();
+  }
+
+  getGames(){
+    axios.get('http://localhost:3000/api/games').then(response => {
+      this.setState({games: response.data});
+      console.log(this.state);
+    })
+    .catch(err => console.log(err));
   }
 
   componentDidMount() {

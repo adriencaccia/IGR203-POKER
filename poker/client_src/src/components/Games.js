@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
-import GameItem from './GameItem'
+import GameItem from './GameItem';
 
 class Games extends Component{
 	constructor(){

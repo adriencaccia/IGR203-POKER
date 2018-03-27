@@ -3,6 +3,7 @@ import { Button, Confirm } from 'semantic-ui-react';
 
 const inlineStyle = {
   confirm : {
+    top: '30%',
     marginTop: '0px !important',
     marginLeft: 'auto',
     marginRight: 'auto'
@@ -37,10 +38,11 @@ class RegistrationButton extends Component {
         <Confirm style={inlineStyle.confirm}
           open={this.state.open}
           content={this.state.content}
-          cancelButton='Annuler'
+          cancelButton="Annuler"
           confirmButton="Je m'inscris"
           onCancel={this.handleCancel}
           onConfirm={this.handleConfirm}
+          size="mini"
         />
       </div>
     )

@@ -28,3 +28,8 @@
 	color: black;
 }
 
+.add-form {
+	margin: 5%;
+	/*overflow-x: hidden;*/
+	/*overflow-y: auto;*/
+}
