@@ -6,8 +6,9 @@ import L from 'leaflet';
 // import TourneyModal from './TourneyModal';
 import TourneyConfirm from './TourneyConfirm';
 
-const TILES_URL = "http://localhost:8080/styles/osm-bright/{z}/{x}/{y}.png";
+//const TILES_URL = "http://localhost:8080/styles/osm-bright/{z}/{x}/{y}.png";
 // const TILES_URL = "http://137.194.89.126:8080/styles/osm-bright/{z}/{x}/{y}.png";
+const TILES_URL = "https://maps.wikimedia.org/osm-intl/{z}/{x}/{y}.png";
 
 const mapConfig = {
   center: [48.8260373, 2.34595850],

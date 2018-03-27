@@ -5,7 +5,7 @@ import Sidenav from './components/Sidenav'
 
 const App = () => (
   <div>
-  	<Sidenav />
+  	{/*<Sidenav />*/}
   	<div className="container">
     	<Main />
     </div>

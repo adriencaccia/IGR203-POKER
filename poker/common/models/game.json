@@ -26,10 +26,6 @@
       "type": "string",
       "required": true
     },
-    "gameType": {
-      "type":"string",
-      "required": true
-    },
     "difficulty": {
       "type": "string",
       "required": true
