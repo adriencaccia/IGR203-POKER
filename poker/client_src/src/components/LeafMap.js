@@ -53,7 +53,7 @@ class ReactLeafletMap extends PureComponent{
       <Map center={mapConfig.center} zoom={mapConfig.zoom} zoomControl={false}
           className="map__reactleaflet markercluster-map"
           onPopupopen={this.handlePopupopen} >
-        <ZoomControl position="topright" />
+        {/* <ZoomControl position="topright" /> */}
         <TileLayer url={TILES_URL} />
         <MarkerClusterGroup iconCreateFunction={createClusterCustomIcon}
           showCoverageOnHover={false}>

@@ -58,7 +58,7 @@ class NavBarMain extends Component {
             <Icon
               className="navbar-button"
               name="sidebar"
-              size="huge"
+              size="big"
               // color="red"
               onClick={this.toggleVisibility} 
             />

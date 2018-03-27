@@ -3,8 +3,7 @@ import { Button, Confirm } from 'semantic-ui-react';
 
 const inlineStyle = {
   confirm : {
-    top: '30%',
-    marginTop: '0px !important',
+    marginTop: '50%',
     marginLeft: 'auto',
     marginRight: 'auto'
   }

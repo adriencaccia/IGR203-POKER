@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Form, Confirm } from 'semantic-ui-react';
+import { Form, Confirm, Segment } from 'semantic-ui-react';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
 

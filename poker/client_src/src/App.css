@@ -15,6 +15,7 @@
 }
 
 .navbar {
+	overflow: auto;
 	height: 100%;
 	width: 100%;
 	margin: 0;
@@ -29,7 +30,16 @@
 }
 
 .add-form {
-	margin: 5%;
-	/*overflow-x: hidden;*/
-	/*overflow-y: auto;*/
+	position: fixed;
+	top: 5%;
+	height: 100%;
+	width: 100%;
+	/*margin: 5%;*/
+	/*overflow: auto;*/
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+
+.container-app {
+	position: fixed;
 }
