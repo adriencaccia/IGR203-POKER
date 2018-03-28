@@ -39,7 +39,7 @@ class MapComponent extends Component {
   getGames(){
     axios.get('http://localhost:3000/api/games').then(response => {
       this.setState({games: response.data});
-      console.log(this.state);
+      console.log(this.state.games);
     })
     .catch(err => console.log(err));
   }

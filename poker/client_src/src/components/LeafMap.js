@@ -4,9 +4,9 @@ import MarkerClusterGroup from 'react-leaflet-markercluster';
 import L from 'leaflet';
 import TourneyConfirm from './TourneyConfirm';
 
-// const TILES_URL = "http://localhost:8080/styles/osm-bright/{z}/{x}/{y}.png";
+const TILES_URL = "http://localhost:8080/styles/osm-bright/{z}/{x}/{y}.png";
 // const TILES_URL = "http://172.20.10.2:8080/styles/osm-bright/{z}/{x}/{y}.png";
-const TILES_URL = "http://192.168.137.99:8080/styles/osm-bright/{z}/{x}/{y}.png";
+// const TILES_URL = "http://192.168.137.99:8080/styles/osm-bright/{z}/{x}/{y}.png";
 // const TILES_URL = "https://tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png";
 
 const mapConfig = {
@@ -52,7 +52,8 @@ class ReactLeafletMap extends PureComponent{
     return (
       <Map center={mapConfig.center} zoom={mapConfig.zoom} zoomControl={false}
           className="map__reactleaflet markercluster-map"
-          onPopupopen={this.handlePopupopen} >
+          onPopupopen={this.handlePopupopen}
+          attributionControl={false} >
         {/* <ZoomControl position="topright" /> */}
         <TileLayer url={TILES_URL} />
         <MarkerClusterGroup iconCreateFunction={createClusterCustomIcon}

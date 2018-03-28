@@ -7,6 +7,8 @@ import AddForm from './AddForm';
 import Timer from './Timer';
 import Profile from './Profile';
 import MapComponent from './MapComponent';
+import UserLogin from './UserLogin';
+import UserRegister from './UserRegister';
 
 const Main = () => (
 	<main>
@@ -17,6 +19,8 @@ const Main = () => (
 			<Route exact path='/profile' component={Profile} />
 			<Route exact path='/games/add' component={AddForm} />
 			<Route exact path='/games/:id' component={GameDetails} />
+			<Route exact path='/login' component={UserLogin} />
+			<Route exact path='/register' component={UserRegister} />
 		</Switch>
 	</main>
 )

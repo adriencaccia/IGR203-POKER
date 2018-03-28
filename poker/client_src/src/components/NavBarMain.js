@@ -53,6 +53,18 @@ class NavBarMain extends Component {
                 Se déconnecter
               </Link>
             </Menu.Item>
+            <Menu.Item>
+              <Link to='/login'>
+                <Icon name="user circle" /><br/>
+                Se connecter
+              </Link>
+            </Menu.Item>
+            <Menu.Item>
+              <Link to='/register'>
+                <Icon name="add user" /><br/>
+                Créer un compte
+              </Link>
+            </Menu.Item>
           </Sidebar>
           <Sidebar.Pusher>
             <Icon
