@@ -11,6 +11,21 @@ const options = [
   { key: 7, text: 'Dimanche', value: 'Dimanche' },
 ];
 
+var sorter = {
+  "Lundi": 1,
+  "Mardi": 2,
+  "Mercredi": 3,
+  "Jeudi": 4,
+  "Vendredi": 5,
+  "Samedi": 6,
+  "Dimanche": 7
+};
+
+const sortByDay = (a, b) => {
+  return sorter[a] > sorter[b];
+};
+
+
 const renderLabel = label => ({
   color: 'red',
   content: `${label.value}`,
@@ -25,7 +40,7 @@ class DaySelection extends Component {
 
   updateValue(data) {
     this.setState({
-      value: data.value,
+      value: data.value.sort(sortByDay),
     });
   }
 
@@ -46,8 +61,20 @@ class DaySelection extends Component {
           placeholder='Filtrer les jours'
           renderLabel={renderLabel}
           compact
-          onChange={(e, data) => {this.props.updateMap(e, data); this.updateValue(data)}}
+          onChange={(e, data) => {this.updateValue(data); this.props.updateMap(e, data)}}
           value={this.state.value}
+          onLabelClick={
+            (e,data) => {
+              var newValue = this.state.value;
+              var index = newValue.indexOf(data.newValue)
+              newValue.splice(0,1);
+              this.setState({
+                value:  newValue
+              });
+              this.props.updateMap(e, {value: newValue});
+              this.updateValue({value: newValue});
+            }
+          }
         />
         {/*
         <Button 
