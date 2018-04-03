@@ -62,7 +62,7 @@ class NavBarMain extends Component {
               // color="red"
               onClick={this.toggleVisibility} 
             />
-            <div onClick={this.disableVisibility}>
+            <div onClick={this.disableVisibility} className="main-container">
               <Main />
             </div>
           </Sidebar.Pusher>

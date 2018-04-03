@@ -29,7 +29,27 @@
 }
 
 .add-form {
-	margin: 5%;
-	/*overflow-x: hidden;*/
-	/*overflow-y: auto;*/
+	height: 100%;
+	top: 0px;
+}
+
+.header{
+	margin-top: 1% !important;
+	margin-left: 3%;
+	padding-top: 15px;
+	padding-left: 80px;
+}
+
+.main-container {
+	height: 100%;
+}
+
+.main {
+	height: 100%;
+}
+
+.form {
+	overflow: auto;
+	height: 80%;
+	padding: 5%;
 }

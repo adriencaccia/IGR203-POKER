@@ -9,7 +9,7 @@ import Profile from './Profile';
 import MapComponent from './MapComponent';
 
 const Main = () => (
-	<main>
+	<main className="main">
 		<Switch>
 			<Route exact path='/' component={MapComponent} />
 			<Route exact path='/faq' component={About} />
