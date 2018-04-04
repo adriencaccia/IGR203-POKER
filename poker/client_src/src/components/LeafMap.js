@@ -14,10 +14,10 @@ const mapConfig = {
   zoom: 15.2
 };
 
-const iconSize = 45;
+const iconSize = 60;
 
 var myIcon = L.icon({
-  iconUrl: require('../icons/chip2s.svg'),
+  iconUrl: require('../icons/EXPORTS/SVG/poker_ROUGE-01.svg'),
   iconSize: [iconSize, iconSize],
   iconAnchor: [iconSize/2, iconSize/2],
   popupAnchor: [0, -iconSize/2+iconSize/8]
@@ -25,7 +25,7 @@ var myIcon = L.icon({
 
 const createClusterCustomIcon = function (cluster) {
   return L.divIcon({
-    html: `<img src=${require('../icons/chip2_stacks.svg')} width=${iconSize*1.1}
+    html: `<img src=${require('../icons/EXPORTS/SVG/poker_ROUGE-02.svg')}
             width=${iconSize*1.1}/>`,
     className: 'marker-cluster-custom',
     iconAnchor: [iconSize/2, iconSize/2],

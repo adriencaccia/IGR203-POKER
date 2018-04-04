@@ -38,7 +38,7 @@ html,body {
 .day-select {
   position: fixed;
   z-index: 10;
-  top: 14%;
+  top: 17%;
   left: 3%;
   max-width: 70%;
 }
