@@ -30,16 +30,27 @@
 }
 
 .add-form {
-	position: fixed;
-	top: 5%;
 	height: 100%;
-	width: 100%;
-	/*margin: 5%;*/
-	/*overflow: auto;*/
-	overflow-x: hidden;
-	overflow-y: auto;
+	top: 0px;
 }
 
-.container-app {
-	position: fixed;
+.header{
+	margin-top: 1% !important;
+	margin-left: 3%;
+	padding-top: 15px;
+	padding-left: 80px;
+}
+
+.main-container {
+	height: 100%;
+}
+
+.main {
+	height: 100%;
+}
+
+.form {
+	overflow: auto;
+	height: 80%;
+	padding: 5%;
 }

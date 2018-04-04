@@ -9,11 +9,7 @@
     "name": {
       "type": "string",
       "required": true
-    },
-    "city": {
-      "type": "string",
-      "required": true
-    },
+    }, 
     "address": {
       "type": "string",
       "required": true
@@ -24,10 +20,6 @@
     },
     "time": {
       "type": "string",
-      "required": true
-    },
-    "gameType": {
-      "type":"string",
       "required": true
     },
     "difficulty": {

@@ -11,7 +11,7 @@ import UserLogin from './UserLogin';
 import UserRegister from './UserRegister';
 
 const Main = () => (
-	<main>
+	<main className="main">
 		<Switch>
 			<Route exact path='/' component={MapComponent} />
 			<Route exact path='/faq' component={About} />
