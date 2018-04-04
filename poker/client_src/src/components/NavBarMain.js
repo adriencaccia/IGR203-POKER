@@ -17,54 +17,54 @@ class NavBarMain extends Component {
         <Sidebar.Pushable as={Segment}>
           <Sidebar as={Menu} animation='overlay' width='thin' visible={visible} 
               icon='labeled' vertical inverted onClick={this.disableVisibility}>
-            <Menu.Item>
-              <Link to='/'>
+            <Link to='/'>
+              <Menu.Item>
                 <Icon name="search" /><br/>
                 Trouver un tournoi
-              </Link>
-            </Menu.Item>
-            <Menu.Item>
-              <Link to='/games/add'>
+              </Menu.Item>
+            </Link>
+            <Link to='/games/add'>
+              <Menu.Item>
                 <Icon name="plus" /><br/>
                 Organiser un tournoi
-              </Link>
-            </Menu.Item>
-            <Menu.Item>
-              <Link to='/timer'>
+              </Menu.Item>
+            </Link>
+            <Link to='/timer'>
+              <Menu.Item>
                 <Icon name="play" /><br/>
                 Gérer mon tournoi
-              </Link>
-            </Menu.Item>
-            <Menu.Item>
-              <Link to='/profile'>
+              </Menu.Item>
+            </Link>
+            <Link to='/profile'>
+              <Menu.Item>
                 <Icon name="user" /><br/>
                 Mon profil
-              </Link>
-            </Menu.Item>
-            <Menu.Item>
-              <Link to='/faq'>
+              </Menu.Item>
+            </Link>
+            <Link to='/faq'>
+              <Menu.Item>
                 <Icon name="question circle outline" /><br/>
                 FAQ
-              </Link>
-            </Menu.Item>
-            <Menu.Item>
-              <Link to='/disconnect'>
+              </Menu.Item>
+            </Link>
+            <Link to='/disconnect'>
+              <Menu.Item>
                 <Icon name="close" /><br/>
                 Se déconnecter
-              </Link>
-            </Menu.Item>
-            <Menu.Item>
-              <Link to='/login'>
+              </Menu.Item>
+            </Link>
+            <Link to='/login'>
+              <Menu.Item>
                 <Icon name="user circle" /><br/>
                 Se connecter
-              </Link>
-            </Menu.Item>
-            <Menu.Item>
-              <Link to='/register'>
+              </Menu.Item>
+            </Link>
+            <Link to='/register'>
+              <Menu.Item>
                 <Icon name="add user" /><br/>
                 Créer un compte
-              </Link>
-            </Menu.Item>
+              </Menu.Item>
+            </Link>
           </Sidebar>
           <Sidebar.Pusher>
             <Icon

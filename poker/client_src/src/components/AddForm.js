@@ -31,8 +31,8 @@ class AddForm extends Component {
     this.handleInputSubmit = this.handleInputSubmit.bind(this);
   }
 
-  show=()=>this.setState({open:true});
-  handleConfirm=()=>this.setState({open:false});
+  show = () => this.setState({open:true});
+  handleConfirm = () => this.setState({open:false});
 
   handleInputChange(event){
     this.setState({
