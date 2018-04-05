@@ -27,6 +27,9 @@
 	top: 2%;
 	z-index: 10;
 	background-color: #e8d9c9!important;
+	border-style: solid!important;
+	border-color: #b34640!important;
+	border-width: 1px!important;
 }
 
 .navbar-button-icon {
@@ -62,7 +65,6 @@
 .ui.label {
 	color: #e8d9c9!important;
 	background-color: #b34640!important;
-	border-color: #4F3333!important;
 }
 
 .delete.icon {
@@ -70,28 +72,68 @@
 	background-color: #b34640!important;
 }
 
+.sidebar {	
+	background-color: hsl(31, 40%, 85%)!important;
+}
+
+.sidebar-item {
+	color: #b34640!important;
+	padding: 13% 0%!important;
+	border-style: solid!important;
+	border-color: #b34640!important;
+	border-width: 0px 1px 1px!important;
+}
+
 .add-form {
 	height: 100%;
 	top: 0px;
 }
 
+label {	
+	color: #b34640!important;
+}
+
+input {
+	background-color: hsl(31, 40%, 98.5%)!important;
+	color: #b34640!important;
+}
+
+::placeholder {
+	color: hsl(3, 47%, 70%)!important;	
+}
+
+.ui.button {
+	color: #b34640!important;	
+	background-color: #e8d9c9!important;
+	border-style: solid!important;
+	border-color: #b34640!important;
+	border-width: 1px!important;
+}
+
 .header{
-	margin-top: 1% !important;
+	margin-top: 0% !important;
 	margin-left: 3%;
-	padding-top: 15px;
+	padding-top: calc(2% + 20px);
 	padding-left: 80px;
+	color: #b34640!important;
 }
 
 .main-container {
+	top: 0!important;
 	height: 100%;
 }
 
 .main {
 	height: 100%;
+	background-color: hsl(31, 40%, 92%)!important;	
 }
 
 .form {
 	overflow: auto;
 	height: 80%;
 	padding: 5%;
+}
+
+.ui.segment.pushable {
+	border-style: none!important;
 }

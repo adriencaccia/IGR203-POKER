@@ -28,49 +28,49 @@ class NavBarMain extends Component {
           <Sidebar as={Menu} animation='overlay' width='thin' visible={visible} 
               icon='labeled' vertical inverted onClick={this.disableVisibility}>
             <Link to='/'>
-              <Menu.Item>
+              <Menu.Item className="sidebar-item">
                 <Icon name="search" /><br/>
                 Trouver un tournoi
               </Menu.Item>
             </Link>
             {this.isLogged() && <Link to='/games/add'>
-              <Menu.Item>
+              <Menu.Item className="sidebar-item">
                 <Icon name="plus" /><br/>
                 Organiser un tournoi
               </Menu.Item>
             </Link>}
             {this.isLogged() && <Link to='/timer'>
-              <Menu.Item>
+              <Menu.Item className="sidebar-item">
                 <Icon name="play" /><br/>
                 Gérer mon tournoi
               </Menu.Item>
             </Link>}
             {this.isLogged() && <Link to='/profile'>
-              <Menu.Item>
+              <Menu.Item className="sidebar-item">
                 <Icon name="user" /><br/>
                 Mon profil
               </Menu.Item>
             </Link>}
             <Link to='/faq'>
-              <Menu.Item>
+              <Menu.Item className="sidebar-item">
                 <Icon name="question circle outline" /><br/>
                 FAQ
               </Menu.Item>
             </Link>
             {this.isLogged() && <Link to='/disconnect'>
-              <Menu.Item>
+              <Menu.Item className="sidebar-item">
                 <Icon name="close" /><br/>
                 Se déconnecter
               </Menu.Item>
             </Link>}
             {!this.isLogged() && <Link to='/login'>
-              <Menu.Item>
+              <Menu.Item className="sidebar-item">
                 <Icon name="user circle" /><br/>
                 Se connecter
               </Menu.Item>
             </Link>}
             {!this.isLogged() && <Link to='/register'>
-              <Menu.Item>
+              <Menu.Item className="sidebar-item">
                 <Icon name="add user" /><br/>
                 Créer un compte
               </Menu.Item>

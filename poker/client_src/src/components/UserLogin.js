@@ -1,8 +1,16 @@
 import React, { Component } from 'react';
-import { Form, Message } from 'semantic-ui-react';
+import { Form, Message, Modal, Header } from 'semantic-ui-react';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
 import Token from './Token';
+
+const inlineStyle = {
+  modal: {
+    marginTop: '40%',
+    marginLeft: 'auto',
+    marginRight: 'auto'
+  }
+};
 
 class UserLogin extends Component {
   constructor(props){
@@ -12,7 +20,8 @@ class UserLogin extends Component {
       password: "",
       success: false,
       error: false,
-      message: ""
+      message: "",
+      open: false
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -34,7 +43,7 @@ class UserLogin extends Component {
   AddUser(newUser){
     axios.request({
       method:'post',
-      url:'http://localhost:3000/api/users/login',
+      url:'http://192.168.1.5:3000/api/users/login',
       data: newUser
     }).then(response => {
       this.setState({
@@ -59,27 +68,29 @@ class UserLogin extends Component {
       password: this.state.password
     };
     this.AddUser(newUser);
-    e.preventDefault();    
+    e.preventDefault(); 
   }
 
+  close = () => this.setState({ error: false });  
+
   render() {
-    const { value } = this.state;
+    const { dimmer } = this.state;
 
-    const success = this.state.success &&
-          <Message success
-            header='Connection réussie'
-            content={'Bienvenue '+this.state.message}
-          />;
+    const messageSuccess = this.state.success &&
+      <p>{'Bienvenue ' + this.state.message}</p>;
 
-    const error = this.state.error &&
-          <Message error
-            header='Erreur lors de la connection'
-            content={this.state.message}
-          />;
+    const messageError = this.state.error &&
+      <p>{'Erreur : '+ this.state.message}</p>;
+
+    const headerSuccess = this.state.success &&
+      'Connection réussie';
+
+    const headerError = this.state.error &&
+      'Erreur lors de la connection';
 
     return (
       <div className="add-form">
-        <h1 style={{textAlign: 'center'}}>
+        <h1 className="header">
           Se connecter
         </h1> <br />
         <Form size='huge' onSubmit={this.handleSubmit}>
@@ -98,8 +109,19 @@ class UserLogin extends Component {
             Se connecter
           </Form.Button>
         </Form>
-        {success}
-        {error}
+        <Modal dimmer={dimmer} open={this.state.success||this.state.error}
+          style={inlineStyle.modal} onClose={this.close}>
+          <Modal.Header>
+            {headerSuccess}
+            {headerError}
+          </Modal.Header>
+          <Modal.Content>
+            <Modal.Description>
+              {messageSuccess}
+              {messageError}
+            </Modal.Description>
+          </Modal.Content>
+        </Modal>
       </div>
     )
   }
