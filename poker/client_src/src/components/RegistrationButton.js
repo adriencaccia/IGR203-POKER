@@ -31,7 +31,7 @@ class RegistrationButton extends Component {
   render() {
     return (
       <div className='ui two buttons'>
-        <Button basic color='green' onClick={this.show}>
+        <Button className="registration-button" onClick={this.show}>
           S'inscrire
         </Button>
         <Confirm style={inlineStyle.modal}
@@ -42,6 +42,7 @@ class RegistrationButton extends Component {
           onCancel={this.handleCancel}
           onConfirm={this.handleConfirm}
           size="mini"
+          className="registration-confirm"
         />
       </div>
     )

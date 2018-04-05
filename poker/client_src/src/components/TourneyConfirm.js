@@ -16,22 +16,22 @@ class TourneyConfirm extends Component {
           icon={this.props.icon} >
         <Popup autoPan={false} closeButton={false}>
           <Card>
-            <Card.Content>
-              <Image floated='right' size='mini' src={require('../icons/chip2_stacks.svg')}/>
-              <Card.Header>
+            <Card.Content className="popup-content">
+              {/* <Image floated='right' size='mini' src={require('../icons/chip2_stacks.svg')}/> */}
+              <Card.Header className="card-header">
                 {this.props.name}
               </Card.Header>
-              <Card.Meta>
+              <Card.Meta className="card-meta">
                 {this.props.address}, {this.props.zipCode}<br/>
                 {this.props.tel}
               </Card.Meta>
-              <Card.Description>
+              <Card.Description className="card-description">
                 {this.props.day} à {this.props.startTime}.<br/>
                 {/* connect to API */}
                 Il reste <strong>2 places</strong> sur 18.
               </Card.Description>
             </Card.Content>
-            <Card.Content extra>
+            <Card.Content className="popup-content-extra">
               <RegistrationButton tourney={this.props}/>
             </Card.Content>
           </Card>

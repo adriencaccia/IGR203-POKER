@@ -161,18 +161,29 @@ class AddForm extends Component {
   render() {
     return (
       <div className="add-form" onSubmit={this.handleInputSubmit}>
-        <h1 className="header"> Organiser un tournoi </h1> <br />
+        <h1 className="app-header"> Organiser un tournoi </h1> <br />
         <Form size='huge' onSubmit={this.handleSubmit} className="form">
-          <Form.Input fluid label='Nom' placeholder='Nom' name='name' onChange={this.handleInputChange}/>
-          <Form.Input fluid label='Code Postal' placeholder='Code Postal' name='zipCode' onChange={this.handleInputChange}/>
-          <Form.Input fluid label='Adresse' placeholder='Adresse' name='address' onChange={this.handleInputChange}/>
+          <Form.Input fluid label='Nom' placeholder='Nom' name='name'
+            onChange={this.handleInputChange}/>
+          <Form.Input fluid label='Code Postal' placeholder='Code Postal'
+            name='zipCode' onChange={this.handleInputChange}/>
+          <Form.Input fluid label='Adresse' placeholder='Adresse'
+            name='address' onChange={this.handleInputChange}/>
           <Form.Group widths='equal'>
-            <Form.Select fluid label='Jour' placeholder='Jour' name='date' options={dayOpts} onChange={this.handleInputChangeDate}/>
-            <Form.Select fluid label='Heure' placeholder='Heure' name='time' options={timeOpts} onChange={this.handleInputChangeTime}/>
+            <Form.Select fluid label='Jour' placeholder='Jour'
+              name='date' options={dayOpts} 
+              onChange={this.handleInputChangeDate}/>
+            <Form.Select fluid label='Heure' placeholder='Heure'
+              name='time' options={timeOpts}
+              onChange={this.handleInputChangeTime}/>
           </Form.Group>
           <Form.Group widths='equal'>
-            <Form.Input fluid label='Joueurs Max' placeholder='Joueurs Max' name='maxPlayers' type='number' onChange={this.handleInputChange}/>
-            <Form.Select fluid label='Niveau' placeholder='Niveau' name='difficulty' options={lvlOpts} onChange={this.handleInputChangeLvl}/>
+            <Form.Input fluid label='Joueurs Max' placeholder='Joueurs Max'
+              name='maxPlayers' type='number'
+              onChange={this.handleInputChange}/>
+            <Form.Select fluid label='Niveau' placeholder='Niveau'
+              name='difficulty' options={lvlOpts}
+              onChange={this.handleInputChangeLvl}/>
           </Form.Group>
           <Form.Button type='submit'>Submit</Form.Button>
           <Modal style={inlineStyle.modal} open={this.state.doneOpen}>

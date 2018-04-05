@@ -31,7 +31,6 @@ class UserLogin extends Component {
 
   goToMainPage(){
     this.props.history.push("/");
-    console.log(this.props);
   }
 
   handleInputChange(event){
@@ -90,7 +89,7 @@ class UserLogin extends Component {
 
     return (
       <div className="add-form">
-        <h1 className="header">
+        <h1 className="app-header">
           Se connecter
         </h1> <br />
         <Form size='huge' onSubmit={this.handleSubmit}>
@@ -111,12 +110,12 @@ class UserLogin extends Component {
         </Form>
         <Modal dimmer={dimmer} open={this.state.success||this.state.error}
           style={inlineStyle.modal} onClose={this.close}>
-          <Modal.Header>
+          <Modal.Header className="modal-header">
             {headerSuccess}
             {headerError}
           </Modal.Header>
-          <Modal.Content>
-            <Modal.Description>
+          <Modal.Content className="modal-content">
+            <Modal.Description className="modal-description">
               {messageSuccess}
               {messageError}
             </Modal.Description>

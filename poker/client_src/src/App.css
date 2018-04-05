@@ -45,10 +45,6 @@
 	max-width: 70%;
 }
 
-.day-select-dropdown {
-	background-color: #e8d9c9!important;
-}
-
 .day-select * {
 	background-color: #e8d9c9!important;
 	border-color: #b34640!important;
@@ -62,7 +58,7 @@
 	color: #b34640!important;
 }
 
-.ui.label {
+.ui.label, .delete.icon {
 	color: #e8d9c9!important;
 	background-color: #b34640!important;
 }
@@ -93,13 +89,83 @@ label {
 	color: #b34640!important;
 }
 
-input {
+input, .ui.fluid.selection {
 	background-color: hsl(31, 40%, 98.5%)!important;
 	color: #b34640!important;
 }
 
-::placeholder {
+::placeholder, .default.text {
 	color: hsl(3, 47%, 70%)!important;	
+}
+
+.card-header {
+	color: #b34640!important;
+	padding-bottom: 5%;
+	text-align: center;
+	font-size: 25px!important;
+}
+
+.card-meta, .card-description {
+	color: #b34640!important;
+	font-size: 14px!important;
+}
+
+.ui.card {
+	border-style: none!important;
+	border-width: 10px!important;
+	box-shadow: none!important;
+}
+
+.leaflet-popup-content-wrapper, .leaflet-popup-tip, .leaflet-popup-content {
+	background-color: #e8d9c9!important;
+	border-style: none!important;
+	border-width: 10px!important;
+}
+
+.popup-content {
+	background-color: #e8d9c9!important;
+	border-style: none!important;
+	border-width: 10px!important;
+	box-shadow: none!important;
+}
+
+.popup-content-extra {
+	background-color: #e8d9c9!important;
+	border-style: none!important;
+	border-width: 10px!important;
+	box-shadow: none!important;
+}
+
+.ui.compact.fluid.multiple.selection {
+	background-color: #e8d9c9!important;
+}
+
+.modal-header {
+	background-color: #e8d9c9!important;
+	border-bottom-style: solid!important;
+	border-bottom-color: #b34640!important;
+	border-bottom-width: 1px!important;
+}
+
+.modal-content {
+	background-color: hsl(31, 40%, 92%)!important;	
+}
+
+.modal-description {
+	color: #b34640;
+}
+
+.content {
+	color: #b34640;
+	box-shadow: none!important;
+}
+
+.actions {
+	border-style: none!important;
+}
+
+.registration-confirm * {
+	background-color: hsl(31, 40%, 92%)!important;	
 }
 
 .ui.button {
@@ -110,7 +176,18 @@ input {
 	border-width: 1px!important;
 }
 
-.header{
+.ui.button.registration-button {
+	background-color: #b34640!important;
+	color: #e8d9c9!important;
+	font-size: 18px!important;
+}
+
+.ui.primary.button {
+	background-color: #b34640!important;
+	color: #e8d9c9!important;
+}
+
+.app-header{
 	margin-top: 0% !important;
 	margin-left: 3%;
 	padding-top: calc(2% + 20px);

@@ -1,7 +1,16 @@
 import React, { Component } from 'react';
-import { Form, Message } from 'semantic-ui-react';
+import { Form, Message, Modal, Header } from 'semantic-ui-react';
 import axios from 'axios';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import Token from './Token';
+
+const inlineStyle = {
+  modal: {
+    marginTop: '40%',
+    marginLeft: 'auto',
+    marginRight: 'auto'
+  }
+};
 
 class UserRegister extends Component {
   constructor(props){
@@ -12,11 +21,17 @@ class UserRegister extends Component {
       password: "",
       success: false,
       error: false,
-      message: ""
+      message: "",
+      open: false
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.goToMainPage = this.goToMainPage.bind(this);
+  }
+
+  goToMainPage() {
+    this.props.history.push("/");
   }
 
   handleInputChange(event){
@@ -28,13 +43,15 @@ class UserRegister extends Component {
   AddUser(newUser){
     axios.request({
       method:'post',
-      url:'http://localhost:3000/api/users',
+      url:'http://192.168.1.5:3000/api/users',
       data: newUser
     }).then(response => {
       this.setState({
         success: true,
         error: false,
       });
+      setTimeout(this.goToMainPage, 3000);
+      Token.set(response.data.id);
     }).catch(err => {
       this.setState({
         success: false,
@@ -54,24 +71,26 @@ class UserRegister extends Component {
     e.preventDefault();    
   }
 
+  close = () => this.setState({ error: false });  
+
   render() {
-    const { value } = this.state;
+    const { dimmer } = this.state;
 
-    const success = this.state.success &&
-          <Message success
-            header='Votre compte a bien été créé'
-            content='Vous pouvez maintenant vous connecter'
-          />;
+    const messageSuccess = this.state.success &&
+      <p>{'Vous allez être redirigé vers la carte'}</p>;
 
-    const error = this.state.error &&
-          <Message error
-            header='Erreur lors de la création de compte'
-            content={this.state.message}
-          />;
+    const messageError = this.state.error &&
+      <p>{'Erreur : ' + this.state.message}</p>;
+
+    const headerSuccess = this.state.success &&
+      'Votre compte a bien été créé';
+
+    const headerError = this.state.error &&
+      'Erreur lors de la création de compte';
 
     return (
       <div className="add-form">
-        <h1 style={{textAlign:'center'}}>
+        <h1 className="app-header">
           Créer un compte
         </h1> <br />
         <Form size='huge' onSubmit={this.handleSubmit}>
@@ -95,8 +114,19 @@ class UserRegister extends Component {
             Créer un compte
           </Form.Button>
         </Form>
-        {success}
-        {error}
+        <Modal dimmer={dimmer} open={this.state.success || this.state.error}
+          style={inlineStyle.modal} onClose={this.close}>
+          <Modal.Header className="modal-header">
+            {headerSuccess}
+            {headerError}
+          </Modal.Header>
+          <Modal.Content className="modal-content">
+            <Modal.Description className="modal-description">
+              {messageSuccess}
+              {messageError}
+            </Modal.Description>
+          </Modal.Content>
+        </Modal>
       </div>
     )
   }
