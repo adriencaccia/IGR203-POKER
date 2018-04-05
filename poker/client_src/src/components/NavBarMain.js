@@ -2,32 +2,18 @@ import React, { Component } from 'react';
 import { Sidebar, Segment, Menu, Icon } from 'semantic-ui-react';
 import Main from './Main';
 import { Link } from 'react-router-dom';
+import Token from './Token';
 
 class NavBarMain extends Component {
   constructor(props){
     super(props);
     this.state = {
-      visible: false, 
-      authToken: "0" 
+      visible: false,
     }
-    this.setTokenId = this.setTokenId.bind(this);
-    this.getTokenId = this.getTokenId.bind(this);
   }
 
-  setTokenId = (tokenId) => {
-    console.log("setting token Id");
-    console.log(tokenId);
-    this.setState({ authToken: tokenId})
-  };
-
-  getTokenId = () => {
-    console.log("getting token Id");
-    console.log(this.state.authToken);
-    return this.state.authToken;
-  };
-
   isLogged = () => {
-    return this.state.authToken!="0";
+    return Token.get()!="0";
   }
 
   toggleVisibility = () => this.setState({ visible: !this.state.visible });
@@ -105,7 +91,7 @@ class NavBarMain extends Component {
               width="100" 
             />
             <div onClick={this.disableVisibility} className="main-container">
-              <Main setTokenId={this.setTokenId} getTokenId={this.getTokenId}/>
+              <Main/>
             </div>
           </Sidebar.Pusher>
         </Sidebar.Pushable>

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Form, Message } from 'semantic-ui-react';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
+import Token from './Token';
 
 class UserLogin extends Component {
   constructor(props){
@@ -35,7 +36,7 @@ class UserLogin extends Component {
         error: false,
         message: this.state.username
       });
-      this.props.setTokenId(response.data.id);
+      Token.set(response.data.id);
     }).catch(err => {
       this.setState({
         success: false,

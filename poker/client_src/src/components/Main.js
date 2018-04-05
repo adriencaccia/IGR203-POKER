@@ -17,10 +17,10 @@ class Main extends Component {
 					<Route exact path='/' render={()=><MapComponent/>} />
 					<Route exact path='/faq' render={()=><About/>} />
 					<Route exact path='/timer' render={()=><Timer/>} />
-					<Route exact path='/profile' render={()=><Profile getTokenId={this.props.getTokenId}/>} />
+					<Route exact path='/profile' render={()=><Profile/>} />
 					<Route exact path='/games/add' render={()=><AddForm/>} />
 					<Route exact path='/games/:id' render={()=><GameDetails/>} />
-					<Route exact path='/login' render={()=><UserLogin setTokenId={this.props.setTokenId}/>} />
+					<Route exact path='/login' render={()=><UserLogin/>} />
 					<Route exact path='/register' render={()=><UserRegister/>} />
 				</Switch>
 			</main>

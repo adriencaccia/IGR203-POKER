@@ -1,16 +1,15 @@
 import React, {Component} from 'react';
+import Token from './Token';
 
 class Profile extends Component{
 	test = () => {return "123456";};
 
 
 	render(){
-		var tokenId=this.props.getTokenId();
-		console.log(tokenId);
 		return(
 			<div>
 				<h1>Profile Placeholder</h1>
-				<p>{tokenId}</p>
+				<p>{Token.get()}</p>
 			</div>
 		)
 	}
