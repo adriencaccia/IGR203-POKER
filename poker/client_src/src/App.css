@@ -141,6 +141,7 @@ input, .ui.fluid.selection {
 }
 
 .modal-header {
+	color: #b34640!important;
 	background-color: #e8d9c9!important;
 	border-bottom-style: solid!important;
 	border-bottom-color: #b34640!important;
