@@ -35,19 +35,6 @@ html,body {
   width: 100%;
 }
 
-.day-select {
-  position: fixed;
-  z-index: 10;
-  top: 17%;
-  left: 3%;
-  max-width: 70%;
-}
-
-.ui.red.label {
-  background-color: #E6453A!important;
-  border-color: #4F3333!important;
-}
-
 /*.day-select-clear {
   background: #C71809!important;
   float: left;

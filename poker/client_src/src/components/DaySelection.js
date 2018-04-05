@@ -27,7 +27,6 @@ const sortByDay = (a, b) => {
 
 
 const renderLabel = label => ({
-  color: 'red',
   content: `${label.value}`,
 });
 
@@ -54,6 +53,7 @@ class DaySelection extends Component {
     return (
       <div className="day-select">
         <Dropdown
+          className="day-select-dropdown"
           multiple
           selection
           fluid

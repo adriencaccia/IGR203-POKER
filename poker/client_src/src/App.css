@@ -26,7 +26,48 @@
 	left: 3%;
 	top: 2%;
 	z-index: 10;
-	color: black;
+	background-color: #e8d9c9!important;
+}
+
+.navbar-button-icon {
+	color: #b34640;
+	opacity: 1!important;
+}
+
+.day-select {
+	position: fixed;
+	z-index: 10;
+	top: 17%;
+	left: 3%;
+	max-width: 70%;
+}
+
+.day-select-dropdown {
+	background-color: #e8d9c9!important;
+}
+
+.day-select * {
+	background-color: #e8d9c9!important;
+	border-color: #b34640!important;
+}
+
+.default.text {
+	color: #b34640!important;
+}
+
+.text {
+	color: #b34640!important;
+}
+
+.ui.label {
+	color: #e8d9c9!important;
+	background-color: #b34640!important;
+	border-color: #4F3333!important;
+}
+
+.delete.icon {
+	color: #b34640!important;
+	background-color: #b34640!important;
 }
 
 .add-form {

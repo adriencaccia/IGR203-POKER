@@ -67,19 +67,22 @@ class NavBarMain extends Component {
             </Link>
           </Sidebar>
           <Sidebar.Pusher>
-            {/* <Icon
+            <Button icon compact
+              size="massive"
               className="navbar-button"
-              name="sidebar"
-              size="big"
-              // color="red"
-              onClick={this.toggleVisibility} 
-            /> */}
-            <img
+              onClick={this.toggleVisibility}
+            >
+              <Icon
+                className="navbar-button-icon"
+                name="bars"
+              />
+            </Button>
+            {/* <img
               className="navbar-button"
               onClick={this.toggleVisibility}               
               src={require('../icons/EXPORTS/SVG/poker_BLEU-03.svg')}
               width="100" 
-            />
+            /> */}
             <div onClick={this.disableVisibility} className="main-container">
               <Main />
             </div>
