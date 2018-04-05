@@ -35,6 +35,7 @@ class UserLogin extends Component {
         error: false,
         message: this.state.username
       });
+      this.props.setTokenId(response.data.id);
     }).catch(err => {
       this.setState({
         success: false,
