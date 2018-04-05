@@ -1,10 +1,20 @@
 import React, { Component } from 'react';
-import { Sidebar, Segment, Button, Menu, Image, Icon, Header } from 'semantic-ui-react';
+import { Sidebar, Segment, Menu, Icon } from 'semantic-ui-react';
 import Main from './Main';
 import { Link } from 'react-router-dom';
+import Token from './Token';
 
 class NavBarMain extends Component {
-  state = { visible: false };
+  constructor(props){
+    super(props);
+    this.state = {
+      visible: false,
+    }
+  }
+
+  isLogged = () => {
+    return Token.get()!="0";
+  }
 
   toggleVisibility = () => this.setState({ visible: !this.state.visible });
 
@@ -23,48 +33,48 @@ class NavBarMain extends Component {
                 Trouver un tournoi
               </Menu.Item>
             </Link>
-            <Link to='/games/add'>
+            {this.isLogged() && <Link to='/games/add'>
               <Menu.Item>
                 <Icon name="plus" /><br/>
                 Organiser un tournoi
               </Menu.Item>
-            </Link>
-            <Link to='/timer'>
+            </Link>}
+            {this.isLogged() && <Link to='/timer'>
               <Menu.Item>
                 <Icon name="play" /><br/>
                 Gérer mon tournoi
               </Menu.Item>
-            </Link>
-            <Link to='/profile'>
+            </Link>}
+            {this.isLogged() && <Link to='/profile'>
               <Menu.Item>
                 <Icon name="user" /><br/>
                 Mon profil
               </Menu.Item>
-            </Link>
+            </Link>}
             <Link to='/faq'>
               <Menu.Item>
                 <Icon name="question circle outline" /><br/>
                 FAQ
               </Menu.Item>
             </Link>
-            <Link to='/disconnect'>
+            {this.isLogged() && <Link to='/disconnect'>
               <Menu.Item>
                 <Icon name="close" /><br/>
                 Se déconnecter
               </Menu.Item>
-            </Link>
-            <Link to='/login'>
+            </Link>}
+            {!this.isLogged() && <Link to='/login'>
               <Menu.Item>
                 <Icon name="user circle" /><br/>
                 Se connecter
               </Menu.Item>
-            </Link>
-            <Link to='/register'>
+            </Link>}
+            {!this.isLogged() && <Link to='/register'>
               <Menu.Item>
                 <Icon name="add user" /><br/>
                 Créer un compte
               </Menu.Item>
-            </Link>
+            </Link>}
           </Sidebar>
           <Sidebar.Pusher>
             <Button icon compact
@@ -84,7 +94,7 @@ class NavBarMain extends Component {
               width="100" 
             /> */}
             <div onClick={this.disableVisibility} className="main-container">
-              <Main />
+              <Main/>
             </div>
           </Sidebar.Pusher>
         </Sidebar.Pushable>

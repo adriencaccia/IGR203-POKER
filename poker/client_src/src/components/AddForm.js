@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import { Form, Confirm, Modal, Button } from 'semantic-ui-react';
+import { Form, Modal, Button } from 'semantic-ui-react';
 import axios from 'axios';
-import {Link} from 'react-router-dom';
 import Geocode from 'react-geocode';
-
+import {Link} from 'react-router-dom';
 
 const inlineStyle = {
   modal : {
@@ -92,7 +91,7 @@ class AddForm extends Component {
   handleConfirm = () => this.setState({open:false});
 
   goToMainPage(){
-      this.props.history.push('/');
+    this.props.history.push("/");
   }
 
   handleInputChange(event){
@@ -146,7 +145,7 @@ class AddForm extends Component {
           time: this.state.time,
           difficulty: this.state.difficulty,
           players: 0,
-          maxPlayers: parseInt(this.state.maxPlayers),
+          maxPlayers: parseInt(this.state.maxPlayers, 10),
           position:[this.state.position.lat,this.state.position.lng]
         };
         console.log(newGame);
@@ -160,7 +159,6 @@ class AddForm extends Component {
   }
 
   render() {
-    const { value } = this.state
     return (
       <div className="add-form" onSubmit={this.handleInputSubmit}>
         <h1 className="header"> Organiser un tournoi </h1> <br />

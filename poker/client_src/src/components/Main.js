@@ -1,6 +1,5 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
-import Games from './Games';
 import About from './About';
 import GameDetails from './GameDetails';
 import AddForm from './AddForm';
@@ -24,5 +23,6 @@ const Main = () => (
 		</Switch>
 	</main>
 )
+
 
 export default Main;
