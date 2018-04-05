@@ -21,8 +21,7 @@ var myIcon = L.icon({
   iconUrl: require('../icons/EXPORTS/SVG/poker_ROUGE-01.svg'),
   iconSize: [iconSize, iconSize],
   iconAnchor: [iconSize/2, iconSize/2],
-  popupAnchor: [0, -iconSize / 2 + iconSize / 8]  return L.divIcon({
-
+  popupAnchor: [0, -iconSize / 2 + iconSize / 8]
 });
 
 const createClusterCustomIcon = function (cluster) {
