@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Form, Modal, Button } from 'semantic-ui-react';
 import axios from 'axios';
 import Geocode from 'react-geocode';
-
+import {Link} from 'react-router-dom';
 
 const inlineStyle = {
   modal : {
@@ -91,7 +91,7 @@ class AddForm extends Component {
   handleConfirm = () => this.setState({open:false});
 
   goToMainPage(){
-      this.props.history.push('/');
+    this.props.history.push("/");
   }
 
   handleInputChange(event){

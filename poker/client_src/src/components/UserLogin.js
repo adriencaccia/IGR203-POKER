@@ -17,6 +17,12 @@ class UserLogin extends Component {
 
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.goToMainPage = this.goToMainPage.bind(this);
+  }
+
+  goToMainPage(){
+    this.props.history.push("/");
+    console.log(this.props);
   }
 
   handleInputChange(event){
@@ -36,6 +42,7 @@ class UserLogin extends Component {
         error: false,
         message: this.state.username
       });
+      setTimeout(this.goToMainPage,3000);
       Token.set(response.data.id);
     }).catch(err => {
       this.setState({
