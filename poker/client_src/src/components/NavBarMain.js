@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Sidebar, Segment, Menu, Icon, Button } from 'semantic-ui-react';
 import Main from './Main';
 import { Link } from 'react-router-dom';
-import Token from './Token';
+import APIManager from './APIManager';
 
 class NavBarMain extends Component {
   constructor(props){
@@ -13,7 +13,7 @@ class NavBarMain extends Component {
   }
 
   isLogged = () => {
-    return Token.get()!="0";
+    return APIManager.getAuthToken()!="0";
   }
 
   toggleVisibility = () => this.setState({ visible: !this.state.visible });

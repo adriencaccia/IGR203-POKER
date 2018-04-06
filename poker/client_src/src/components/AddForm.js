@@ -3,6 +3,7 @@ import { Form, Modal, Button } from 'semantic-ui-react';
 import axios from 'axios';
 import Geocode from 'react-geocode';
 import {Link} from 'react-router-dom';
+import APIManager from './APIManager';
 
 const inlineStyle = {
   modal : {
@@ -119,11 +120,8 @@ class AddForm extends Component {
   }
 
   AddGame(newGame){
-    axios.request({
-      method:'post',
-      url:'http://localhost:3000/api/games',
-      data: newGame
-    }).then(response => {
+    APIManager.addTourney(newGame
+    ).then(response => {
       this.doneShow();
     }).catch(err => console.log(err));
     //console.log(newGame);

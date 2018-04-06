@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Form, Message, Modal, Header } from 'semantic-ui-react';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
-import Token from './Token';
+import APIManager from './APIManager';
 
 const inlineStyle = {
   modal: {
@@ -40,18 +40,16 @@ class UserLogin extends Component {
   }
 
   AddUser(newUser){
-    axios.request({
-      method:'post',
-      url:'http://192.168.1.5:3000/api/users/login',
-      data: newUser
-    }).then(response => {
+    APIManager.logIn(newUser
+    ).then(response => {
       this.setState({
         success: true,
         error: false,
         message: this.state.username
       });
       setTimeout(this.goToMainPage,3000);
-      Token.set(response.data.id);
+      APIManager.setAuthToken(response.data.id);
+      APIManager.setUserName(newUser.username);
     }).catch(err => {
       this.setState({
         success: false,
