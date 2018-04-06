@@ -158,7 +158,7 @@ class AddForm extends Component {
   render() {
     return (
       <div className="add-form" onSubmit={this.handleInputSubmit}>
-        <h1 className="app-header"> Organiser un tournoi </h1> <br />
+        <h1 className="app-header"> Organiser un tournoi </h1>
         <Form size='huge' onSubmit={this.handleSubmit} className="form">
           <Form.Input fluid label='Nom' placeholder='Nom' name='name'
             onChange={this.handleInputChange}/>

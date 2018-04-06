@@ -30,6 +30,7 @@ class MapComponent extends Component {
     };
     this.updateMap = this.updateMap.bind(this);
     this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
+    this.goToConnect = this.goToConnect.bind(this);
   }
 
   componentWillMount(){
@@ -67,13 +68,17 @@ class MapComponent extends Component {
 	    }); 
 	}
 
+  goToConnect(){
+    this.props.history.push("/login");
+  }
+
   render() {
 		return (
 		  <div className="map-component">
 				<div className="map-view">
 				  <DaySelection updateMap={this.updateMap}/>
 				  <div className="map">
-				    <ReactLeafletMap tourneys={this.state.tourneys}/>
+				    <ReactLeafletMap tourneys={this.state.tourneys} goToConnect={this.goToConnect}/>
 				  </div>
 				</div>
 		  </div>

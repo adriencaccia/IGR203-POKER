@@ -9,4 +9,4 @@ var properties = {
     }
 }
 
-var user = loopback.Model.extend('user', properties);
+var User = loopback.Model.extend('User', properties);

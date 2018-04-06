@@ -61,7 +61,8 @@ class ReactLeafletMap extends PureComponent{
           showCoverageOnHover={false}>
           {
             [...this.props.tourneys].map((tourney,i) => <TourneyConfirm key={i}
-                                                icon={myIcon} {...tourney}/>)
+                                                icon={myIcon} {...tourney}
+                                                goToConnect={this.props.goToConnect}/>)
           }
         </MarkerClusterGroup>
       </Map>
