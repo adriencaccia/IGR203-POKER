@@ -12,6 +12,18 @@ class NavBarMain extends Component {
     }
   }
 
+  componentDidMount() {
+    // window.screen.lockOrientationUniversal = 
+    //   window.screen.lockOrientation || 
+    //   window.screen.mozLockOrientation || 
+    //   window.screen.msLockOrientation ||
+    //   window.screen.orientation.lock;
+    // window.screen.lockOrientationUniversal("portrait");
+    if ('ontouchstart' in document.documentElement) {
+      document.body.style.cursor = 'pointer';
+    }
+  }
+
   isLogged = () => {
     return Token.get()!="0";
   }
