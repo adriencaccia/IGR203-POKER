@@ -3,7 +3,7 @@ import { Button, Confirm } from 'semantic-ui-react';
 
 const inlineStyle = {
   modal : {
-    marginTop: '40%',
+    marginTop: '40vh',
     marginLeft: 'auto',
     marginRight: 'auto'
   }

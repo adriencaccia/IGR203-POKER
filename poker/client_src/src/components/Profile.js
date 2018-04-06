@@ -2,8 +2,6 @@ import React, {Component} from 'react';
 import Token from './Token';
 
 class Profile extends Component{
-	test = () => {return "123456";};
-
 
 	render(){
 		return(

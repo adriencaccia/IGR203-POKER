@@ -6,7 +6,7 @@ import APIManager from './APIManager';
 
 const inlineStyle = {
   modal: {
-    marginTop: '40%',
+    marginTop: '40vh',
     marginLeft: 'auto',
     marginRight: 'auto'
   }
