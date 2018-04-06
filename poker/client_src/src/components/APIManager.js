@@ -1,5 +1,6 @@
 import axios from 'axios';
 
+const url = "localhost";
 
 class APIManager{
 
@@ -43,7 +44,7 @@ class APIManager{
     static register(newUser){
         return axios.request({
             method:'post',
-            url:'http://localhost:3000/api/users',
+            url:'http://'+url+':3000/api/users',
             data: newUser
         });
     }
@@ -52,7 +53,7 @@ class APIManager{
     static logIn(newUser){
         return axios.request({
             method:'post',
-            url:'http://localhost:3000/api/users/login',
+            url:'http://'+url+':3000/api/users/login',
             data: newUser
         });
     }
@@ -61,11 +62,17 @@ class APIManager{
     static addTourney(newGame){
         return axios.request({
             method:'post',
-            url:'http://localhost:3000/api/games',
+            url:'http://'+url+':3000/api/games',
             data: newGame
         });
     }
 
+    //Get tourneys
+    static getTourneys(){
+        return axios.get(
+            'http://'+url+':3000/api/games'
+        );
+    }
 
 
 }

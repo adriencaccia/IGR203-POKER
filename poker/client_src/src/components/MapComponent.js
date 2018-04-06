@@ -6,6 +6,7 @@ import '../../node_modules/semantic-ui-css/semantic.min.css';
 import ReactLeafletMap from './LeafMap';
 import DaySelection from './DaySelection';
 import '../../node_modules/react-leaflet-markercluster/dist/styles.min.css';
+import APIManager from './APIManager';
 
 const tourneys = require('../bars.json').bars;
 
@@ -30,7 +31,6 @@ class MapComponent extends Component {
     };
     this.updateMap = this.updateMap.bind(this);
     this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
-    this.goToConnect = this.goToConnect.bind(this);
   }
 
   componentWillMount(){
@@ -38,7 +38,7 @@ class MapComponent extends Component {
   }
 
   getGames(){
-    axios.get('http://localhost:3000/api/games').then(response => {
+    APIManager.getGames().then(response => {
       this.setState({games: response.data});
       console.log(this.state.games);
     })
@@ -66,19 +66,15 @@ class MapComponent extends Component {
 	  this.setState({
 	      tourneys : tourneys.filter(tourney => dayArray.includes(tourney.day)),
 	    }); 
-	}
-
-  goToConnect(){
-    this.props.history.push("/login");
   }
-
+  
   render() {
 		return (
 		  <div className="map-component">
 				<div className="map-view">
 				  <DaySelection updateMap={this.updateMap}/>
 				  <div className="map">
-				    <ReactLeafletMap tourneys={this.state.tourneys} goToConnect={this.goToConnect}/>
+				    <ReactLeafletMap tourneys={this.state.tourneys} />
 				  </div>
 				</div>
 		  </div>

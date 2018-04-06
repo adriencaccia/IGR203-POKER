@@ -12,8 +12,8 @@ import UserRegister from './UserRegister';
 const Main = () => (
 	<main className="main">
 		<Switch>
-			<Route exact path='/' component={MapComponent} />
-			<Route exact path='/faq' component={About} />
+			<Route exact path='/' component={About} />
+			<Route exact path='/map' component={MapComponent} />
 			<Route exact path='/timer' component={Timer} />
 			<Route exact path='/profile' component={Profile} />
 			<Route exact path='/games/add' component={AddForm} />

@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Image, Card, Button } from 'semantic-ui-react';
 import { Marker, Popup } from 'react-leaflet';
 import RegistrationButton from './RegistrationButton';
-import APIManager from './APIManager';
 
 class TourneyConfirm extends Component {
   state = { open: false };
@@ -33,15 +32,7 @@ class TourneyConfirm extends Component {
               </Card.Description>
             </Card.Content>
             <Card.Content className="popup-content-extra">
-              {APIManager.getAuthToken()!="0"? 
-                <RegistrationButton tourney={this.props}/>
-              : 
-                <div className="ui two buttons">
-                  <Button onClick={this.props.goToConnect} className="registration-button"> 
-                    Connectez vous 
-                  </Button>
-                </div>
-              }
+              <RegistrationButton tourney={this.props}/>
             </Card.Content>
           </Card>
         </Popup>

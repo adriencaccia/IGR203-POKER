@@ -91,7 +91,7 @@ class AddForm extends Component {
   handleConfirm = () => this.setState({open:false});
 
   goToMainPage(){
-    this.props.history.push("/");
+    this.props.history.push("/map");
   }
 
   handleInputChange(event){

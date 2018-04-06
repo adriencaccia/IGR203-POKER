@@ -30,7 +30,7 @@ class UserLogin extends Component {
   }
 
   goToMainPage(){
-    this.props.history.push("/");
+    this.props.history.push("/map");
   }
 
   handleInputChange(event){

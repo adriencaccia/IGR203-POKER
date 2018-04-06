@@ -27,12 +27,12 @@ class NavBarMain extends Component {
         <Sidebar.Pushable as={Segment}>
           <Sidebar as={Menu} animation='overlay' width='thin' visible={visible} 
               icon='labeled' vertical inverted onClick={this.disableVisibility}>
-            <Link to='/'>
+            {this.isLogged() && <Link to='/map'>
               <Menu.Item className="sidebar-item">
                 <Icon name="search" /><br/>
                 Trouver un tournoi
               </Menu.Item>
-            </Link>
+            </Link>}
             {this.isLogged() && <Link to='/games/add'>
               <Menu.Item className="sidebar-item">
                 <Icon name="plus" /><br/>
@@ -51,7 +51,7 @@ class NavBarMain extends Component {
                 Mon profil
               </Menu.Item>
             </Link>}
-            <Link to='/faq'>
+            <Link to='/'>
               <Menu.Item className="sidebar-item">
                 <Icon name="question circle outline" /><br/>
                 FAQ
