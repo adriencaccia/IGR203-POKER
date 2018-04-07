@@ -5,13 +5,8 @@ import L from 'leaflet';
 import TourneyConfirm from './TourneyConfirm';
 
 // const TILES_URL = "http://localhost:8080/styles/poker-style/{z}/{x}/{y}.png";
-<<<<<<< HEAD
 // const TILES_URL = "http://192.168.1.5:8080/styles/poker-style/{z}/{x}/{y}.png";
 // const TILES_URL = "http://137.194.8.91:8080/styles/osm-bright/{z}/{x}/{y}.png";
-=======
-const TILES_URL = "http://192.168.1.5:8080/styles/poker-style/{z}/{x}/{y}.png";
-// const TILES_URL = "http://137.194.8.91:8080/styles/poker-style/{z}/{x}/{y}.png";
->>>>>>> origin/crash-test
 // const TILES_URL = "http://192.168.137.99:8080/styles/osm-bright/{z}/{x}/{y}.png";
 const TILES_URL = "https://tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png";
 
@@ -84,7 +79,7 @@ class ReactLeafletMap extends PureComponent{
           {
             [...this.props.tourneys].map((tourney,i) => <TourneyConfirm key={i}
                 icon={myIcon} {...tourney}
-                closePopup={this.leafletMap.leafletElement.closePopup}
+                leafletMap={this.leafletMap}
               />)
           }
         </MarkerClusterGroup>
