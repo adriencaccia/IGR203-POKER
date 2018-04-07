@@ -6,17 +6,31 @@ import TourneyConfirm from './TourneyConfirm';
 import APIManager from './APIManager';
 
 // const TILES_URL = "http://localhost:8080/styles/poker-style/{z}/{x}/{y}.png";
-// const TILES_URL = "http://"+APIManager.getUrl()+":8080/styles/poker-style/{z}/{x}/{y}.png";
+const TILES_URL = "http://"+APIManager.getUrl()+":8080/styles/poker-style/{z}/{x}/{y}.png";
 // const TILES_URL = "http://137.194.8.91:8080/styles/poker-style/{z}/{x}/{y}.png";
 // const TILES_URL = "http://192.168.137.99:8080/styles/osm-bright/{z}/{x}/{y}.png";
-const TILES_URL = "https://tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png";
+// const TILES_URL = "https://tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png";
 
 const iconSize = 60;
 
-var myIcon = L.icon({
+const availableIcon = L.icon({
   iconUrl: require('../icons/EXPORTS/SVG/poker_ROUGE-01.svg'),
   iconSize: [iconSize, iconSize],
-  iconAnchor: [iconSize/2, iconSize/2],
+  iconAnchor: [iconSize / 2, iconSize / 2],
+  popupAnchor: [0, -iconSize / 2 + iconSize / 8]
+});
+
+const registeredIcon = L.icon({
+  iconUrl: require('../icons/EXPORTS/SVG/poker_BLEU-01.svg'),
+  iconSize: [iconSize, iconSize],
+  iconAnchor: [iconSize / 2, iconSize / 2],
+  popupAnchor: [0, -iconSize / 2 + iconSize / 8]
+});
+
+const fullIcon = L.icon({
+  iconUrl: require('../icons/EXPORTS/SVG/poker_JAUNE-01.svg'),
+  iconSize: [iconSize, iconSize],
+  iconAnchor: [iconSize / 2, iconSize / 2],
   popupAnchor: [0, -iconSize / 2 + iconSize / 8]
 });
 
@@ -58,6 +72,16 @@ class ReactLeafletMap extends PureComponent{
     this.leafletMap.leafletElement.flyToBounds(bounds);
   }
 
+  tourneyIcon(tourney) {
+    if (tourney.playerIds.includes(APIManager.getUser())) {
+      return registeredIcon;
+    }
+    if (tourney.players >= tourney.maxPlayers) {
+      return fullIcon;
+    }
+    return availableIcon;
+  }
+
   render() {
     return (
       <Map ref={m => {this.leafletMap=m;}}
@@ -74,7 +98,7 @@ class ReactLeafletMap extends PureComponent{
           showCoverageOnHover={false}>
           {
             [...this.props.tourneys].map((tourney,i) => <TourneyConfirm key={i}
-                icon={myIcon} {...tourney}
+                icon={this.tourneyIcon(tourney)} {...tourney}
                 leafletMap={this.leafletMap}
                 updateMap={this.props.updateMap}
               />)

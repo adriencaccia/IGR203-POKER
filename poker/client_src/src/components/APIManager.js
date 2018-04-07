@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-const url = "localhost";
+// const url = "localhost";
+const url = "137.194.8.91";
 
 class APIManager {
 

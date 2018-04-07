@@ -50,6 +50,7 @@ class UserLogin extends Component {
       setTimeout(this.goToMainPage,1800);
       APIManager.setAuthToken(response.data.id);
       APIManager.setUserName(newUser.username);
+      APIManager.setUser(response.data.userId);
     }).catch(err => {
       this.setState({
         success: false,

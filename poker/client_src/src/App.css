@@ -141,6 +141,7 @@ input, .ui.fluid.selection {
 }
 
 .popup-content-extra {
+  text-align: center;
 	background-color: #e8d9c9!important;
 	border-style: none!important;
 	border-width: 10px!important;
