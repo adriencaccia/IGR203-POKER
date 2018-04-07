@@ -29,6 +29,20 @@ class APIManager {
     this.userId = id;
   }
 
+  //Get user data
+  static getUserData() {
+    if(this.userId === undefined){
+      return {};
+    }else{
+      axios.request({
+        method: 'get',
+        url: 'http://' + url + ':3000/api/users' + this.getUser()
+      }).then( response => {
+        return response.data;
+      }).catch(err => {console.log(err); return {}});
+    }
+  }
+
   //User name managing
   static getUsername() {
     if (this.username === undefined) {
