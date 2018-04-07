@@ -35,6 +35,16 @@ const fullIcon = L.icon({
 });
 
 const createClusterCustomIcon = function (cluster) {
+  var childRegistered = cluster.getAllChildMarkers().map((marker) => 
+    marker.options.icon == registeredIcon);
+  if (childRegistered.includes(true)){
+    return L.divIcon({
+      html: `<img src=${require('../icons/EXPORTS/SVG/poker_BLEU-02.svg')}
+            width=${iconSize * 1.1}/>`,
+      className: 'marker-cluster-custom',
+      iconAnchor: [iconSize / 2, iconSize / 2],
+    });
+  }
   return L.divIcon({
     html: `<img src=${require('../icons/EXPORTS/SVG/poker_ROUGE-02.svg')}
             width=${iconSize*1.1}/>`,

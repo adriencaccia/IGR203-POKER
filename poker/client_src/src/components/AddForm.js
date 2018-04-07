@@ -46,11 +46,11 @@ const timeOpts = [
 ]
 
 const lvlOpts = [
-  {text:'Debutants',value:'Noobs'},
-  {text:'Casu',value:'Casu'},
-  {text:'Patronul',value:'Patronul'},
-  {text:'Expert',value:'Expert'},
-  {text:'Pro',value:'Pro'},
+  { text: 'Débutant', value: 'Débutant' },
+  { text: 'Casu', value: 'Casu' },
+  { text: 'Passionné', value: 'Passionné' },
+  { text: 'Expert', value: 'Expert' },
+  { text: 'Pro', value: 'Pro' },
 ]
 
 const dayOpts = [
@@ -163,10 +163,10 @@ class AddForm extends Component {
         <Form size='huge' onSubmit={this.handleSubmit} className="form">
           <Form.Input fluid label='Nom' placeholder='Nom' name='name'
             onChange={this.handleInputChange}/>
-          <Form.Input fluid label='Code Postal' placeholder='Code Postal'
-            name='zipCode' onChange={this.handleInputChange}/>
           <Form.Input fluid label='Adresse' placeholder='Adresse'
             name='address' onChange={this.handleInputChange}/>
+          <Form.Input fluid label='Code Postal' placeholder='Code Postal'
+            name='zipCode' onChange={this.handleInputChange}/>
           <Form.Group widths='equal'>
             <Form.Select fluid label='Jour' placeholder='Jour'
               name='date' options={dayOpts} 

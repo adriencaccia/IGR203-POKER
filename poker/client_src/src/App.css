@@ -53,10 +53,18 @@
 	z-index: 10;
 	top: 17%;
 	left: 3%;
-	max-width: 70%;
+	max-width: 45%;
 }
 
-.day-select * {
+.level-select {
+  position: fixed;
+  z-index: 10;
+  top: 17%;
+  right: 3%;
+  max-width: 45%;
+}
+
+.day-select *, .level-select * {
 	background-color: #e8d9c9!important;
 	border-color: #b34640!important;
 }
@@ -91,9 +99,57 @@
 	border-width: 0px 1px 1px!important;
 }
 
-.add-form {
+.add-form, .homepage {
 	height: 100%;
 	top: 0px;
+}
+
+.homepage-container {
+  height: calc(98vh - 65px);
+  text-align: center;
+  overflow: auto;
+}
+
+.homepage-stepgroup {
+  position: relative;
+  width: 75%;
+  max-width: 550px;
+  /* top: 5px;
+  border-style: solid !important;
+  border-color: #b34640 !important;
+  border-width: 1px !important; */
+}
+
+.homepage-step {
+  background-color: #e8d9c9!important;
+  border-style: solid !important;
+  border-color: #b34640 !important;
+  border-width: 1px !important;
+  color: #b34640 !important;
+}
+
+.homepage-step-button {
+  background-color: #b34640 !important;
+  border-style: solid !important;
+  border-color: #e8d9c9 !important;
+  border-width: 0px 0px 1px !important;
+  color: #e8d9c9 !important;
+}
+
+.homepage-content {
+	width: 80%;
+	text-align: center!important;
+}
+
+.homepage-content-button {
+  width: 80%;
+  text-align: center !important;
+  color: #e8d9c9!important;
+}
+
+
+.homepage-icon {
+  color: #e8d9c9 !important;
 }
 
 label {	

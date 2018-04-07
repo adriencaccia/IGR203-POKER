@@ -5,6 +5,7 @@ import '../../node_modules/leaflet/dist/leaflet.css';
 import '../../node_modules/semantic-ui-css/semantic.min.css';
 import ReactLeafletMap from './LeafMap';
 import DaySelection from './DaySelection';
+import LevelSelection from './LevelSelection';
 import { Button, Icon } from 'semantic-ui-react';
 import '../../node_modules/react-leaflet-markercluster/dist/styles.min.css';
 import L from 'leaflet';
@@ -41,6 +42,14 @@ const week = [
   "Vendredi",
   "Samedi",
   "Dimanche",
+];
+
+const levels = [
+  "Débutant",
+  "Casu",
+  "Passionné",
+  "Expert",
+  "Pro",
 ];
 
 class MapComponent extends Component {
@@ -82,23 +91,34 @@ class MapComponent extends Component {
   }
 
 
-	updateMap(e, data) {
-    var dayArray = data.value;
+	updateMap(type, data) {
+    if (type == "day"){
+      var levelArray = this.levelSelect.state.value;
+      var dayArray = data.value;
+    }
+    if (type == "level") {
+      var levelArray = data.value;
+      var dayArray = this.daySelect.state.value;
+    }
     if (dayArray.length === 0){
       dayArray = week;
     }
+    if (levelArray.length === 0) {
+      levelArray = levels;
+    }
     APIManager.getTourneys().then(response => {
       var allTourneys = response.data;
-      var newTourneys = allTourneys.filter(tourney => dayArray.includes(tourney.date));
+      var newTourneys = allTourneys.filter(tourney => 
+        dayArray.includes(tourney.date) &&
+        levelArray.includes(tourney.difficulty));
       var newBounds = tourneysToBounds(newTourneys);
       this.setState({
         tourneys: newTourneys,
       });
-      this.leafletMap.leafletMap.leafletElement.closePopup();
       this.leafletMap.changeBounds(newBounds);
     }).catch(err => console.log(err));
   }
-  
+
   rerender() {
     this.getGames();
     this.setState({
@@ -110,7 +130,10 @@ class MapComponent extends Component {
 		return (
 		  <div className="map-component" key={this.state.keyId}>
 				<div className="map-view">
-				  <DaySelection updateMap={this.updateMap}/>
+          <DaySelection ref={m => { this.daySelect = m; }}
+            updateMap={this.updateMap} />
+          <LevelSelection ref={m => { this.levelSelect = m; }}
+            updateMap={this.updateMap}/>
           <Button icon compact
             size="massive"
             className="position-button"
