@@ -3,9 +3,10 @@ import { Map, TileLayer } from 'react-leaflet';
 import MarkerClusterGroup from 'react-leaflet-markercluster';
 import L from 'leaflet';
 import TourneyConfirm from './TourneyConfirm';
+import APIManager from './APIManager';
 
 // const TILES_URL = "http://localhost:8080/styles/poker-style/{z}/{x}/{y}.png";
-const TILES_URL = "http://192.168.1.5:8080/styles/poker-style/{z}/{x}/{y}.png";
+const TILES_URL = "http://"+APIManager.getUrl()+":8080/styles/poker-style/{z}/{x}/{y}.png";
 // const TILES_URL = "http://137.194.8.91:8080/styles/poker-style/{z}/{x}/{y}.png";
 // const TILES_URL = "http://192.168.137.99:8080/styles/osm-bright/{z}/{x}/{y}.png";
 // const TILES_URL = "https://tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png";
@@ -73,7 +74,9 @@ class ReactLeafletMap extends PureComponent{
           showCoverageOnHover={false}>
           {
             [...this.props.tourneys].map((tourney,i) => <TourneyConfirm key={i}
-              icon={myIcon} {...tourney}/>)
+                icon={myIcon} {...tourney}
+                leafletMap={this.leafletMap}
+              />)
           }
         </MarkerClusterGroup>
       </Map>

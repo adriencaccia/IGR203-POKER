@@ -8,6 +8,7 @@ import DaySelection from './DaySelection';
 import { Button, Icon } from 'semantic-ui-react';
 import '../../node_modules/react-leaflet-markercluster/dist/styles.min.css';
 import L from 'leaflet';
+import APIManager from './APIManager';
 
 const mapConfig = {
   centerParis: [48.856614, 2.352222],
@@ -24,13 +25,13 @@ function tourneysToBounds(tourneys) {
   }
   if (tourneys.length == 1){
     return L.latLngBounds([tourneys[0].position.map((i) => i - 0.04), 
-      tourneys[0].position.map((i) => i - 0.04)]);
+      tourneys[0].position.map((i) => i + 0.04)]);
   }
   return L.latLngBounds(tourneys.map((tourney) => tourney.position)
   .map((bound) => L.latLng(bound)));
 }
 
-const tourneys = require('../bars.json').bars;
+//const tourneys = require('../bars.json').bars;
 
 const week = [
   "Lundi",
@@ -46,8 +47,7 @@ class MapComponent extends Component {
 	constructor(){
     super();
     this.state = {
-      tourneys: tourneys,
-      games: [],
+      tourneys: [],
       height: 0,
       width: 0
     };
@@ -60,9 +60,8 @@ class MapComponent extends Component {
   }
 
   getGames(){
-    axios.get('http://localhost:3000/api/games').then(response => {
-      this.setState({games: response.data});
-      // console.log(this.state.games);
+    APIManager.getTourneys().then(response => {
+      this.setState({tourneys: response.data});
     })
     .catch(err => console.log(err));
   }
@@ -81,19 +80,22 @@ class MapComponent extends Component {
   }
 
 	updateMap(e, data) {
-	  var dayArray = data.value;
-	  if (dayArray.length === 0){
-	    dayArray = week;
+    var dayArray = data.value;
+    if (dayArray.length === 0){
+      dayArray = week;
     }
-    var newTourneys = tourneys.filter(tourney => dayArray.includes(tourney.day));
-    var newBounds = tourneysToBounds(newTourneys);
-	  this.setState({
-      tourneys: newTourneys,
-    });
-    this.leafletMap.leafletMap.leafletElement.closePopup();
-    this.leafletMap.changeBounds(newBounds);
+    APIManager.getTourneys().then(response => {
+      var allTourneys = response.data;
+      var newTourneys = allTourneys.filter(tourney => dayArray.includes(tourney.date));
+      var newBounds = tourneysToBounds(newTourneys);
+      this.setState({
+        tourneys: newTourneys,
+      });
+      this.leafletMap.leafletMap.leafletElement.closePopup();
+      this.leafletMap.changeBounds(newBounds);
+    }).catch(err => console.log(err));
   }
-
+  
   render() {
 		return (
 		  <div className="map-component">

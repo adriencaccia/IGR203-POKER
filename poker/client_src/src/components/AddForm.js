@@ -3,11 +3,11 @@ import { Form, Modal, Button } from 'semantic-ui-react';
 import axios from 'axios';
 import Geocode from 'react-geocode';
 import {Link} from 'react-router-dom';
+import APIManager from './APIManager';
 
 const inlineStyle = {
   modal : {
-    top: '30%!important',
-    marginTop: '0px !important',
+    marginTop: '40vh',
     marginLeft: 'auto',
     marginRight: 'auto'
   }
@@ -91,7 +91,7 @@ class AddForm extends Component {
   handleConfirm = () => this.setState({open:false});
 
   goToMainPage(){
-    this.props.history.push("/");
+    this.props.history.push("/map");
   }
 
   handleInputChange(event){
@@ -119,11 +119,8 @@ class AddForm extends Component {
   }
 
   AddGame(newGame){
-    axios.request({
-      method:'post',
-      url:'http://localhost:3000/api/games',
-      data: newGame
-    }).then(response => {
+    APIManager.addTourney(newGame
+    ).then(response => {
       this.doneShow();
     }).catch(err => console.log(err));
     //console.log(newGame);
@@ -146,7 +143,8 @@ class AddForm extends Component {
           difficulty: this.state.difficulty,
           players: 0,
           maxPlayers: parseInt(this.state.maxPlayers, 10),
-          position:[this.state.position.lat,this.state.position.lng]
+          position:[this.state.position.lat,this.state.position.lng],
+          playerIds:[{}]
         };
         console.log(newGame);
         this.AddGame(newGame);
@@ -161,7 +159,7 @@ class AddForm extends Component {
   render() {
     return (
       <div className="add-form" onSubmit={this.handleInputSubmit}>
-        <h1 className="app-header"> Organiser un tournoi </h1> <br />
+        <h1 className="app-header"> Organiser un tournoi </h1>
         <Form size='huge' onSubmit={this.handleSubmit} className="form">
           <Form.Input fluid label='Nom' placeholder='Nom' name='name'
             onChange={this.handleInputChange}/>

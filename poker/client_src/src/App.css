@@ -192,6 +192,7 @@ input, .ui.fluid.selection {
 	background-color: #b34640!important;
 	color: #e8d9c9!important;
 	font-size: 18px!important;
+	margin:auto;
 }
 
 .ui.primary.button {
@@ -200,9 +201,9 @@ input, .ui.fluid.selection {
 }
 
 .app-header{
-	margin-top: 0% !important;
-	margin-left: 3%;
-	padding-top: calc(2% + 20px);
+	margin: 0% 0% 0% 3% !important;
+	height: calc(2vh + 65px);
+	padding-top: calc(2vh + 8px);
 	padding-left: 80px;
 	color: #b34640!important;
 }
@@ -218,11 +219,16 @@ input, .ui.fluid.selection {
 }
 
 .form {
+	top: 0vh !important;
 	overflow: auto;
-	height: 80%;
-	padding: 5%;
+	height: calc(98vh - 65px);
+	padding-left: 5%;
+	padding-right: 5%;
+	padding-top: 2vh;
+	padding-bottom: 5vh;
 }
 
 .ui.segment.pushable {
 	border-style: none!important;
 }
+

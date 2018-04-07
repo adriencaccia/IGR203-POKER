@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Sidebar, Segment, Menu, Icon, Button } from 'semantic-ui-react';
 import Main from './Main';
 import { Link } from 'react-router-dom';
-import Token from './Token';
+import APIManager from './APIManager';
 
 class NavBarMain extends Component {
   constructor(props){
@@ -25,7 +25,7 @@ class NavBarMain extends Component {
   }
 
   isLogged = () => {
-    return Token.get()!="0";
+    return APIManager.getAuthToken()!="0";
   }
 
   toggleVisibility = () => this.setState({ visible: !this.state.visible });
@@ -39,12 +39,12 @@ class NavBarMain extends Component {
         <Sidebar.Pushable as={Segment}>
           <Sidebar as={Menu} animation='overlay' width='thin' visible={visible} 
               icon='labeled' vertical inverted onClick={this.disableVisibility}>
-            <Link to='/'>
+            {this.isLogged() && <Link to='/map'>
               <Menu.Item className="sidebar-item">
                 <Icon name="search" /><br/>
                 Trouver un tournoi
               </Menu.Item>
-            </Link>
+            </Link>}
             {this.isLogged() && <Link to='/games/add'>
               <Menu.Item className="sidebar-item">
                 <Icon name="plus" /><br/>
@@ -63,7 +63,7 @@ class NavBarMain extends Component {
                 Mon profil
               </Menu.Item>
             </Link>}
-            <Link to='/faq'>
+            <Link to='/'>
               <Menu.Item className="sidebar-item">
                 <Icon name="question circle outline" /><br/>
                 FAQ
