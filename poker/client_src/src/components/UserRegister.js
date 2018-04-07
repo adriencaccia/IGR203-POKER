@@ -43,7 +43,7 @@ class UserRegister extends Component {
   AddUser(newUser){
     axios.request({
       method:'post',
-      url:'http://137.194.8.91:3000/api/users',
+      url:'http://192.168.1.5:3000/api/users',
       data: newUser
     }).then(response => {
       this.setState({

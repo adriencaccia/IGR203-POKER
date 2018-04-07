@@ -1,19 +1,14 @@
 import React, { PureComponent } from 'react';
-import { Map, TileLayer, ZoomControl } from 'react-leaflet';
+import { Map, TileLayer, ZoomControl, MapControl } from 'react-leaflet';
 import MarkerClusterGroup from 'react-leaflet-markercluster';
 import L from 'leaflet';
 import TourneyConfirm from './TourneyConfirm';
 
 // const TILES_URL = "http://localhost:8080/styles/poker-style/{z}/{x}/{y}.png";
-// const TILES_URL = "http://192.168.1.5:8080/styles/poker-style/{z}/{x}/{y}.png";
-const TILES_URL = "http://137.194.8.91:8080/styles/poker-style/{z}/{x}/{y}.png";
+const TILES_URL = "http://192.168.1.5:8080/styles/poker-style/{z}/{x}/{y}.png";
+// const TILES_URL = "http://137.194.8.91:8080/styles/poker-style/{z}/{x}/{y}.png";
 // const TILES_URL = "http://192.168.137.99:8080/styles/osm-bright/{z}/{x}/{y}.png";
 // const TILES_URL = "https://tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png";
-
-const mapConfig = {
-  center: [48.8260373, 2.34595850],
-  zoom: 15.2
-};
 
 const iconSize = 60;
 
@@ -34,7 +29,13 @@ const createClusterCustomIcon = function (cluster) {
 }
 
 class ReactLeafletMap extends PureComponent{
+  constructor(props) {
+    super(props);
+    this.handleMoveEnd = this.handleMoveEnd.bind(this);
+  }
+
   handlePopupopen(e) {
+    console.log(e);
     var fromZoom = this.getZoom();
     var toZoom = 17;
     var scale = this.getZoomScale(toZoom, fromZoom);
@@ -49,19 +50,35 @@ class ReactLeafletMap extends PureComponent{
     this.setView(latlng, toZoom);
   }
 
+  handlePopupclose(e) {
+
+  }
+
+  handleMoveEnd(e) {
+    var newBounds = e.target.getBounds();
+    this.props.changeBounds(newBounds);
+  }
+
   render() {
     return (
-      <Map center={mapConfig.center} zoom={mapConfig.zoom} zoomControl={false}
-          className="map__reactleaflet markercluster-map"
-          onPopupopen={this.handlePopupopen}
-          attributionControl={false} >
+      <Map ref={m => {this.leafletMap=m;}}
+        zoomControl={false}
+        className="map__reactleaflet markercluster-map"
+        onPopupopen={this.handlePopupopen}
+        onPopupclose={this.handlePopupclose}
+        attributionControl={false}
+        useFlyTo={true}
+        bounds={this.props.bounds}
+        // onViewportChanged={this.handleMove}
+        onMoveEnd={this.handleMoveEnd}
+        >
         {/* <ZoomControl position="topright" /> */}
         <TileLayer url={TILES_URL} detectRetina={true}/>
         <MarkerClusterGroup iconCreateFunction={createClusterCustomIcon}
           showCoverageOnHover={false}>
           {
             [...this.props.tourneys].map((tourney,i) => <TourneyConfirm key={i}
-                                                icon={myIcon} {...tourney}/>)
+              icon={myIcon} {...tourney}/>)
           }
         </MarkerClusterGroup>
       </Map>

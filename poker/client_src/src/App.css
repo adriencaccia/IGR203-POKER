@@ -32,6 +32,17 @@
 	border-width: 1px!important;
 }
 
+.position-button {
+	position: fixed;
+	right: 3%;
+	top: 2%;
+	z-index: 10;
+	background-color: #e8d9c9!important;
+	border-style: solid!important;
+	border-color: #b34640!important;
+	border-width: 1px!important;
+}
+
 .navbar-button-icon {
 	color: #b34640;
 	opacity: 1!important;
