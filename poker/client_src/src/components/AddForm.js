@@ -185,14 +185,14 @@ class AddForm extends Component {
           </Form.Group>
           <Form.Button type='submit'>Submit</Form.Button>
           <Modal style={inlineStyle.modal} open={this.state.doneOpen}>
-            <Modal.Content>
-              <h3>Votre partie a bien été créée.</h3>
-            </Modal.Content>
-            <Modal.Actions>
+            <Modal.Header className="modal-header">
+              Votre partie a bien été créée.
+            </Modal.Header>
+            <Modal.Content className="modal-content">
               <Button color='green' onClick={this.goToMainPage}>
                 OK
               </Button>
-            </Modal.Actions>
+            </Modal.Content>
           </Modal>
         </Form>
       </div>
