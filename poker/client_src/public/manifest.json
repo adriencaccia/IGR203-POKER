@@ -5,11 +5,12 @@
     {
       "src": "table.png",
       "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/png",
+      "type": "image/png"
     }
   ],
   "start_url": "./index.html",
   "display": "standalone",
+  "orientation": "portrait",
   "theme_color": "#000000",
   "background_color": "#ffffff"
 }

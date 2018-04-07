@@ -67,7 +67,6 @@ class DaySelection extends Component {
             (e,data) => {
               var newValue = this.state.value;
               var index = newValue.indexOf(data.value)
-              console.log(newValue,index);
               newValue.splice(index,1);
               this.setState({
                 value:  newValue

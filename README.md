@@ -10,13 +10,18 @@ Project for IGR203 by:
 
 This project uses its own styled map tiles served by a docker container.
 
-With docker installed, go to /tiles and run :
+With docker installed, go to **/tiles** and run :
 
 ```
 docker run --rm -it -v $(pwd):/data -p 8080:80 klokantech/openmaptiles-server
 ```
+In a new terminal, go to **/poker** and run :
 
-Then go to /poker and run :
+```
+npm install
+node .
+```
+Finaly, in a new terminal, go to **/poker/client_src** and run :
 
 ```
 npm install
