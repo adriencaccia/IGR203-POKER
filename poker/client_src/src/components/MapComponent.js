@@ -7,9 +7,7 @@ import ReactLeafletMap from './LeafMap';
 import DaySelection from './DaySelection';
 import { Button, Icon } from 'semantic-ui-react';
 import '../../node_modules/react-leaflet-markercluster/dist/styles.min.css';
-<<<<<<< HEAD
 import APIManager from './APIManager';
-=======
 import L from 'leaflet';
 
 const mapConfig = {
@@ -32,7 +30,6 @@ function tourneysToBounds(tourneys) {
   return L.latLngBounds(tourneys.map((tourney) => tourney.position)
   .map((bound) => L.latLng(bound)));
 }
->>>>>>> origin/crash-test
 
 //const tourneys = require('../bars.json').bars;
 
@@ -50,13 +47,8 @@ class MapComponent extends Component {
 	constructor(){
     super();
     this.state = {
-<<<<<<< HEAD
       tourneys: [],
-=======
-      tourneys: tourneys,
-      games: [],
       bounds: playerBounds,
->>>>>>> origin/crash-test
       height: 0,
       width: 0
     };
@@ -70,14 +62,8 @@ class MapComponent extends Component {
   }
 
   getGames(){
-<<<<<<< HEAD
     APIManager.getTourneys().then(response => {
       this.setState({tourneys: response.data});
-=======
-    axios.get('http://localhost:3000/api/games').then(response => {
-      this.setState({games: response.data});
-      // console.log(this.state.games);
->>>>>>> origin/crash-test
     })
     .catch(err => console.log(err));
   }
@@ -100,24 +86,17 @@ class MapComponent extends Component {
 	  if (dayArray.length === 0){
 	    dayArray = week;
     }
-<<<<<<< HEAD
     var allTourneys;
     APIManager.getTourneys().then(response => {
       allTourneys = response.data;
+      var newTourneys = allTourneys.filter(tourney => dayArray.includes(tourney.date));
+      var newBounds = tourneysToBounds(newTourneys);
       this.setState({
-        tourneys : allTourneys.filter(tourney => dayArray.includes(tourney.date)),
+        tourneys: newTourneys,
+        bounds: newBounds,
       }); 
     })
     .catch(err => console.log(err));
-  }
-  
-=======
-    var newTourneys = tourneys.filter(tourney => dayArray.includes(tourney.day));
-    var newBounds = tourneysToBounds(newTourneys);
-	  this.setState({
-      tourneys: newTourneys,
-      bounds: newBounds,
-    });
   }
 
   changeBounds(bounds) {
@@ -130,7 +109,6 @@ class MapComponent extends Component {
     }
   }
 
->>>>>>> origin/crash-test
   render() {
 		return (
 		  <div className="map-component">
@@ -146,14 +124,10 @@ class MapComponent extends Component {
             />
           </Button>
 				  <div className="map">
-<<<<<<< HEAD
-				    <ReactLeafletMap tourneys={this.state.tourneys} />
-=======
 				    <ReactLeafletMap
               tourneys={this.state.tourneys}
               bounds={this.state.bounds}
               changeBounds={this.changeBounds}/>
->>>>>>> origin/crash-test
 				  </div>
 				</div>
 		  </div>
