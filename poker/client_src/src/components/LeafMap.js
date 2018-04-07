@@ -63,7 +63,7 @@ class ReactLeafletMap extends PureComponent{
           {
             [...this.props.tourneys].map((tourney,i) => <TourneyConfirm key={i}
                 icon={myIcon} {...tourney}
-                closePopup={this.leafletMap.leafletElement.closePopup}
+                leafletMap={this.leafletMap}
               />)
           }
         </MarkerClusterGroup>

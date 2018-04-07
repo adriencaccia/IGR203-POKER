@@ -37,9 +37,8 @@ class RegistrationButton extends Component {
       players: this.props.tourney.players+1,
       playerIds: newPlayerIds
     };
-    console.log(tourneyData);
     APIManager.addPlayerToTourney(this.props.tourney.id,tourneyData);
-    //this.props.closeTourney();
+    this.props.closeTourney();
     this.setState({ open: false });
   };
   handleCancel = () => this.setState({ open: false });

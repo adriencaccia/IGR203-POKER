@@ -7,7 +7,7 @@ class TourneyConfirm extends Component {
   state = { open: false };
 
   //show = () => this.setState({ open: true });
-  hide = () => this.props.closePopup();
+  hide = () => this.props.leafletMap.leafletElement.closePopup();
   handleConfirm = () => this.setState({ open: false });
   handleCancel = () => this.setState({ open: false });
 
