@@ -51,7 +51,8 @@ class ReactLeafletMap extends PureComponent{
 
   render() {
     return (
-      <Map center={mapConfig.center} zoom={mapConfig.zoom} zoomControl={false}
+      <Map ref={m => {this.leafletMap=m;}} 
+          center={mapConfig.center} zoom={mapConfig.zoom} zoomControl={false}
           className="map__reactleaflet markercluster-map"
           onPopupopen={this.handlePopupopen}
           attributionControl={false} >
@@ -61,8 +62,9 @@ class ReactLeafletMap extends PureComponent{
           showCoverageOnHover={false}>
           {
             [...this.props.tourneys].map((tourney,i) => <TourneyConfirm key={i}
-                                                icon={myIcon} {...tourney}
-                                                />)
+                icon={myIcon} {...tourney}
+                closePopup={this.leafletMap.leafletElement.closePopup}
+              />)
           }
         </MarkerClusterGroup>
       </Map>

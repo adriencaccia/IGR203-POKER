@@ -74,6 +74,15 @@ class APIManager{
         );
     }
 
+    //Add player to tourney
+    static addPlayerToTourney(tourneyId,tourneyData){
+        return  axios.request({
+            method:'patch',
+            url:'http://'+url+':3000/api/games/'+tourneyId,
+            data: tourneyData
+        });
+    }
+
 
 }
 

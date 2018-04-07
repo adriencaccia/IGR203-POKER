@@ -143,7 +143,8 @@ class AddForm extends Component {
           difficulty: this.state.difficulty,
           players: 0,
           maxPlayers: parseInt(this.state.maxPlayers, 10),
-          position:[this.state.position.lat,this.state.position.lng]
+          position:[this.state.position.lat,this.state.position.lng],
+          playerIds:[{}]
         };
         console.log(newGame);
         this.AddGame(newGame);

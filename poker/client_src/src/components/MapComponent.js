@@ -8,7 +8,7 @@ import DaySelection from './DaySelection';
 import '../../node_modules/react-leaflet-markercluster/dist/styles.min.css';
 import APIManager from './APIManager';
 
-const tourneys = require('../bars.json').bars;
+//const tourneys = require('../bars.json').bars;
 
 const week = [
   "Lundi",
@@ -24,8 +24,7 @@ class MapComponent extends Component {
 	constructor(){
     super();
     this.state = {
-      tourneys: tourneys,
-      games: [],
+      tourneys: [],
       height: 0,
       width: 0
     };
@@ -38,9 +37,8 @@ class MapComponent extends Component {
   }
 
   getGames(){
-    APIManager.getGames().then(response => {
-      this.setState({games: response.data});
-      console.log(this.state.games);
+    APIManager.getTourneys().then(response => {
+      this.setState({tourneys: response.data});
     })
     .catch(err => console.log(err));
   }
@@ -62,10 +60,15 @@ class MapComponent extends Component {
 	  var dayArray = data.value;
 	  if (dayArray.length === 0){
 	    dayArray = week;
-	  }
-	  this.setState({
-	      tourneys : tourneys.filter(tourney => dayArray.includes(tourney.day)),
-	    }); 
+    }
+    var allTourneys;
+    APIManager.getTourneys().then(response => {
+      allTourneys = response.data;
+      this.setState({
+        tourneys : allTourneys.filter(tourney => dayArray.includes(tourney.date)),
+      }); 
+    })
+    .catch(err => console.log(err));
   }
   
   render() {
