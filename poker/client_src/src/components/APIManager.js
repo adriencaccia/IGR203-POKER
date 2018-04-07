@@ -34,12 +34,13 @@ class APIManager {
     if(this.userId === undefined){
       return {};
     }else{
-      axios.request({
+      return axios.request({
         method: 'get',
-        url: 'http://' + url + ':3000/api/users' + this.getUser()
-      }).then( response => {
-        return response.data;
-      }).catch(err => {console.log(err); return {}});
+        url: 'http://' + url + ':3000/api/Users/' + this.getUser(),
+        params: {
+          access_token: APIManager.getAuthToken()
+        }
+      });
     }
   }
 
@@ -78,7 +79,10 @@ class APIManager {
     return axios.request({
       method: 'post',
       url: 'http://' + url + ':3000/api/games',
-      data: newGame
+      data: newGame,
+      params: {
+        access_token: APIManager.getAuthToken()
+      }
     });
   }
 
