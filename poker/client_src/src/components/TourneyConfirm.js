@@ -30,7 +30,6 @@ class TourneyConfirm extends Component {
               </Card.Header>
               <Card.Meta className="card-meta">
                 {this.props.address}, {this.props.zipCode}<br/>
-                {this.props.tel}
               </Card.Meta>
               <Card.Description className="card-description">
                 {this.props.date} à {this.props.time}.<br/>
@@ -45,7 +44,8 @@ class TourneyConfirm extends Component {
                   <p>
                     <strong>Il ne reste plus de places.</strong>
                   </p>
-                }
+                }<br/>
+                Niveau de jeu conseillé: <strong>{this.props.difficulty}</strong>.
               </Card.Description>
             </Card.Content>
             {/* {this.props.maxPlayers>this.props.players && 
