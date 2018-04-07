@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { Map, TileLayer, ZoomControl, MapControl } from 'react-leaflet';
+import { Map, TileLayer } from 'react-leaflet';
 import MarkerClusterGroup from 'react-leaflet-markercluster';
 import L from 'leaflet';
 import TourneyConfirm from './TourneyConfirm';
@@ -27,15 +27,18 @@ const createClusterCustomIcon = function (cluster) {
     iconAnchor: [iconSize/2, iconSize/2],
   });
 }
+const mapConfig = {
+  centerParis: [48.856614, 2.352222],
+  playerPos: [48.8260373, 2.34595850],
+  zoom: 15.2,
+};
 
 class ReactLeafletMap extends PureComponent{
   constructor(props) {
     super(props);
-    this.handleMoveEnd = this.handleMoveEnd.bind(this);
   }
 
   handlePopupopen(e) {
-    console.log(e);
     var fromZoom = this.getZoom();
     var toZoom = 17;
     var scale = this.getZoomScale(toZoom, fromZoom);
@@ -47,16 +50,11 @@ class ReactLeafletMap extends PureComponent{
     var mapBounds = this.getBounds();
     var offset = (mapBounds.getNorth()-mapBounds.getSouth())*0.4;
     var latlng = L.latLng(popupLatLng.lat+offset/scale, popupLatLng.lng);
-    this.setView(latlng, toZoom);
+    this.flyTo(latlng, toZoom);
   }
 
-  handlePopupclose(e) {
-
-  }
-
-  handleMoveEnd(e) {
-    var newBounds = e.target.getBounds();
-    this.props.changeBounds(newBounds);
+  changeBounds(bounds) {
+    this.leafletMap.leafletElement.flyToBounds(bounds);
   }
 
   render() {
@@ -65,14 +63,11 @@ class ReactLeafletMap extends PureComponent{
         zoomControl={false}
         className="map__reactleaflet markercluster-map"
         onPopupopen={this.handlePopupopen}
-        onPopupclose={this.handlePopupclose}
         attributionControl={false}
         useFlyTo={true}
-        bounds={this.props.bounds}
-        // onViewportChanged={this.handleMove}
-        onMoveEnd={this.handleMoveEnd}
+        center={mapConfig.playerPos}
+        zoom={mapConfig.zoom}
         >
-        {/* <ZoomControl position="topright" /> */}
         <TileLayer url={TILES_URL} detectRetina={true}/>
         <MarkerClusterGroup iconCreateFunction={createClusterCustomIcon}
           showCoverageOnHover={false}>

@@ -48,11 +48,9 @@ class MapComponent extends Component {
     this.state = {
       tourneys: tourneys,
       games: [],
-      bounds: playerBounds,
       height: 0,
       width: 0
     };
-    this.changeBounds = this.changeBounds.bind(this);
     this.updateMap = this.updateMap.bind(this);
     this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
   }
@@ -91,18 +89,9 @@ class MapComponent extends Component {
     var newBounds = tourneysToBounds(newTourneys);
 	  this.setState({
       tourneys: newTourneys,
-      bounds: newBounds,
     });
-  }
-
-  changeBounds(bounds) {
-    var previousCenter = this.state.bounds.getCenter();
-    var dist = previousCenter.distanceTo(bounds.getCenter());
-    if (dist > 100) {
-      this.setState({
-        bounds: bounds,
-      });
-    }
+    this.leafletMap.leafletMap.leafletElement.closePopup();
+    this.leafletMap.changeBounds(newBounds);
   }
 
   render() {
@@ -113,17 +102,19 @@ class MapComponent extends Component {
           <Button icon compact
             size="massive"
             className="position-button"
-            onClick={() => {this.setState({ bounds: playerBounds })}}>
+            onClick={() => {
+              this.leafletMap.changeBounds(playerBounds);
+              this.leafletMap.leafletMap.leafletElement.closePopup();
+            }}>
             <Icon
               className="navbar-button-icon"
-              name="bars"
+              name="location arrow"
             />
           </Button>
 				  <div className="map">
-				    <ReactLeafletMap
+				    <ReactLeafletMap ref={m => {this.leafletMap=m;}}
               tourneys={this.state.tourneys}
-              bounds={this.state.bounds}
-              changeBounds={this.changeBounds}/>
+            />
 				  </div>
 				</div>
 		  </div>
