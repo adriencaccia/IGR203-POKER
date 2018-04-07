@@ -29,13 +29,23 @@ class TourneyConfirm extends Component {
               <Card.Description className="card-description">
                 {this.props.date} à {this.props.time}.<br/>
                 {/* connect to API */}
-                Il reste <strong>{this.props.maxPlayers-this.props.players} places </strong> 
-                sur {this.props.maxPlayers}
+                {this.props.maxPlayers>this.props.players?
+                  <p>
+                    Il reste <strong>{this.props.maxPlayers-this.props.players} places </strong> 
+                    sur {this.props.maxPlayers}
+                  </p>
+                :
+                  <p>
+                    Il ne reste plus de places.
+                  </p>
+                }
               </Card.Description>
             </Card.Content>
-            <Card.Content className="popup-content-extra">
-              <RegistrationButton tourney={this.props} closeTourney={this.hide}/>
-            </Card.Content>
+            {this.props.maxPlayers>this.props.players && 
+              <Card.Content className="popup-content-extra">
+                <RegistrationButton tourney={this.props} closeTourney={this.hide} updateMap={this.props.updateMap}/>
+              </Card.Content>
+            }
           </Card>
         </Popup>
       </Marker>

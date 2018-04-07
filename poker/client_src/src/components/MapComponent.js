@@ -49,10 +49,12 @@ class MapComponent extends Component {
     this.state = {
       tourneys: [],
       height: 0,
-      width: 0
+      width: 0,
+      keyId: 0,
     };
     this.updateMap = this.updateMap.bind(this);
     this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
+    this.rerender = this.rerender.bind(this);
   }
 
   componentWillMount(){
@@ -79,6 +81,7 @@ class MapComponent extends Component {
     this.setState({ width: window.innerWidth, height: window.innerHeight });
   }
 
+
 	updateMap(e, data) {
     var dayArray = data.value;
     if (dayArray.length === 0){
@@ -96,9 +99,16 @@ class MapComponent extends Component {
     }).catch(err => console.log(err));
   }
   
+  rerender() {
+    this.getGames();
+    this.setState({
+      keyId: this.state.keyId+1
+    });
+  }
+
   render() {
 		return (
-		  <div className="map-component">
+		  <div className="map-component" key={this.state.keyId}>
 				<div className="map-view">
 				  <DaySelection updateMap={this.updateMap}/>
           <Button icon compact
@@ -116,6 +126,7 @@ class MapComponent extends Component {
 				  <div className="map">
 				    <ReactLeafletMap ref={m => {this.leafletMap=m;}}
               tourneys={this.state.tourneys}
+              updateMap={this.rerender}
             />
 				  </div>
 				</div>
