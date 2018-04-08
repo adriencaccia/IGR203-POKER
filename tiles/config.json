@@ -8,6 +8,7 @@
     ],
     "custom": [
       "poker_style.json",
+      "poker_style2.json",
       "positron.json",
       "test_style.json"
     ],
