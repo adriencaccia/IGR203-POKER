@@ -1,10 +1,32 @@
 import React, { Component } from 'react';
-import { Sidebar, Segment, Button, Menu, Image, Icon, Header } from 'semantic-ui-react';
+import { Sidebar, Segment, Menu, Icon, Button } from 'semantic-ui-react';
 import Main from './Main';
 import { Link } from 'react-router-dom';
+import APIManager from './APIManager';
 
 class NavBarMain extends Component {
-  state = { visible: false };
+  constructor(props){
+    super(props);
+    this.state = {
+      visible: false,
+    }
+  }
+
+  componentDidMount() {
+    // window.screen.lockOrientationUniversal = 
+    //   window.screen.lockOrientation || 
+    //   window.screen.mozLockOrientation || 
+    //   window.screen.msLockOrientation ||
+    //   window.screen.orientation.lock;
+    // window.screen.lockOrientationUniversal("portrait");
+    if ('ontouchstart' in document.documentElement) {
+      document.body.style.cursor = 'pointer';
+    }
+  }
+
+  isLogged = () => {
+    return APIManager.getAuthToken()!="0";
+  }
 
   toggleVisibility = () => this.setState({ visible: !this.state.visible });
 
@@ -17,71 +39,74 @@ class NavBarMain extends Component {
         <Sidebar.Pushable as={Segment}>
           <Sidebar as={Menu} animation='overlay' width='thin' visible={visible} 
               icon='labeled' vertical inverted onClick={this.disableVisibility}>
-            <Link to='/'>
-              <Menu.Item>
+            {this.isLogged() && <Link to='/map'>
+              <Menu.Item className="sidebar-item">
                 <Icon name="search" /><br/>
                 Trouver un tournoi
               </Menu.Item>
-            </Link>
-            <Link to='/games/add'>
-              <Menu.Item>
+            </Link>}
+            {this.isLogged() && <Link to='/games/add'>
+              <Menu.Item className="sidebar-item">
                 <Icon name="plus" /><br/>
                 Organiser un tournoi
               </Menu.Item>
-            </Link>
-            <Link to='/timer'>
-              <Menu.Item>
+            </Link>}
+            {this.isLogged() && <Link to='/timer'>
+              <Menu.Item className="sidebar-item">
                 <Icon name="play" /><br/>
                 Gérer mon tournoi
               </Menu.Item>
-            </Link>
-            <Link to='/profile'>
-              <Menu.Item>
+            </Link>}
+            {this.isLogged() && <Link to='/profile'>
+              <Menu.Item className="sidebar-item">
                 <Icon name="user" /><br/>
                 Mon profil
               </Menu.Item>
-            </Link>
-            <Link to='/faq'>
-              <Menu.Item>
+            </Link>}
+            <Link to='/'>
+              <Menu.Item className="sidebar-item">
                 <Icon name="question circle outline" /><br/>
                 FAQ
               </Menu.Item>
             </Link>
-            <Link to='/disconnect'>
-              <Menu.Item>
+            {this.isLogged() && <Link to='/disconnect'>
+              <Menu.Item className="sidebar-item">
                 <Icon name="close" /><br/>
                 Se déconnecter
               </Menu.Item>
-            </Link>
-            <Link to='/login'>
-              <Menu.Item>
+            </Link>}
+            {!this.isLogged() && <Link to='/login'>
+              <Menu.Item className="sidebar-item">
                 <Icon name="user circle" /><br/>
                 Se connecter
               </Menu.Item>
-            </Link>
-            <Link to='/register'>
-              <Menu.Item>
+            </Link>}
+            {!this.isLogged() && <Link to='/register'>
+              <Menu.Item className="sidebar-item">
                 <Icon name="add user" /><br/>
                 Créer un compte
               </Menu.Item>
-            </Link>
+            </Link>}
           </Sidebar>
           <Sidebar.Pusher>
-            {/* <Icon
+            <Button icon compact
+              size="massive"
               className="navbar-button"
-              name="sidebar"
-              size="big"
-              // color="red"
-              onClick={this.toggleVisibility} 
-            /> */}
-            <img
+              onClick={this.toggleVisibility}
+            >
+              <Icon
+                className="navbar-button-icon"
+                name="bars"
+              />
+            </Button>
+            {/* <img
               className="navbar-button"
               onClick={this.toggleVisibility}               
               src={require('../icons/EXPORTS/SVG/poker_BLEU-03.svg')}
               width="100" 
-            />
+            /> */}
             <div onClick={this.disableVisibility} className="main-container">
-              <Main />
+              <Main/>
             </div>
           </Sidebar.Pusher>
         </Sidebar.Pushable>

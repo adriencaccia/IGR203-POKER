@@ -1,6 +1,5 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
-import Games from './Games';
 import About from './About';
 import GameDetails from './GameDetails';
 import AddForm from './AddForm';
@@ -13,8 +12,8 @@ import UserRegister from './UserRegister';
 const Main = () => (
 	<main className="main">
 		<Switch>
-			<Route exact path='/' component={MapComponent} />
-			<Route exact path='/faq' component={About} />
+			<Route exact path='/' component={About} />
+			<Route exact path='/map' component={MapComponent} />
 			<Route exact path='/timer' component={Timer} />
 			<Route exact path='/profile' component={Profile} />
 			<Route exact path='/games/add' component={AddForm} />
@@ -24,5 +23,6 @@ const Main = () => (
 		</Switch>
 	</main>
 )
+
 
 export default Main;

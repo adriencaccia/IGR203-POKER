@@ -1,7 +1,16 @@
 import React, { Component } from 'react';
-import { Form, Message } from 'semantic-ui-react';
+import { Form, Message, Modal, Header } from 'semantic-ui-react';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
+import APIManager from './APIManager';
+
+const inlineStyle = {
+  modal: {
+    marginTop: '40vh',
+    marginLeft: 'auto',
+    marginRight: 'auto'
+  }
+};
 
 class UserLogin extends Component {
   constructor(props){
@@ -11,11 +20,17 @@ class UserLogin extends Component {
       password: "",
       success: false,
       error: false,
-      message: ""
+      message: "",
+      open: false
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.goToMainPage = this.goToMainPage.bind(this);
+  }
+
+  goToMainPage(){
+    this.props.history.push("/map");
   }
 
   handleInputChange(event){
@@ -25,16 +40,17 @@ class UserLogin extends Component {
   }
 
   AddUser(newUser){
-    axios.request({
-      method:'post',
-      url:'http://localhost:3000/api/users/login',
-      data: newUser
-    }).then(response => {
+    APIManager.logIn(newUser
+    ).then(response => {
       this.setState({
         success: true,
         error: false,
         message: this.state.username
       });
+      setTimeout(this.goToMainPage,1800);
+      APIManager.setAuthToken(response.data.id);
+      APIManager.setUserName(newUser.username);
+      APIManager.setUser(response.data.userId);
     }).catch(err => {
       this.setState({
         success: false,
@@ -50,27 +66,29 @@ class UserLogin extends Component {
       password: this.state.password
     };
     this.AddUser(newUser);
-    e.preventDefault();    
+    e.preventDefault(); 
   }
 
+  close = () => this.setState({ error: false });  
+
   render() {
-    const { value } = this.state;
+    const { dimmer } = this.state;
 
-    const success = this.state.success &&
-          <Message success
-            header='Connection réussie'
-            content={'Bienvenue '+this.state.message}
-          />;
+    const messageSuccess = this.state.success &&
+      <p>{'Bienvenue ' + this.state.message}</p>;
 
-    const error = this.state.error &&
-          <Message error
-            header='Erreur lors de la connection'
-            content={this.state.message}
-          />;
+    const messageError = this.state.error &&
+      <p>{'Erreur : '+ this.state.message}</p>;
+
+    const headerSuccess = this.state.success &&
+      'Connection réussie';
+
+    const headerError = this.state.error &&
+      'Erreur lors de la connection';
 
     return (
       <div className="add-form">
-        <h1 style={{textAlign: 'center'}}>
+        <h1 className="app-header">
           Se connecter
         </h1> <br />
         <Form size='huge' onSubmit={this.handleSubmit}>
@@ -89,8 +107,19 @@ class UserLogin extends Component {
             Se connecter
           </Form.Button>
         </Form>
-        {success}
-        {error}
+        <Modal dimmer={dimmer} open={this.state.success||this.state.error}
+          style={inlineStyle.modal} onClose={this.close}>
+          <Modal.Header className="modal-header">
+            {headerSuccess}
+            {headerError}
+          </Modal.Header>
+          <Modal.Content className="modal-content">
+            <Modal.Description className="modal-description">
+              {messageSuccess}
+              {messageError}
+            </Modal.Description>
+          </Modal.Content>
+        </Modal>
       </div>
     )
   }

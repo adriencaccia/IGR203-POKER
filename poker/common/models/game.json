@@ -41,6 +41,10 @@
     "zipCode": {
       "type": "string",
       "required": true
+    },
+    "playerIds": {
+      "type": "array",
+      "required": true
     }
   },
   "validations": [],

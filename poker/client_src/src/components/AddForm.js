@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
-import { Form, Confirm, Modal, Button } from 'semantic-ui-react';
+import { Form, Modal, Button } from 'semantic-ui-react';
 import axios from 'axios';
-import {Link} from 'react-router-dom';
 import Geocode from 'react-geocode';
-
+import {Link} from 'react-router-dom';
+import APIManager from './APIManager';
 
 const inlineStyle = {
   modal : {
-    top: '30%!important',
-    marginTop: '0px !important',
+    marginTop: '40vh',
     marginLeft: 'auto',
     marginRight: 'auto'
   }
@@ -47,11 +46,11 @@ const timeOpts = [
 ]
 
 const lvlOpts = [
-  {text:'Debutants',value:'Noobs'},
-  {text:'Casu',value:'Casu'},
-  {text:'Patronul',value:'Patronul'},
-  {text:'Expert',value:'Expert'},
-  {text:'Pro',value:'Pro'},
+  { text: 'Débutant', value: 'Débutant' },
+  { text: 'Casu', value: 'Casu' },
+  { text: 'Passionné', value: 'Passionné' },
+  { text: 'Expert', value: 'Expert' },
+  { text: 'Pro', value: 'Pro' },
 ]
 
 const dayOpts = [
@@ -92,7 +91,7 @@ class AddForm extends Component {
   handleConfirm = () => this.setState({open:false});
 
   goToMainPage(){
-      this.props.history.push('/');
+    this.props.history.push("/map");
   }
 
   handleInputChange(event){
@@ -120,11 +119,8 @@ class AddForm extends Component {
   }
 
   AddGame(newGame){
-    axios.request({
-      method:'post',
-      url:'http://localhost:3000/api/games',
-      data: newGame
-    }).then(response => {
+    APIManager.addTourney(newGame
+    ).then(response => {
       this.doneShow();
     }).catch(err => console.log(err));
     //console.log(newGame);
@@ -146,8 +142,9 @@ class AddForm extends Component {
           time: this.state.time,
           difficulty: this.state.difficulty,
           players: 0,
-          maxPlayers: parseInt(this.state.maxPlayers),
-          position:[this.state.position.lat,this.state.position.lng]
+          maxPlayers: parseInt(this.state.maxPlayers, 10),
+          position:[this.state.position.lat,this.state.position.lng],
+          playerIds:[{}]
         };
         console.log(newGame);
         this.AddGame(newGame);
@@ -160,32 +157,42 @@ class AddForm extends Component {
   }
 
   render() {
-    const { value } = this.state
     return (
       <div className="add-form" onSubmit={this.handleInputSubmit}>
-        <h1 className="header"> Organiser un tournoi </h1> <br />
+        <h1 className="app-header"> Organiser un tournoi </h1>
         <Form size='huge' onSubmit={this.handleSubmit} className="form">
-          <Form.Input fluid label='Nom' placeholder='Nom' name='name' onChange={this.handleInputChange}/>
-          <Form.Input fluid label='Code Postal' placeholder='Code Postal' name='zipCode' onChange={this.handleInputChange}/>
-          <Form.Input fluid label='Adresse' placeholder='Adresse' name='address' onChange={this.handleInputChange}/>
+          <Form.Input fluid label='Nom' placeholder='Nom' name='name'
+            onChange={this.handleInputChange}/>
+          <Form.Input fluid label='Adresse' placeholder='Adresse'
+            name='address' onChange={this.handleInputChange}/>
+          <Form.Input fluid label='Code Postal' placeholder='Code Postal'
+            name='zipCode' onChange={this.handleInputChange}/>
           <Form.Group widths='equal'>
-            <Form.Select fluid label='Jour' placeholder='Jour' name='date' options={dayOpts} onChange={this.handleInputChangeDate}/>
-            <Form.Select fluid label='Heure' placeholder='Heure' name='time' options={timeOpts} onChange={this.handleInputChangeTime}/>
+            <Form.Select fluid label='Jour' placeholder='Jour'
+              name='date' options={dayOpts} 
+              onChange={this.handleInputChangeDate}/>
+            <Form.Select fluid label='Heure' placeholder='Heure'
+              name='time' options={timeOpts}
+              onChange={this.handleInputChangeTime}/>
           </Form.Group>
           <Form.Group widths='equal'>
-            <Form.Input fluid label='Joueurs Max' placeholder='Joueurs Max' name='maxPlayers' type='number' onChange={this.handleInputChange}/>
-            <Form.Select fluid label='Niveau' placeholder='Niveau' name='difficulty' options={lvlOpts} onChange={this.handleInputChangeLvl}/>
+            <Form.Input fluid label='Joueurs Max' placeholder='Joueurs Max'
+              name='maxPlayers' type='number'
+              onChange={this.handleInputChange}/>
+            <Form.Select fluid label='Niveau' placeholder='Niveau'
+              name='difficulty' options={lvlOpts}
+              onChange={this.handleInputChangeLvl}/>
           </Form.Group>
           <Form.Button type='submit'>Submit</Form.Button>
           <Modal style={inlineStyle.modal} open={this.state.doneOpen}>
-            <Modal.Content>
-              <h3>Votre partie a bien été créée.</h3>
-            </Modal.Content>
-            <Modal.Actions>
+            <Modal.Header className="modal-header">
+              Votre partie a bien été créée.
+            </Modal.Header>
+            <Modal.Content className="modal-content">
               <Button color='green' onClick={this.goToMainPage}>
                 OK
               </Button>
-            </Modal.Actions>
+            </Modal.Content>
           </Modal>
         </Form>
       </div>

@@ -4,23 +4,70 @@
     <meta charset="utf-8">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="theme-color" content="#000000">
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
     <link rel="shortcut icon" href="%PUBLIC_URL%/table.png">
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/table.png">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" 
     integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
     <title>IGR203 Poker</title>
   </head>
+  <script>
+    /**
+    * Small helper class to detect os
+    */
+    var Device = new (function () {
+      var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+      // Windows Phone must come first because its UA also contains "Android"
+      this.windows = /windows phone/i.test(userAgent)
+      this.android = /android/i.test(userAgent)
+      // iOS detection from: http://stackoverflow.com/a/9039885/177710
+      this.ios = /iPad|iPhone|iPod/.test(userAgent) && !window.MSStream
+    })();
+    /**
+    * Execute any function with debounce of given wait amount
+    * @param  {number} wait       wait amount in miliseconds to bounce
+    * @param  {boolean} immediate true for immidate execution
+    */
+    function debounce(func, wait, immediate) {
+      var timeout
+      return function () {
+        var context = this, args = arguments
+        var later = function () {
+          timeout = null
+          if (!immediate) func.apply(context, args)
+        }
+        var callNow = immediate && !timeout
+        clearTimeout(timeout)
+        timeout = setTimeout(later, wait)
+        if (callNow) func.apply(context, args)
+      }
+    }
+  </script>
   <body>
     <noscript>
       You need to enable JavaScript to run this app.
     </noscript>
     <div id="root"></div>
     <script
-    src="https://code.jquery.com/jquery-3.3.1.min.js"
-    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-    crossorigin="anonymous"></script>
+      src="https://code.jquery.com/jquery-3.3.1.min.js"
+      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+      crossorigin="anonymous">
+      if (Device.ios) {
+        //need to add event after body created
+        document.body.addEventListener('touchmove', function (e) {
+          e.preventDefault()
+          //magically helps click events to be more precise
+          if (e.target) {
+            debounce(function () {
+              e.target.click()
+            }, 300, true)()
+          }
+        }, false)
+      }
+    </script>
   </body>
 </html>
