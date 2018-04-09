@@ -7,7 +7,7 @@ class Homepage extends Component {
     return (
       <div className="homepage">
         <h1 className="app-header"> IGR203 Poker </h1>
-        <div className="homepage-container">
+        <div className="homepage-container"><br/>
           <Step.Group className="homepage-stepgroup" vertical>
             <Step className="homepage-step">
               <Icon name='search' />
