@@ -252,6 +252,15 @@ input, .ui.fluid.selection {
 	margin:auto;
 }
 
+.ui.button.unregistration-button {
+  background-color: #b34640 !important;
+  color: #e8d9c9 !important;
+  font-size: 18px !important;
+  margin: auto;
+  margin-top: 3vh!important;
+}
+
+
 .ui.primary.button {
 	background-color: #b34640!important;
 	color: #e8d9c9!important;

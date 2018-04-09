@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Image, Card, Button } from 'semantic-ui-react';
 import { Marker, Popup } from 'react-leaflet';
 import RegistrationButton from './RegistrationButton';
+import UnregistrationButton from './UnregistrationButton';
 import L from 'leaflet';
 import APIManager from './APIManager';
 
@@ -17,6 +18,8 @@ class TourneyConfirm extends Component {
     const registered = this.props.playerIds.includes(APIManager.getUser()) &&
       <Card.Content className="popup-content-extra">
         <strong style={{fontSize:"20px"}}>Vous êtes déjà inscrit.</strong>
+        <UnregistrationButton tourney={this.props} closeTourney={this.hide}
+          updateMap={this.props.updateMap} />
       </Card.Content>;
 
     return (
