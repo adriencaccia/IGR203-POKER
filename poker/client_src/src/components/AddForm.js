@@ -150,7 +150,7 @@ class AddForm extends Component {
           players: 0,
           maxPlayers: parseInt(this.state.maxPlayers, 10),
           position:[this.state.position.lat,this.state.position.lng],
-          playerIds:[{}]
+          playerIds:["0"]
         };
         console.log(newGame);
         this.AddGame(newGame);

@@ -30,7 +30,7 @@ class Profile extends Component{
 	render(){
     //this.updateProfile();
     var eloList = this.user.elo;
-    var tourneyList = this.user.tourneys;
+    var tourneys = this.user.playedTourneys;
     var tourneyDates = this.user.tourneyDates;
     const activeItem = this.state.activeItem;
     var LineChart = require("react-chartjs").Line;

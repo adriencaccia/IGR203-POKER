@@ -28,7 +28,7 @@ class RegistrationButton extends Component {
   };
   handleConfirm = () => {
     var newPlayerIds = this.props.tourney.playerIds;
-    if(newPlayerIds[0]=={}){
+    if(newPlayerIds[0]=="0"){
       newPlayerIds=[APIManager.getUser()];
     }else{
       newPlayerIds.push(APIManager.getUser());

@@ -3,7 +3,11 @@ var properties = {
         type: Array,
         required: true
     },
-    tourneys: {
+    playedTourneys: {
+        type: Array,
+        required: true
+    },
+    userTourneys: {
         type: Array,
         required: true
     }
