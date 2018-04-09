@@ -54,6 +54,7 @@ class DaySelection extends Component {
       <div className="day-select">
         <Dropdown
           className="day-select-dropdown"
+          // upward={true}
           multiple
           selection
           fluid

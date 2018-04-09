@@ -1,8 +1,8 @@
 import axios from 'axios';
 
 // const url = "localhost";
-// const url = "137.194.8.91";
-const url = "137.194.89.126";
+const url = "137.194.8.91";
+// const url = "137.194.89.126";
 
 class APIManager {
 
@@ -71,6 +71,17 @@ class APIManager {
       method: 'post',
       url: 'http://' + url + ':3000/api/users/login',
       data: newUser
+    });
+  }
+
+  //Logging out
+  static logOut() {
+    return axios.request({
+      method: 'post',
+      url: 'http://' + url + ':3000/api/users/logout',
+      params: {
+        access_token: APIManager.getAuthToken(),
+      }
     });
   }
 

@@ -59,16 +59,16 @@ class NavBarMain extends Component {
             </Link>}
             {this.isLogged() && <Link to='/profile'>
               <Menu.Item className="sidebar-item">
-                <Icon name="user" /><br/>
-                Mon profil
+                <Icon name="line graph" /><br/>
+                Mes statistiques
               </Menu.Item>
             </Link>}
-            <Link to='/'>
+            {!this.isLogged() && <Link to='/'>
               <Menu.Item className="sidebar-item">
-                <Icon name="question circle outline" /><br/>
-                FAQ
+                <Icon name="home" /><br/>
+                Page d'accueil
               </Menu.Item>
-            </Link>
+            </Link>}
             {this.isLogged() && <Link to='/disconnect'>
               <Menu.Item className="sidebar-item">
                 <Icon name="close" /><br/>

@@ -26,10 +26,10 @@ class UserLogin extends Component {
 
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.goToMainPage = this.goToMainPage.bind(this);
+    this.goToMap = this.goToMap.bind(this);
   }
 
-  goToMainPage(){
+  goToMap(){
     this.props.history.push("/map");
   }
 
@@ -47,10 +47,10 @@ class UserLogin extends Component {
         error: false,
         message: this.state.username
       });
-      setTimeout(this.goToMainPage,1800);
       APIManager.setAuthToken(response.data.id);
       APIManager.setUserName(newUser.username);
       APIManager.setUser(response.data.userId);
+      setTimeout(this.goToMap,1800);
     }).catch(err => {
       this.setState({
         success: false,
@@ -72,8 +72,6 @@ class UserLogin extends Component {
   close = () => this.setState({ error: false });  
 
   render() {
-    const { dimmer } = this.state;
-
     const messageSuccess = this.state.success &&
       <p>{'Bienvenue ' + this.state.message}</p>;
 
@@ -107,7 +105,7 @@ class UserLogin extends Component {
             Se connecter
           </Form.Button>
         </Form>
-        <Modal dimmer={dimmer} open={this.state.success||this.state.error}
+        <Modal dimmer={true} open={this.state.success||this.state.error}
           style={inlineStyle.modal} onClose={this.close}>
           <Modal.Header className="modal-header">
             {headerSuccess}

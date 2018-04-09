@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Button, Icon, Step } from 'semantic-ui-react';
 
-class About extends Component {
+class Homepage extends Component {
   render(){
     return (
       <div className="homepage">
@@ -10,25 +10,24 @@ class About extends Component {
         <div className="homepage-container">
           <Step.Group className="homepage-stepgroup" vertical>
             <Step className="homepage-step">
-              <Icon name='truck' />
+              <Icon name='search' />
               <Step.Content className="homepage-content">
-                <Step.Title>Shipping</Step.Title>
-                <Step.Description>Choose your shipping options</Step.Description>
+                <Step.Title>Carte interactive</Step.Title>
+                <Step.Description id="homepage-description-map">
+                  Trouvez des tournois près de chez vous et
+                  inscrivez vous en un clic !
+                </Step.Description>
               </Step.Content>
             </Step>
 
             <Step className="homepage-step">
-              <Icon name='payment' />
+              <Icon name="line graph" />
               <Step.Content className="homepage-content">
-                <Step.Title>Billing</Step.Title>
-                <Step.Description>Enter billing information</Step.Description>
-              </Step.Content>
-            </Step>
-
-            <Step className="homepage-step">
-              <Icon name='info' />
-              <Step.Content className="homepage-content">
-                <Step.Title>Confirm Order</Step.Title>
+                <Step.Title>Progressez au poker</Step.Title>
+                <Step.Description id="homepage-description-stats">
+                  Confrontez à des joueurs de votre niveau et
+                  progressez au poker à chaque tournoi !
+                </Step.Description>
               </Step.Content>
             </Step>
 
@@ -62,4 +61,4 @@ class About extends Component {
   } 
 }
 
-export default About;
+export default Homepage;

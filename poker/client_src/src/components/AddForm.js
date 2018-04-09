@@ -14,21 +14,21 @@ const inlineStyle = {
 };
 
 const timeOpts = [
-  {text:'8:00',value:'8:00'},
-  {text:'8:30',value:'8:30'},
-  {text:'9:00',value:'9:00'},
-  {text:'9:30',value:'9:30'},
-  {text:'10:00',value:'10:00'},
-  {text:'10:30',value:'10:30'},
-  {text:'11:00',value:'11:00'},
-  {text:'11:30',value:'11:30'},
-  {text:'12:00',value:'12:00'},
-  {text:'12:30',value:'12:30'},
-  {text:'13:00',value:'13:00'},
-  {text:'13:30',value:'13:30'},
-  {text:'14:00',value:'14:00'},
-  {text:'14:30',value:'14:30'},
-  {text:'15:00',value:'15:00'},
+  // {text:'8:00',value:'8:00'},
+  // {text:'8:30',value:'8:30'},
+  // {text:'9:00',value:'9:00'},
+  // {text:'9:30',value:'9:30'},
+  // {text:'10:00',value:'10:00'},
+  // {text:'10:30',value:'10:30'},
+  // {text:'11:00',value:'11:00'},
+  // {text:'11:30',value:'11:30'},
+  // {text:'12:00',value:'12:00'},
+  // {text:'12:30',value:'12:30'},
+  // {text:'13:00',value:'13:00'},
+  // {text:'13:30',value:'13:30'},
+  // {text:'14:00',value:'14:00'},
+  // {text:'14:30',value:'14:30'},
+  // {text:'15:00',value:'15:00'},
   {text:'15:30',value:'15:30'},
   {text:'16:00',value:'16:00'},
   {text:'16:30',value:'16:30'},
@@ -41,8 +41,8 @@ const timeOpts = [
   {text:'20:00',value:'20:00'},
   {text:'20:30',value:'20:30'},
   {text:'21:00',value:'21:00'},
-  {text:'21:30',value:'21:30'},
-  {text:'22:00',value:'22:00'},
+  // {text:'21:30',value:'21:30'},
+  // {text:'22:00',value:'22:00'},
 ]
 
 const lvlOpts = [
@@ -159,31 +159,39 @@ class AddForm extends Component {
   render() {
     return (
       <div className="add-form" onSubmit={this.handleInputSubmit}>
-        <h1 className="app-header"> Organiser un tournoi </h1>
-        <Form size='huge' onSubmit={this.handleSubmit} className="form">
-          <Form.Input fluid label='Nom' placeholder='Nom' name='name'
+        <h1 className="app-header"> Organiser un tournoi </h1><br/>
+        <Form size='big' onSubmit={this.handleSubmit} className="form">
+          <Form.Input fluid label='Nom du bar'
+            placeholder='Ex: Le Baratin' name='name'
             onChange={this.handleInputChange}/>
-          <Form.Input fluid label='Adresse' placeholder='Adresse'
+          <Form.Input fluid label='Adresse'
+            placeholder='Ex: 3 rue des Crêpes'
             name='address' onChange={this.handleInputChange}/>
-          <Form.Input fluid label='Code Postal' placeholder='Code Postal'
+          <Form.Input fluid label='Code Postal'
+            placeholder='Ex: 75001'
             name='zipCode' onChange={this.handleInputChange}/>
-          <Form.Group widths='equal'>
-            <Form.Select fluid label='Jour' placeholder='Jour'
+          <Form.Group unstackable widths={2}>
+            <Form.Select fluid label='Jour'
+              // placeholder='Jour'
               name='date' options={dayOpts} 
               onChange={this.handleInputChangeDate}/>
-            <Form.Select fluid label='Heure' placeholder='Heure'
+            <Form.Select fluid label='Horaire de début'
+              // placeholder='Heure'
               name='time' options={timeOpts}
               onChange={this.handleInputChangeTime}/>
-          </Form.Group>
-          <Form.Group widths='equal'>
-            <Form.Input fluid label='Joueurs Max' placeholder='Joueurs Max'
+          </Form.Group><br/>
+          <Form.Group unstackable widths={2}>
+            <Form.Input fluid label='Joueurs Max'
+              placeholder='Ex: 16'
               name='maxPlayers' type='number'
               onChange={this.handleInputChange}/>
-            <Form.Select fluid label='Niveau' placeholder='Niveau'
+            <Form.Select fluid label='Niveau conseillé'
+              upward={true}
+              // placeholder='Niveau'
               name='difficulty' options={lvlOpts}
               onChange={this.handleInputChangeLvl}/>
-          </Form.Group>
-          <Form.Button type='submit'>Submit</Form.Button>
+          </Form.Group> <br/>
+          <Form.Button type='submit'>Créer un tournoi</Form.Button>
           <Modal style={inlineStyle.modal} open={this.state.doneOpen}>
             <Modal.Header className="modal-header">
               Votre partie a bien été créée.

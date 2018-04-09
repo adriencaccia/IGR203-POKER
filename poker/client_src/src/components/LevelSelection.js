@@ -50,6 +50,7 @@ class LevelSelection extends Component {
       <div className="level-select">
         <Dropdown
           className="day-select-dropdown"
+          // upward={true}
           multiple
           selection
           fluid

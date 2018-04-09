@@ -23,8 +23,8 @@
 
 .navbar-button {
 	position: fixed;
-	left: 3%;
-	top: 2%;
+	right: 1.5vh;
+	top: 2vh;
 	z-index: 10;
 	background-color: #e8d9c9!important;
 	border-style: solid!important;
@@ -34,8 +34,8 @@
 
 .position-button {
 	position: fixed;
-	right: 3%;
-	top: 2%;
+	right: 1.5vh;
+	top: 11vh;
 	z-index: 10;
 	background-color: #e8d9c9!important;
 	border-style: solid!important;
@@ -51,17 +51,21 @@
 .day-select {
 	position: fixed;
 	z-index: 10;
-	top: 17%;
+	top: 2vh;
 	left: 3%;
-	max-width: 45%;
+	max-width: 36%;
 }
 
 .level-select {
-  position: fixed;
-  z-index: 10;
-  top: 17%;
-  right: 3%;
-  max-width: 45%;
+	position: fixed;
+	z-index: 10;
+	top: 2vh;
+	left: 24vh;
+	max-width: 36%;
+}
+
+.menu.visible.transition {
+	border-bottom-width: 1px !important;
 }
 
 .day-select *, .level-select * {
@@ -85,6 +89,8 @@
 .delete.icon {
 	color: #b34640!important;
 	background-color: #b34640!important;
+	height: 0px!important;
+	width: 0px!important;
 }
 
 .sidebar {	
@@ -147,9 +153,12 @@
   color: #e8d9c9!important;
 }
 
-
 .homepage-icon {
   color: #e8d9c9 !important;
+}
+
+#homepage-description-map, #homepage-description-stats {
+	color: #b34640 !important;
 }
 
 label {	
@@ -270,7 +279,7 @@ input, .ui.fluid.selection {
 	margin: 0% 0% 0% 3% !important;
 	height: calc(2vh + 65px);
 	padding-top: calc(2vh + 8px);
-	padding-left: 80px;
+	padding-left: 2vh;
 	color: #b34640!important;
 }
 
