@@ -1,6 +1,6 @@
 var properties = {
     elo: {
-        type: number,
+        type: Array,
         required: true
     },
     tourneys: {
