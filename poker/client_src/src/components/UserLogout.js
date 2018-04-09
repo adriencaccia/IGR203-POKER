@@ -38,7 +38,7 @@ class UserLogout extends Component {
       <Modal dimmer={true} open={true}
         style={inlineStyle.modal} onClose={() => {}}>
         <Modal.Header className="modal-header">
-          Déconnection...
+          Déconnexion...
         </Modal.Header>
         <Modal.Content className="modal-content">
           <Modal.Description className="modal-description">

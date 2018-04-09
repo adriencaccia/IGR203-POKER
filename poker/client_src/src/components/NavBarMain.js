@@ -12,17 +12,17 @@ class NavBarMain extends Component {
     }
   }
 
-  componentDidMount() {
-    // window.screen.lockOrientationUniversal = 
-    //   window.screen.lockOrientation || 
-    //   window.screen.mozLockOrientation || 
-    //   window.screen.msLockOrientation ||
-    //   window.screen.orientation.lock;
-    // window.screen.lockOrientationUniversal("portrait");
-    if ('ontouchstart' in document.documentElement) {
-      document.body.style.cursor = 'pointer';
-    }
-  }
+  // componentDidMount() {
+  //   window.screen.lockOrientationUniversal = 
+  //     window.screen.lockOrientation || 
+  //     window.screen.mozLockOrientation || 
+  //     window.screen.msLockOrientation ||
+  //     window.screen.orientation.lock;
+  //   window.screen.lockOrientationUniversal("portrait");
+  //   if ('ontouchstart' in document.documentElement) {
+  //     document.body.style.cursor = 'pointer';
+  //   }
+  // }
 
   isLogged = () => {
     return APIManager.getAuthToken()!="0";
@@ -41,7 +41,7 @@ class NavBarMain extends Component {
               icon='labeled' vertical inverted onClick={this.disableVisibility}>
             {this.isLogged() && <Link to='/map'>
               <Menu.Item className="sidebar-item">
-                <Icon name="search" /><br/>
+                <Icon name="map" /><br/>
                 Trouver un tournoi
               </Menu.Item>
             </Link>}

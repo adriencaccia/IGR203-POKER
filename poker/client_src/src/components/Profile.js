@@ -7,7 +7,7 @@ class Profile extends Component{
 		super(props);
 		this.state={
       user:{},
-      activeItem:"Elo"
+      activeItem:"Niveau de jeu"
 		};
 	}
 
@@ -33,10 +33,10 @@ class Profile extends Component{
     var LineChart = require("react-chartjs").Line;
     var pane;
     switch(this.state.activeItem){
-      case "Elo":
+      case "Niveau de jeu":
         pane=<div>this is tab1</div>;
         break;
-      case "Parties Récentes":
+      case "Tournois":
         pane=<div>this is tab2</div>;
         break;
       case "Classement":
@@ -47,19 +47,23 @@ class Profile extends Component{
 
 		return(
 			<div>
-				<h1 className="app-header">Profile - {APIManager.getUsername()}</h1>
-        <Menu widths={3}>
+				<h1 className="app-header">{APIManager.getUsername()}</h1>
+        <Menu widths={3} id="stats" borderless>
           <Menu.Item
-            name='Elo'
-            active={activeItem === 'Elo'}
+            className="stats-item"
+            name='Niveau de jeu'
+            active={activeItem === 'Niveau de jeu'}
             onClick={this.handleItemClick}
           />
           <Menu.Item
-            name='Parties Récentes'
-            active={activeItem === 'Parties Récentes'}
+            className="stats-item"
+            id="stats-item-middle"
+            name="Tournois"
+            active={activeItem === 'Tournois'}
             onClick={this.handleItemClick}
           />
           <Menu.Item
+            className="stats-item"
             name='Classement'
             active={activeItem === 'Classement'}
             onClick={this.handleItemClick}

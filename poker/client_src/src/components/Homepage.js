@@ -10,7 +10,7 @@ class Homepage extends Component {
         <div className="homepage-container"><br/>
           <Step.Group className="homepage-stepgroup" vertical>
             <Step className="homepage-step">
-              <Icon name='search' />
+              <Icon name="map" />
               <Step.Content className="homepage-content">
                 <Step.Title>Carte interactive</Step.Title>
                 <Step.Description id="homepage-description-map">
@@ -38,7 +38,7 @@ class Homepage extends Component {
               </Step.Content>
             </Step>
 
-            <Step className="homepage-step-button" as={Link} to="/register">
+            <Step className="homepage-step-button-bottom" as={Link} to="/register">
               <Icon name='add user' className="homepage-icon" />
               <Step.Content className="homepage-content-button">
                 <Step.Title>Créer un compte</Step.Title>

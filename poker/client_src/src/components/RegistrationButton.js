@@ -43,6 +43,7 @@ class RegistrationButton extends Component {
     //this.props.updateMap();
     //this.setState({ open: false });
   };
+
   handleCancel = () => this.setState({ open: false });
 
   render() {

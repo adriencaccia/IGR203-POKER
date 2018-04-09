@@ -146,7 +146,7 @@ class MapComponent extends Component {
               name="location arrow"
             />
           </Button>
-				  <div className="map">
+				  <div className="map-react">
 				    <ReactLeafletMap ref={m => {this.leafletMap=m;}}
               tourneys={this.state.tourneys}
               updateMap={this.rerender}

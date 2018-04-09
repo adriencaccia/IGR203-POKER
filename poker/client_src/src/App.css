@@ -48,6 +48,13 @@
 	opacity: 1!important;
 }
 
+.dropdown.icon {
+	/* border-style: solid !important;
+	border-color: #b34640 !important;
+	border-width: 0px 0px 1px !important; */
+	height: 20px!important;
+}
+
 .day-select {
 	position: fixed;
 	z-index: 10;
@@ -102,7 +109,31 @@
 	padding: 13% 0%!important;
 	border-style: solid!important;
 	border-color: #b34640!important;
-	border-width: 0px 1px 1px!important;
+	border-width: 0px 1px 1px !important;
+}
+
+#stats {
+	background-color: hsl(31, 40%, 85%) !important;
+	border-style: solid !important;
+	border-color: #b34640 !important;
+	border-width: 1px!important;
+	width: 94vw!important;
+	margin-left: 3vw!important;
+}
+
+.stats-item {
+	color: #b34640 !important;
+}
+
+.active.item.stats-item {
+	background-color: #b34640 !important;
+	color: #e8d9c9 !important;
+}
+
+#stats-item-middle {
+	border-style: solid !important;
+	border-color: #b34640 !important;
+	border-width: 0px 1px!important;
 }
 
 .add-form, .homepage {
@@ -120,17 +151,17 @@
   position: relative;
   width: 75%;
   max-width: 550px;
-  /* top: 5px;
   border-style: solid !important;
   border-color: #b34640 !important;
-  border-width: 1px !important; */
+  border-width: 1px !important;
+  background-color: #b34640 !important;
 }
 
 .homepage-step {
   background-color: #e8d9c9!important;
   border-style: solid !important;
   border-color: #b34640 !important;
-  border-width: 1px !important;
+  border-width: 0px 0px 1px !important;
   color: #b34640 !important;
 }
 
@@ -141,6 +172,12 @@
   border-width: 0px 0px 1px !important;
   color: #e8d9c9 !important;
 }
+
+.homepage-step-button-bottom {
+  background-color: #b34640 !important;
+  color: #e8d9c9 !important;
+}
+
 
 .homepage-content {
 	width: 80%;
@@ -273,6 +310,15 @@ input, .ui.fluid.selection {
 .ui.primary.button {
 	background-color: #b34640!important;
 	color: #e8d9c9!important;
+}
+
+.modal-button-container {
+	text-align: right;
+}
+
+#modal-button {
+	background-color: #b34640 !important;
+	color: #e8d9c9 !important;
 }
 
 .app-header{

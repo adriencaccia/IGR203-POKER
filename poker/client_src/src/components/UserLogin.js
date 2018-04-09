@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Form, Message, Modal, Header } from 'semantic-ui-react';
+import { Form, Message, Modal, Header, Button } from 'semantic-ui-react';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
 import APIManager from './APIManager';
@@ -39,7 +39,7 @@ class UserLogin extends Component {
     });
   }
 
-  AddUser(newUser){
+  logUser(newUser){
     APIManager.logIn(newUser
     ).then(response => {
       this.setState({
@@ -65,7 +65,7 @@ class UserLogin extends Component {
       username: this.state.username,
       password: this.state.password
     };
-    this.AddUser(newUser);
+    this.logUser(newUser);
     e.preventDefault(); 
   }
 
@@ -76,13 +76,14 @@ class UserLogin extends Component {
       <p>{'Bienvenue ' + this.state.message}</p>;
 
     const messageError = this.state.error &&
-      <p>{'Erreur : '+ this.state.message}</p>;
+      // <p>{'Erreur : ' + this.state.message}</p>;
+      <p>{'Veuillez vérifier les champs.'}</p>;
 
     const headerSuccess = this.state.success &&
       'Connection réussie';
 
     const headerError = this.state.error &&
-      'Erreur lors de la connection';
+      'Erreur lors de la connexion';
 
     return (
       <div className="add-form">
@@ -116,6 +117,13 @@ class UserLogin extends Component {
               {messageSuccess}
               {messageError}
             </Modal.Description>
+            {this.state.error &&
+              <div className="modal-button-container">
+                <Button onClick={this.close} id="modal-button">
+                  Ok
+                </Button>
+              </div>
+            }
           </Modal.Content>
         </Modal>
       </div>

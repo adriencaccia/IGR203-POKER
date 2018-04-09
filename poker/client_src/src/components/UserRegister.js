@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Form, Message, Modal, Header } from 'semantic-ui-react';
+import { Form, Message, Modal, Header, Button } from 'semantic-ui-react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import APIManager from './APIManager';
@@ -40,16 +40,19 @@ class UserRegister extends Component {
     });
   }
 
-  AddUser(newUser){
+  addUser(newUser){
     APIManager.register(newUser
-    ).then(response => {
+    ).then(() => {
       this.setState({
         success: true,
         error: false,
       });
       setTimeout(this.goToMainPage, 3000);
-      APIManager.setAuthToken(response.data.id);
-      APIManager.setUserName(newUser.username);
+      APIManager.logIn(newUser).then(response => {
+        APIManager.setAuthToken(response.data.id);
+        APIManager.setUserName(newUser.username);
+        APIManager.setUser(response.data.userId);
+      });
     }).catch(err => {
       this.setState({
         success: false,
@@ -67,20 +70,19 @@ class UserRegister extends Component {
       elo: 1500,
       tourneys: [{}]
     };
-    this.AddUser(newUser);
+    this.addUser(newUser);
     e.preventDefault();    
   }
 
   close = () => this.setState({ error: false });  
 
   render() {
-    const { dimmer } = this.state;
-
     const messageSuccess = this.state.success &&
       <p>{'Vous allez être redirigé vers la carte'}</p>;
 
     const messageError = this.state.error &&
-      <p>{'Erreur : ' + this.state.message}</p>;
+      // <p>{'Erreur : ' + this.state.message}</p>;
+      <p>{'Veuillez vérifier les champs.'}</p>;
 
     const headerSuccess = this.state.success &&
       'Votre compte a bien été créé';
@@ -100,7 +102,7 @@ class UserRegister extends Component {
             name='username' onChange={this.handleInputChange}
           />
           <Form.Input fluid 
-            label="Addresse mail"
+            label="Adresse mail"
             placeholder='Rentrez votre adresse mail ici'
             name='email' onChange={this.handleInputChange}
           />
@@ -114,7 +116,7 @@ class UserRegister extends Component {
             Créer un compte
           </Form.Button>
         </Form>
-        <Modal dimmer={dimmer} open={this.state.success || this.state.error}
+        <Modal dimmer={true} open={this.state.success || this.state.error}
           style={inlineStyle.modal} onClose={this.close}>
           <Modal.Header className="modal-header">
             {headerSuccess}
@@ -125,6 +127,13 @@ class UserRegister extends Component {
               {messageSuccess}
               {messageError}
             </Modal.Description>
+            {this.state.error &&
+              <div className="modal-button-container">
+                <Button onClick={this.close} id="modal-button">
+                  Ok
+                </Button>
+              </div>
+            }
           </Modal.Content>
         </Modal>
       </div>

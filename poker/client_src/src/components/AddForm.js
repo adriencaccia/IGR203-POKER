@@ -76,7 +76,8 @@ class AddForm extends Component {
       "players": 0,
       "maxPlayers": 0,
       "position": [{}],
-      doneOpen:false
+      success: false,
+      error: false,
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -87,8 +88,10 @@ class AddForm extends Component {
     this.goToMainPage = this.goToMainPage.bind(this);
   }
 
-  doneShow = () => this.setState({doneOpen:true});
-  handleConfirm = () => this.setState({open:false});
+  close = () => this.setState({
+    error: false,
+    success: false,
+  });
 
   goToMainPage(){
     this.props.history.push("/map");
@@ -121,7 +124,9 @@ class AddForm extends Component {
   AddGame(newGame){
     APIManager.addTourney(newGame
     ).then(response => {
-      this.doneShow();
+      this.setState({
+        success: true,
+      });
     }).catch(err => console.log(err));
     //console.log(newGame);
   }
@@ -149,14 +154,29 @@ class AddForm extends Component {
         console.log(newGame);
         this.AddGame(newGame);
       },
-      error=>{
-        console.log(error);
+      () => {
+        this.setState({
+          error: true,
+        });
       }
     );
     e.preventDefault();    
   }
 
   render() {
+    const messageSuccess = this.state.success &&
+      <p>{'Vous pouvez le retrouver sur la carte.'}</p>;
+
+    const messageError = this.state.error &&
+      // <p>{'Erreur : ' + this.state.message}</p>;
+      <p>{'Veuillez vérifier les champs.'}</p>;
+
+    const headerSuccess = this.state.success &&
+      'Votre tournoi a bien été créé';
+
+    const headerError = this.state.error &&
+      'Erreur lors de la création du tournoi';
+
     return (
       <div className="add-form" onSubmit={this.handleInputSubmit}>
         <h1 className="app-header"> Organiser un tournoi </h1><br/>
@@ -192,14 +212,25 @@ class AddForm extends Component {
               onChange={this.handleInputChangeLvl}/>
           </Form.Group> <br/>
           <Form.Button type='submit'>Créer un tournoi</Form.Button>
-          <Modal style={inlineStyle.modal} open={this.state.doneOpen}>
+          <Modal dimmer={true} 
+            style={inlineStyle.modal}
+            open={this.state.success||this.state.error}>
             <Modal.Header className="modal-header">
-              Votre partie a bien été créée.
+              {headerSuccess}
+              {headerError}
             </Modal.Header>
             <Modal.Content className="modal-content">
-              <Button color='green' onClick={this.goToMainPage}>
-                OK
-              </Button>
+              <Modal.Description className="modal-description">
+                {messageSuccess}
+                {messageError}
+              </Modal.Description>
+              {(this.state.error || this.state.success) &&
+                <div className="modal-button-container">
+                  <Button onClick={this.close} id="modal-button">
+                    Ok
+                </Button>
+                </div>
+              }
             </Modal.Content>
           </Modal>
         </Form>
