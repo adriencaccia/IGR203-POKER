@@ -132,6 +132,7 @@ class AddForm extends Component {
   }
 
   handleInputSubmit(e){
+    Geocode.setApiKey("AIzaSyDpw34ry4PcRAMAYmwgNjSWxpSMd32R3_4");
     Geocode.fromAddress(this.state.address+this.state.zipCode).then(
       response => {
         this.setState({

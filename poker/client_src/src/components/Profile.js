@@ -29,12 +29,27 @@ class Profile extends Component{
 
 	render(){
     //this.updateProfile();
+    var eloList = this.user.elo;
+    var tourneyList = this.user.tourneys;
+    var tourneyDates = this.user.tourneyDates;
     const activeItem = this.state.activeItem;
     var LineChart = require("react-chartjs").Line;
     var pane;
     switch(this.state.activeItem){
       case "Niveau de jeu":
-        pane=<div>this is tab1</div>;
+        var chartData=[];
+        for(var i=0;i<this.state.user;i++){
+          chartData.push({label:tourneyDates[i],value:eloList[i]});
+        }
+        var chartOptions={
+          
+        };
+        var graphComp = React.createClass({
+          render: function() {
+            return <LineChart data={chartData} options={chartOptions} width="600" height="250" />
+          }
+        });
+        pane=graphComp;
         break;
       case "Tournois":
         pane=<div>this is tab2</div>;
