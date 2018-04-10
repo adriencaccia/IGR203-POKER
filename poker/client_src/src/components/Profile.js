@@ -28,8 +28,8 @@ class Profile extends Component{
 	}
 
 	render(){
-    //this.updateProfile();
-    var eloList = this.user.elo;
+    this.updateProfile();
+    var eloList = this.state.user.elo;
     var tourneys = this.user.playedTourneys;
     var tourneyDates = this.user.tourneyDates;
     const activeItem = this.state.activeItem;

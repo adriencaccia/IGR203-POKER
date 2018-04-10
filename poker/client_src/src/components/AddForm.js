@@ -122,11 +122,20 @@ class AddForm extends Component {
   }
 
   AddGame(newGame){
-    APIManager.addTourney(newGame
-    ).then(response => {
-      this.setState({
-        success: true,
-      });
+    APIManager.addTourney(newGame).then(resp => {
+      APIManager.getUserData().then(response => {
+        var newUserTourneys = response.data.userTourneys;
+        if(newUserTourneys[0]=="0"){
+          newUserTourneys=[resp.data.id];
+        }else{
+          newUserTourneys.push(resp.data.id);
+        }
+        APIManager.addUserTourneyToPlayer(newUserTourneys).then(() => {
+          this.setState({
+            success: true,
+          });
+        }).catch(err => console.log(err));
+      }).catch(err => console.log(err));
     }).catch(err => console.log(err));
     //console.log(newGame);
   }
