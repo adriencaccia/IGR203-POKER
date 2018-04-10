@@ -391,4 +391,53 @@ input, .ui.fluid.selection {
 #tourneys-delete-button {
 	color: #e8d9c9!important;
 	background-color: #b34640!important;
+
+}
+
+.elo-chart {
+	margin-left: 3vw !important;
+	margin-right: 5vw !important;
+	margin-top: 5vh !important;
+}
+
+canvas {
+	height: 65vh !important;
+}
+
+.tourney-feed {
+	height: calc(100vh - 128px) !important;
+	padding-left: 5vw !important;
+	padding-right: 5vw !important;
+	padding-top: 1vh !important;
+	padding-bottom: 5vh !important;
+	overflow:auto;
+}
+
+.feed-element {
+	padding:5px;
+	color: #b34640!important;	
+	background-color: #e8d9c9!important;
+	border-style: solid!important;
+	border-color: #b34640!important;
+	border-width: 0px 1px 1px 1px!important;
+}
+
+.feed-element-first {
+	padding:5px;
+	color: #b34640!important;	
+	background-color: #e8d9c9!important;
+	border-style: solid!important;
+	border-color: #b34640!important;
+	border-width: 1px!important;
+}
+
+.feed-elo {
+	float:right;
+	position:relative;
+	bottom:20px;
+	right:5px;
+}
+
+.rank{
+	height:calc(100vh-128px) !important;
 }
