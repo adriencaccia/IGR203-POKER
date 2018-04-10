@@ -36,7 +36,6 @@ class TourneyConfirm extends Component {
               </Card.Meta>
               <Card.Description className="card-description">
                 {this.props.date} à {this.props.time}.<br/>
-                {/* connect to API */}
                 {this.props.maxPlayers>this.props.players?
                   <p>
                     Il reste <strong>

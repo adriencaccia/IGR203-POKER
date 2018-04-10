@@ -69,6 +69,7 @@ class AddForm extends Component {
     this.state={
       "name": "",
       "zipCode": "",
+      "city": "",
       "address": "",
       "date": "",
       "time": "",
@@ -142,7 +143,7 @@ class AddForm extends Component {
 
   handleInputSubmit(e){
     Geocode.setApiKey("AIzaSyDpw34ry4PcRAMAYmwgNjSWxpSMd32R3_4");
-    Geocode.fromAddress(this.state.address+this.state.zipCode).then(
+    Geocode.fromAddress(this.state.address+this.state.city+this.state.zipCode).then(
       response => {
         this.setState({
           position: response.results[0].geometry.location
@@ -152,6 +153,7 @@ class AddForm extends Component {
         const newGame={
           name: this.state.name,
           zipCode: this.state.zipCode,
+          city: this.state.city,
           address: this.state.address,
           date: this.state.date,
           time: this.state.time,
@@ -197,9 +199,14 @@ class AddForm extends Component {
           <Form.Input fluid label='Adresse'
             placeholder='Ex: 3 rue des Crêpes'
             name='address' onChange={this.handleInputChange}/>
-          <Form.Input fluid label='Code Postal'
-            placeholder='Ex: 75001'
-            name='zipCode' onChange={this.handleInputChange}/>
+          <Form.Group unstackable widths={2}>
+            <Form.Input fluid label='Ville'
+              placeholder='Ex: Paris'
+              name='city' onChange={this.handleInputChange}/>
+            <Form.Input fluid label='Code Postal'
+              placeholder='Ex: 75001'
+              name='zipCode' onChange={this.handleInputChange}/>
+          </Form.Group><br/>
           <Form.Group unstackable widths={2}>
             <Form.Select fluid label='Jour'
               // placeholder='Jour'
@@ -238,7 +245,7 @@ class AddForm extends Component {
                 <div className="modal-button-container">
                   <Button onClick={this.close} id="modal-button">
                     Ok
-                </Button>
+                  </Button>
                 </div>
               }
             </Modal.Content>

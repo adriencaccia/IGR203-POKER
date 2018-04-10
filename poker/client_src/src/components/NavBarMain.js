@@ -57,6 +57,12 @@ class NavBarMain extends Component {
                 Gérer mon tournoi
               </Menu.Item>
             </Link>}
+            {this.isLogged() && <Link to='/tourneys'>
+              <Menu.Item className="sidebar-item">
+                <Icon name="life ring" /><br />
+                Mes tournois
+              </Menu.Item>
+            </Link>}
             {this.isLogged() && <Link to='/profile'>
               <Menu.Item className="sidebar-item">
                 <Icon name="line graph" /><br/>

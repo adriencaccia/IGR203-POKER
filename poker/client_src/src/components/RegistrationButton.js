@@ -37,7 +37,7 @@ class RegistrationButton extends Component {
       players: this.props.tourney.players+1,
       playerIds: newPlayerIds
     };
-    APIManager.addPlayerToTourney(this.props.tourney.id,tourneyData).then(() => {
+    APIManager.patchTourney(this.props.tourney.id,tourneyData).then(() => {
       this.props.updateMap();
     }).catch(err => console.log(err));
     //this.props.updateMap();

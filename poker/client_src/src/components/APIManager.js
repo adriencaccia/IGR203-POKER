@@ -105,12 +105,38 @@ class APIManager {
     );
   }
 
-  //Add player to tourney
-  static addPlayerToTourney(tourneyId, tourneyData) {
+  //Get tourney
+  static getTourney(tourneyId) {
+    return axios.get(
+      'http://' + url + ':3000/api/games/' + tourneyId
+    );
+  }
+
+  //Delete tourney
+  static deleteTourney(tourneyId) {
+    return axios.request({
+      method: 'delete',
+      url: 'http://' + url + ':3000/api/games/' + tourneyId
+    });
+  }
+
+  //Patch tourney
+  static patchTourney(tourneyId, tourneyData) {
     return axios.request({
       method: 'patch',
       url: 'http://' + url + ':3000/api/games/' + tourneyId,
       data: tourneyData
+    });
+  }
+
+  static patchUser(userData) {
+    return axios.request({
+      method: 'patch',
+      url: 'http://' + url + ':3000/api/Users/' + APIManager.getUser(),
+      data: userData,
+      params: {
+        access_token: APIManager.getAuthToken()
+      }
     });
   }
 

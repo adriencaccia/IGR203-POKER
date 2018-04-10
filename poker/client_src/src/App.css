@@ -80,6 +80,41 @@
 	border-color: #b34640!important;
 }
 
+.tourneys-dropdown {
+	background-color: #e8d9c9 !important;
+	border-color: #b34640 !important;
+	width: 94vw !important;
+	margin-left: 3vw !important;
+}
+
+.tourneys-item {
+	background-color: #e8d9c9 !important;
+	border-color: #b34640 !important;
+}
+
+.tourneys-card {
+	background-color: #e8d9c9 !important;
+	margin: auto!important;
+	top: 2vh;
+}
+
+#tourneys-card-content {
+	border-style: solid!important;
+	border-color: #b34640!important;
+	border-width: 1px!important;
+}
+
+#tourneys-card-button {
+	background-color: #b34640 !important;
+	color: #e8d9c9 !important;
+	font-size: 18px !important;
+	margin: auto;
+}
+
+.visible.menu.transition {
+	border-color: #b34640!important;
+}
+
 .default.text {
 	color: #b34640!important;
 }
@@ -353,3 +388,7 @@ input, .ui.fluid.selection {
 	border-style: none!important;
 }
 
+#tourneys-delete-button {
+	color: #e8d9c9!important;
+	background-color: #b34640!important;
+}
