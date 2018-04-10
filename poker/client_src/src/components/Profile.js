@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import APIManager from './APIManager';
-import {Menu, Feed, Pagination, Icon, List} from 'semantic-ui-react';
+import {Menu, Feed, Pagination, Icon} from 'semantic-ui-react';
 import {Line} from 'react-chartjs-2';
 
 class Profile extends Component{	
@@ -12,6 +12,7 @@ class Profile extends Component{
       activeRanking:"1"
     };
     // this.updateProfile();
+    this.handlePageChange = this.handlePageChange.bind(this);
 	}
 
   handleItemClick = (e,{name}) => {
@@ -205,23 +206,65 @@ class Profile extends Component{
   }
 
   handlePageChange(e,data){
+    console.log(data);
     this.setState({
       activeRanking:data.activePage
     });
   }
 
   getRanking(){
-    var numPages = 10;
     var playerRankPage = 1;
-    var players = {};
+    var players = [
+      {username:"Lorkis", elo:"2310"},
+      {username:"Zunrin", elo:"2117"},
+      {username:"Jacques", elo:"2081"},
+      {username:"Michelle", elo:"2051"},
+      {username:"Robert", elo:"2017"},
+      {username:"Henri", elo:"1984"},
+      {username:"Jean", elo:"1981"},
+      {username:"Regis", elo:"1973"},
+      {username:"Paul", elo:"1951"},
+      {username:"Quentin", elo:"1930"},
+      {username:"Claire", elo:"1912"},
+      {username:"Bastien", elo:"1851"},
+      {username:"Jeanne", elo:"1827"},
+      {username:"Jules", elo:"1803"},
+      {username:"Jerome", elo:"1776"},
+      {username:"Maxime", elo:"1765"},
+      {username:"Justine", elo:"1749"},
+      {username:"Antoine", elo:"1731"},
+      {username:"Chris", elo:"1728"},
+      {username:"Luc", elo:"1702"},
+      {username:"Kevin", elo:"1659"},
+      {username:"Maurice", elo:"1648"},
+      {username:"Jean Paul", elo:"1617"},
+      {username:"Marie", elo:"1578"},
+      {username:"Alexis", elo:"1567"},
+      {username:"Arthur", elo:"1516"},
+      {username:"Marion", elo:"1479"},
+      {username:"Camille", elo:"1468"},
+      {username:"Arnaud", elo:"1453"}
+    ];
+    var numPages = Math.ceil(players.length/10);
+    var playersOnPage = [];
+    var startP = 10*(this.state.activeRanking-1);
+    for(var i=0; i<10; i++){
+      if(startP+i<players.length){
+        playersOnPage.push(players[startP+i]);
+      }
+    }
     return <div className="rank">
-        <List celled>
-          {players.map((object,i) => {
+          {playersOnPage.map((object,i) => {
             return <div className="rank-page">
+                <div className="rank-name">
+                  {object.username}
+                </div>
+                <div className="rank-elo">
+                  {object.elo}
+                </div>
 
               </div>
           })}
-        </List>
         <Pagination className="rank-pagination"
           defaultActivePage={playerRankPage}
           ellipsisItem={null}
