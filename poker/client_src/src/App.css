@@ -177,9 +177,9 @@
 }
 
 .homepage-container {
-  height: calc(98vh - 65px);
+  height: calc(97vh - 65px);
   text-align: center;
-  overflow: auto;
+  /* overflow: auto; */
 }
 
 .homepage-stepgroup {

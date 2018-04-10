@@ -21,7 +21,6 @@ const Main = () => {
         <Route exact path='/map' component={MapComponent} />
         <Route exact path='/timer' component={Timer} />
         <Route exact path='/profile' component={Profile} />
-        <Route exact path='/profile' component={Profile} />
         <Route exact path='/games/add' component={AddForm} />
         <Route exact path='/games/:id' component={GameDetails} />
         <Route exact path='/disconnect' component={UserLogout} />
@@ -36,6 +35,7 @@ const Main = () => {
         <Route exact path='/tourneys' component={isLogged ? UserTourneys : Homepage} /> */}
         <Route exact path='/login' component={UserLogin} />
         <Route exact path='/register' component={UserRegister} />
+        <Route exact path='/:id' component={Homepage} />
       </Switch>
     </main>
 	)
