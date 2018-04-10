@@ -27,19 +27,22 @@ class RegistrationButton extends Component {
     // console.log(this.props);
   };
   handleConfirm = () => {
-    var newPlayerIds = this.props.tourney.playerIds;
-    if(newPlayerIds[0]=="0"){
-      newPlayerIds=[APIManager.getUser()];
-    }else{
-      newPlayerIds.push(APIManager.getUser());
-    }
-    var tourneyData = {
-      players: this.props.tourney.players+1,
-      playerIds: newPlayerIds
-    };
-    APIManager.patchTourney(this.props.tourney.id,tourneyData).then(() => {
-      this.props.updateMap();
+    APIManager.getTourney(this.props.tourney.id).then(resp =>{
+      var newPlayerIds = resp.data.playerIds;
+      if(newPlayerIds[0]=="0"){
+        newPlayerIds=[APIManager.getUser()];
+      }else{
+        newPlayerIds.push(APIManager.getUser());
+      }
+      var tourneyData = {
+        players: resp.data.players+1,
+        playerIds: newPlayerIds
+      };
+      APIManager.patchTourney(this.props.tourney.id,tourneyData).then(() => {
+        this.props.updateMap();
+      }).catch(err => console.log(err));  
     }).catch(err => console.log(err));
+    
     //this.props.updateMap();
     //this.setState({ open: false });
   };
