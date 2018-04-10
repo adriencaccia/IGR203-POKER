@@ -174,12 +174,13 @@
 .add-form, .homepage {
 	height: 100%;
 	top: 0px;
+	/* overflow: auto; */
 }
 
 .homepage-container {
   height: calc(97vh - 65px);
   text-align: center;
-  /* overflow: auto; */
+  /* overflow: hidden; */
 }
 
 .homepage-stepgroup {
@@ -357,7 +358,7 @@ input, .ui.fluid.selection {
 }
 
 .app-header{
-	margin: 0% 0% 0% 3% !important;
+	margin: 0% 0% 0% 1vw !important;
 	height: calc(2vh + 65px);
 	padding-top: calc(2vh + 8px);
 	padding-left: 2vh;
