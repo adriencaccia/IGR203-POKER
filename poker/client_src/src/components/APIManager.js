@@ -114,6 +114,18 @@ class APIManager {
     });
   }
 
+  //Add user tourney to player
+  static addUserTourneyToPlayer(allUserTourneys) {
+    return axios.request({
+      method: 'patch',
+      url: 'http://' + url + ':3000/api/Users/' + APIManager.getUser(),
+      data: {userTourneys:allUserTourneys},
+      params: {
+        access_token: APIManager.getAuthToken()
+      }
+    });
+  }
+
   static getUrl() {
     return url;
   }

@@ -69,7 +69,7 @@ class UserRegister extends Component {
       password: this.state.password,
       elo: ["1500"],
       playedTourneys: ["0"],
-      userTOurneys: ["0"]
+      userTourneys: ["0"]
     };
     this.addUser(newUser);
     e.preventDefault();    
