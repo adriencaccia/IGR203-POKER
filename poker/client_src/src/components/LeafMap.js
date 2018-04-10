@@ -102,10 +102,14 @@ class ReactLeafletMap extends PureComponent{
         useFlyTo={true}
         center={mapConfig.playerPos}
         zoom={mapConfig.zoom}
+        // onZoom={() => console.log(this.leafletMap.leafletElement.getZoom())}
         >
         <TileLayer url={TILES_URL} detectRetina={true}/>
         <MarkerClusterGroup iconCreateFunction={createClusterCustomIcon}
-          showCoverageOnHover={false}>
+          spiderfyOnMaxZoom={false}
+          disableClusteringAtZoom={17}
+          showCoverageOnHover={false}
+          >
           {
             [...this.props.tourneys].map((tourney,i) => <TourneyConfirm key={i}
                 icon={this.tourneyIcon(tourney)} {...tourney}

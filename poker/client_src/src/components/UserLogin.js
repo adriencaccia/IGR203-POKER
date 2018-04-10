@@ -73,7 +73,7 @@ class UserLogin extends Component {
 
   render() {
     const messageSuccess = this.state.success &&
-      <p>{'Bienvenue ' + this.state.message}</p>;
+      <p>{'Vous allez être redirigé vers la carte'}</p>;
 
     const messageError = this.state.error &&
       // <p>{'Erreur : ' + this.state.message}</p>;

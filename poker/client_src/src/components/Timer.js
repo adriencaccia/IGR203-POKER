@@ -4,11 +4,17 @@ class Timer extends Component{
 	
 	render(){
 
-		return(
-			<div>
-				<h1>Timer Placeholder</h1>
-			</div>
-		)
+    return (
+      <div className="add-form">
+        <h1 className="app-header"> Ma partie en cours </h1> <br /> <br /> <br /> <br />
+        <p> BLINDES </p> <br />
+        <p> "valeur blindes"  +  Timer </p> <br /> <br />
+        <p> JOUEURS RESTANTS </p> <br />
+        <p>liste joueurs </p> <br /> <br />
+        <p> CLASSEMENT </p> <br />
+        <p> joueurs éliminés </p>
+      </div>
+    )
 	}
 
 }
