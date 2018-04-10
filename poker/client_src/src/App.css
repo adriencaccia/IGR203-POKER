@@ -440,4 +440,56 @@ canvas {
 
 .rank{
 	height:calc(100vh-128px) !important;
+	border-top-style: solid !important;
+	border-color: #b34640 !important;
+	border-top-width: 1px !important;
+	margin: 5vw;
+}
+
+.rank-page {
+	padding:5px;
+	color: #b34640 !important;
+	background-color: #e8d9c9 !important;
+	border-style: solid !important;
+	border-color: #b34640 !important;
+	border-width: 0px 1px 1px 1px !important;
+}
+
+.rank-name {
+	font-size: 22px;
+	padding: 3px;
+	left: 7vw;
+}
+
+.rank-elo {
+	float: right;
+	position: relative;
+	bottom: 25px;
+	right: 5px;
+	font-size: 22px;
+	padding: 3px;
+}
+
+.rank-pagination {
+	margin: 0 calc(50vw - 123px) !important;
+	border-style: solid !important;
+	border-color: #b34640 !important;
+	border-width: 1px 0 1px 1px !important;
+}
+
+.rank-pagination > .item {
+	padding:5px;
+	color: #b34640 !important;
+	background-color: #e8d9c9 !important;
+	border-style: solid !important;
+	border-color: #b34640 !important;
+	border-width: 0 1px 0 0 !important;
+}
+
+.rank-pagination>.item.active {
+  color: #e8d9c9 !important;
+  background-color: #b34640 !important;
+  border-style: solid !important;
+  border-color: #b34640 !important;
+  border-width: 0 1px 0 0 !important;
 }

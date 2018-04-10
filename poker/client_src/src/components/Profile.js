@@ -177,13 +177,13 @@ class Profile extends Component{
           22-03-2018
         </div>
         <div className="feed-bar">
-          L'Excuse
+          <strong>L'Excuse</strong>
         </div>
         <div className="feed-rank">
-          Votre placement: 10/16
+          Votre placement: <strong>10/16</strong>
         </div>
         <div className="feed-elo">
-          Elo: -22
+          Elo: <strong>-22</strong>
         </div>
       </div>
       {tourneys.map((object,i) => {
@@ -192,13 +192,13 @@ class Profile extends Component{
               {object.date}
             </div>
             <div className="feed-bar">
-              {object.name}
+              <strong>{object.name}</strong>
             </div>
             <div className="feed-rank">
-              Votre placement: {object.place}/{object.players}
+              Votre placement: <strong>{object.place}/{object.players}</strong>
             </div>
             <div className="feed-elo">
-              Elo: {object.eloDiff}
+              Elo: <strong>{object.eloDiff}</strong>
             </div>
           </div>;
       })}
@@ -257,14 +257,14 @@ class Profile extends Component{
           {playersOnPage.map((object,i) => {
             return <div className="rank-page">
                 <div className="rank-name">
-                  {object.username}
+                  {startP+i+1}. {object.username}
                 </div>
                 <div className="rank-elo">
                   {object.elo}
                 </div>
 
               </div>
-          })}
+          })}<br/>
         <Pagination className="rank-pagination"
           defaultActivePage={playerRankPage}
           ellipsisItem={null}
