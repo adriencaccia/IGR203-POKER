@@ -9,7 +9,7 @@ import APIManager from './APIManager';
 const TILES_URL = "http://"+APIManager.getUrl()+":8080/styles/poker-style2/{z}/{x}/{y}.png";
 // const TILES_URL = "http://137.194.8.91:8080/styles/poker-style/{z}/{x}/{y}.png";
 // const TILES_URL = "http://192.168.137.99:8080/styles/osm-bright/{z}/{x}/{y}.png";
-// const TILES_URL = "https://tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png";
+//const TILES_URL = "https://tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png";
 
 const iconSize = 60;
 
