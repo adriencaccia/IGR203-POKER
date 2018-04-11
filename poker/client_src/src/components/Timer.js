@@ -3,48 +3,15 @@ import React, {Component} from 'react';
 class Timer extends Component{
 
 	playersInGame = ["Daniel", "José", "Pamela", "Patricia", "", ""];
-	playersOut = ["", "", "", "", "Georges", "James"]
+	playersOut = ["", "", "", "", "Georges", "James"];
+	//timer = 300;
 
-
-
-    getInitialState(){
-
-        // This is called before our render function. The object that is 
-        // returned is assigned to this.state, so we can use it later.
-
-        return { elapsed: 0 };
-    }
-
-    componentDidMount(){
-
-        // componentDidMount is called by react when the component 
-        // has been rendered on the page. We can set the interval here:
-
-        this.timer = setInterval(this.tick, 50);
-    }
-
-    componentWillUnmount(){
-
-        // This method is called immediately before the component is removed
-        // from the page and destroyed. We can clear the interval here:
-
-        clearInterval(this.timer);
-    }
-
-    tick(){
-
-        // This function is called every 50 ms. It updates the 
-        // elapsed counter. Calling setState causes the component to be re-rendered
-
-        this.setState({elapsed: new Date() - this.props.start});
-    }
 
 
 
 	render(){
 
-		var elapsed = Math.round(this.state.elapsed / 100);
-		var seconds = (elapsed / 10).toFixed(1);
+		//setTimeout(timer--, 1000);
 
 		return(
 			<div className="add-form">
