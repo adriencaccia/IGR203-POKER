@@ -15,7 +15,7 @@ class Timer extends Component{
         		<h1 className="app-header"> Ma partie en cours </h1> <br /> <br /> <br /> <br />
  				
  				<h2> Blindes </h2> <br />
-				<p> "valeur blindes"  +  Timer {seconds} </p> <br /> <br />
+				<p> "valeur blindes"  +  Timer </p> <br /> <br />
 				
 				<h2> Joueurs Restants </h2> <br />
 				<button>{this.playersInGame[0]}</button> <button>{this.playersInGame[1]}</button> <button>{this.playersInGame[2]}</button> <br />
