@@ -99,6 +99,11 @@ class UserTourneys extends Component {
           });
         }
       }
+      else {
+        this.setState({
+          tourneys: [],
+        });
+      }
     });
   }
 
@@ -163,7 +168,7 @@ class UserTourneys extends Component {
         difficulty: this.state.difficulty,
         maxPlayers: this.state.maxPlayers,
       };
-      APIManager.patchTourney(this.state.tourney.id, newData).then(res => {
+      APIManager.patchTourney(this.state.tourney.id, newData).then(() => {
           this.setState({
             success: true,
           });
