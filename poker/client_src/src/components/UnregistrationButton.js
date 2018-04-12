@@ -27,18 +27,24 @@ class UnregistrationButton extends Component {
     // console.log(this.props);
   };
   handleConfirm = () => {
-    var newPlayerIds = this.props.tourney.playerIds;
-    newPlayerIds.splice(newPlayerIds.indexOf(APIManager.getUser()), 1);
-    var tourneyData = {
-      players: this.props.tourney.players-1,
-      playerIds: newPlayerIds
-    };
-    APIManager.patchTourney(this.props.tourney.id,tourneyData).then(() => {
-      this.props.updateMap();
-    }).catch(err => console.log(err));
+    APIManager.getTourney(this.props.tourney.id).then(resp => {
+      var newPlayerIds = resp.data.playerIds;
+      newPlayerIds.splice(newPlayerIds.indexOf(APIManager.getUser()), 1);
+      if (newPlayerIds.length == 0) {
+        newPlayerIds.push("0");
+      }
+      var tourneyData = {
+        players: this.props.tourney.players - 1,
+        playerIds: newPlayerIds
+      };
+      APIManager.patchTourney(this.props.tourney.id, tourneyData).then(() => {
+        this.props.updateMap();
+      }).catch(err => console.log(err));
     //this.props.updateMap();
     //this.setState({ open: false });
+    }).catch(err => console.log(err));
   };
+
   handleCancel = () => this.setState({ open: false });
 
   render() {
